@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 24px;
+    max-width: 768px;
+    width: 100%;
+    margin: auto;
+    border-right: rgba(0, 0, 0, 0.1) 1px solid;
+    border-left: rgba(0, 0, 0, 0.1) 1px solid;
+    /* padding: 0 15px; */
+}
+
+.grid-item {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    padding: 20px;
+    /* border-left: 1px solid rgba(0, 0, 0, 0.1); */
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.text-content {
+    display: flex;
+    flex-direction: column;
+    font-family: monospace ;
+    gap: 2px;
+}
+
+.title {
+    font-size: 1.4em;
+    font-weight: 500; 
+    color: #222;
+
+}
+
+.username {
+    color: #888;
+    font-size: 1em;
+}
+
+
+/* Odd-numbered: right border only */
+.grid-item:first-child{
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Even-numbered: left border only */
+.grid-item:nth-child(n) {
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+
+a{
+    text-decoration: none;
+}
+
+
+.title:hover{
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-decoration-color: #000;
+    text-underline-offset : 4px;
+}

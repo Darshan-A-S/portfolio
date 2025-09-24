@@ -1,0 +1,29 @@
+.inspi {
+    max-width: 768px;
+    width: 100%;
+    margin: auto;
+    border-right: rgba(0, 0, 0, 0.1) 1px solid;
+    border-left: rgba(0, 0, 0, 0.1) 1px solid;
+    font-family: monospace;
+    font-size: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+.inspi-container{
+    width: 100%;
+    border-top: rgba(0, 0, 0, 0.1) 1px solid;
+    border-bottom: rgba(0, 0, 0, 0.1) 1px solid;
+    margin-bottom:20px ;
+
+}
+
+a{
+    color: inherit;
+    text-decoration: none;
+}

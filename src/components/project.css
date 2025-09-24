@@ -1,0 +1,66 @@
+.project-container {
+    max-width: 768px;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border-bottom: rgba(0, 0, 0, 0.1) 1px solid;
+    /* padding: 10px; */
+    margin: 0px auto;
+}
+
+.project-container:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Title + expand icon wrapper */
+.project-header {
+    display: flex;
+    justify-content: space-between; /* title left, icon right */
+    align-items: center;
+    cursor: pointer;
+    padding: 10px;
+}
+
+/* Title text */
+.project-title {
+    font-size: 20px;
+    font-weight: bold;
+    font-family: monospace;
+}
+
+/* Expandable content */
+.project-content {
+    overflow: hidden;
+    padding: 0px 10px;
+    transition: max-height 0.3s ease-in-out, opacity 0.2s ease-in-out;
+    will-change: max-height, opacity;
+}
+
+/* @media screen and (max-width: 480px) {
+    .project-title {
+        font-size: 18px;
+    }
+    
+    .project-header {
+        padding: 5px;
+    }
+
+    .project-container {
+        padding: 8px;
+    }
+    
+    .project-content {
+        padding: 0 3px;
+    }
+} */
+
+/* Expand icon */
+.expand-icon {
+    transition: transform 0.3s ease;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.expand-icon.rotate {
+    transform: rotate(180deg); /* arrow flips when expanded */
+}

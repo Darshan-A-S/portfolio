@@ -1,0 +1,81 @@
+.tech-container {
+    max-width: 768px;
+    width: 100%;
+    margin: auto;
+    border-right: rgba(0, 0, 0, 0.1) 1px solid;
+    border-left: rgba(0, 0, 0, 0.1) 1px solid;
+    font-family: monospace;
+}
+
+.tech-icons {
+    max-width: 768px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 18px;
+    gap: 12px;
+    justify-content: flex-start;
+}
+
+/* Icon styling */
+.tech-icons img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.tech-icons img:hover {
+    transform: scale(1.15);
+}
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+.tooltip-text {
+    visibility: hidden;
+    background-color: #333;
+    color: #fff;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    position: absolute;
+    bottom: 120%; /* appears above */
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    white-space: nowrap;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    font-family: monospace;
+}
+
+/* Tooltip arrow */
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+}
+
+/* Show tooltip on hover */
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(-50%) translateY(-5px);
+}
+
+h3 {
+    font-size: 30px;
+    padding: 8px;
+}

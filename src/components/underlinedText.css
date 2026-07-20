@@ -1,6 +1,0 @@
-/* UnderlinedText.css */
-.underlined-text {
-  text-decoration: underline;
-  text-decoration-thickness: 1px; /* adjust thickness if needed */
-  text-decoration-color: #000;   /* change underline color */
-}

@@ -1,18 +1,13 @@
-import React from 'react'
-import logo from './../assets/DAS.svg'
-import './logo.css'
-// import { DotPattern } from "@/components/magicui/dot-pattern";
+import logoLight from './../assets/DAS-light.svg'
+import logoDark from './../assets/DAS-white.svg'
 
-
-const Logo = () => {
+const Logo = ({ isDark }) => {
   return (
-    <div className='logo-container'>
-      {/* <DotPattern/> */}
-      <div className='logo-main'>
-      <div className="dot-pattern"></div>
-        <div className='logo'>
-          <img src={logo} alt='DAS Logo' className='logo' />
-        </div>
+    <div className="border-b border-[color:var(--color-border)]">
+      <div
+        className="mx-auto flex h-[200px] max-w-[768px] items-center justify-center border-x border-[color:var(--color-border)]"
+      >
+        <img src={isDark ? logoDark : logoLight} alt='DAS Logo' className="h-20 w-auto" />
       </div>
     </div>
   )

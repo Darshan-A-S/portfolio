@@ -1,21 +1,13 @@
-import React from 'react'
-import logo from './../assets/DAS.svg'
-import './logo-foot.css'
-// import { DotPattern } from "@/components/magicui/dot-pattern";
+import { FluidGradientText } from "./fluid-gradient-text";
 
-
-const Logo = () => {
+const LogoFoot = () => {
   return (
-    <div className='logo-container'>
-      {/* <DotPattern/> */}
-      <div className='logo-main'>
-      <div className="dot-pattern"></div>
-        <div className='logo'>
-          <img src={logo} alt='DAS Logo' className='logo' />
-        </div>
+    <div>
+      <div className="mx-auto h-[150px] max-w">
+        <FluidGradientText text="D A R S H A N" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Logo
+export default LogoFoot;

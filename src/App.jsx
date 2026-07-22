@@ -15,6 +15,8 @@ import { LeetCodeContributions } from './components/github-contributions.jsx'
 import LogoFoot from './components/logo-foot.jsx'
 import AsciiWebcam from './components/ascii-webcam.jsx'
 import Inspirations from './components/inspirations.jsx'
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
   const [isDark, setIsDark] = useState(() => {
@@ -58,6 +60,9 @@ function App() {
       <AsciiWebcam />
       <LogoFoot />
       <Inspirations />
+
+      <Analytics />
+      <SpeedInsights />
     </div>
   )
 }

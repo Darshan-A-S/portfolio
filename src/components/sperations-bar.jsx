@@ -1,6 +1,6 @@
 const Seperation_bar = () => {
   return (
-    <div className="border-x border-[color:var(--color-border)]">
+    <div>
       <div
         className="relative h-6 w-full overflow-hidden border-b border-[color:var(--color-border)]"
         style={{

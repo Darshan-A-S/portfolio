@@ -1,8 +1,8 @@
 const About = () => {
   return (
-    <div id="about" className="border-b border-[color:var(--color-border)] px-[5px]">
+    <div id="about" className="border-b border-[color:var(--color-border)] px-[5px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
-        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[20px] font-bold">
+        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
           About
         </div>
       </h2>

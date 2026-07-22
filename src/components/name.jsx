@@ -2,7 +2,7 @@ import profileDots from './../assets/profile-dots.svg'
 
 const Name = () => {
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[5px]">
+    <div className="border-b border-[color:var(--color-border)] px-[5px] sm:px-0">
       <div className="mx-auto max-w-[768px] border-x border-b border-[color:var(--color-border)]">
         <div className="flex flex-col sm:flex-row items-center sm:items-stretch">
           <div className="border-b sm:border-b-0 sm:border-r border-[color:var(--color-border)] flex items-center justify-center p-3">

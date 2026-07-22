@@ -17,7 +17,7 @@ import {
 const USERNAME = "Darshan_as";
 const API_URL = import.meta.env.DEV
   ? "/leetcode/graphql"
-  : "https://leetcode.com/graphql";
+  : "/api/leetcode";
 
 function getLevel(count) {
   if (count === 0) return 0;
@@ -84,7 +84,7 @@ export function LeetCodeContributions({ className }) {
     return (
       <div className="border-b border-[color:var(--color-border)]">
         <h2 className="border-b border-[color:var(--color-border)]">
-          <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[20px] font-bold">
+          <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
             LeetCode Contributions
           </div>
         </h2>
@@ -98,9 +98,9 @@ export function LeetCodeContributions({ className }) {
   }
 
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[5px]">
+    <div className="border-b border-[color:var(--color-border)] px-[5px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
-        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[20px] font-bold">
+        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
           LeetCode
         </div>
       </h2>
@@ -152,9 +152,9 @@ export function LeetCodeContributions({ className }) {
 
 export function LeetCodeContributionsFallback() {
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[5px]">
+    <div className="border-b border-[color:var(--color-border)] px-[5px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
-        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[20px] font-bold">
+        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
           LeetCode Contributions
         </div>
       </h2>

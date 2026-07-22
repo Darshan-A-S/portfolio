@@ -1,13 +1,14 @@
 import { useRef } from "react";
-import edit1 from "./../assets/videos/edit1.mp4";
-import edit2 from "./../assets/videos/edit2.mp4";
-import hero from "./../assets/videos/hero.mp4";
-import reel3 from "./../assets/videos/reel3.mp4";
-import reel4 from "./../assets/videos/reel4.mp4";
-import reel5 from "./../assets/videos/reel5.mp4";
-import reel6 from "./../assets/videos/reel6.mp4";
-import reel7 from "./../assets/videos/reel7.mp4";
-import reel8 from "./../assets/videos/reel8.mp4";
+
+const edit1 = "https://res.cloudinary.com/k2uloqof/video/upload/v1784732841/edit1_rfc9xg.mp4";
+const edit2 = "https://res.cloudinary.com/k2uloqof/video/upload/v1784733794/edit2_d7zxpz.mp4";
+const hero = "https://res.cloudinary.com/k2uloqof/video/upload/v1784733016/hero_ct1nag.mp4";
+const reel3 = "https://res.cloudinary.com/k2uloqof/video/upload/v1784733668/reel3_j8turf.mp4";
+const reel4 = "https://res.cloudinary.com/k2uloqof/video/upload/v1784733163/reel4_zbmrls.mp4";
+const reel5 = "https://res.cloudinary.com/k2uloqof/video/upload/v1784733195/reel5_bnjwgc.mp4";
+const reel6 = "https://res.cloudinary.com/k2uloqof/video/upload/v1784733114/reel6_oemvu2.mp4";
+const reel7 = "https://res.cloudinary.com/k2uloqof/video/upload/v1784733074/reel7_zjebds.mp4";
+const reel8 = "https://res.cloudinary.com/k2uloqof/video/upload/v1784732865/reel8_qblgzw.mp4";
 
 function VideoCard({ video, style, className = "" }) {
   const ref = useRef(null);

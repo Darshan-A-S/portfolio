@@ -3,7 +3,7 @@ import UnderlinedText from './underlinetext';
 
 const Details = () => {
   return (
-    <div className="border-b border-[color:var(--color-border)]">
+    <div className="border-b border-[color:var(--color-border)] px-[5px]">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[20px] font-bold">
           Overview

@@ -15,6 +15,9 @@ import {
 } from "@/components/contribution-graph";
 
 const USERNAME = "Darshan_as";
+const API_URL = import.meta.env.DEV
+  ? "/leetcode/graphql"
+  : "https://leetcode.com/graphql";
 
 function getLevel(count) {
   if (count === 0) return 0;
@@ -31,7 +34,7 @@ export function LeetCodeContributions({ className }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/leetcode/graphql", {
+        const res = await fetch(API_URL, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -95,7 +98,7 @@ export function LeetCodeContributions({ className }) {
   }
 
   return (
-    <div className="border-b border-[color:var(--color-border)]">
+    <div className="border-b border-[color:var(--color-border)] px-[5px]">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[20px] font-bold">
           LeetCode
@@ -149,7 +152,7 @@ export function LeetCodeContributions({ className }) {
 
 export function LeetCodeContributionsFallback() {
   return (
-    <div className="border-b border-[color:var(--color-border)]">
+    <div className="border-b border-[color:var(--color-border)] px-[5px]">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[20px] font-bold">
           LeetCode Contributions

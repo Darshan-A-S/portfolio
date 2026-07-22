@@ -3,14 +3,42 @@ const education = [
     degree: "Bachelor's degree",
     field: 'Computer Science and Engineering',
     school: 'JSS Science and Technology University',
-    period: '2021 — 2025',
+    period: '2022 — 2026',
     location: 'Mysore, Karnataka, India',
+    score: 'CGPA: 9.09',
     highlights: [
       'Data Structures & Algorithms',
       'Machine Learning',
       'Web Technologies',
       'Database Management',
       'Software Engineering',
+    ],
+  },
+  {
+    degree: 'Pre-University',
+    field: 'Science (PCMCs)',
+    school: 'Mandaara PU College',
+    period: '2020 — 2022',
+    location: 'Davanagere, Karnataka, India',
+    score: 'Percentage: 97.67%',
+    highlights: [
+      'Physics',
+      'Chemistry',
+      'Mathematics',
+      'Computer Science',
+    ],
+  },
+  {
+    degree: 'High School',
+    field: '7th — 10th Grade',
+    school: 'Vidyadayini School',
+    period: '2009 — 2020',
+    location: 'Harihara, Karnataka, India',
+    score: 'Percentage: 79%',
+    highlights: [
+      'CBSE Board',
+      'Science & Mathematics',
+      'English',
     ],
   },
 ]
@@ -31,6 +59,7 @@ const Education = () => {
                 <div>
                   <h3 className="text-[15px] font-bold">{edu.school}</h3>
                   <p className="text-[13px] text-[var(--color-text-muted)]">{edu.degree} — {edu.field}</p>
+                  {edu.score && <p className="text-[13px] font-medium">{edu.score}</p>}
                 </div>
                 <div className="text-right text-[13px] text-[var(--color-text-muted)]">
                   <p>{edu.period}</p>

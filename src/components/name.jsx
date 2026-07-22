@@ -17,7 +17,7 @@ const Name = () => {
               Darshan A S
             </h1>
             <p className="text-[15px] text-[var(--color-text-secondary)] border-b border-[color:var(--color-border)] px-4 py-2">
-              Building with code. Pixel by pixel.
+              Building with code. Also love editing videos.
             </p>
           </div>
         </div>

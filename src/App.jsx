@@ -10,8 +10,10 @@ import Experience from './components/experience.jsx'
 import Education from './components/education.jsx'
 import Tech from './components/techstack.jsx'
 import Projects from './components/projects.jsx'
+import VideoEditing from './components/video-editing.jsx'
 import { LeetCodeContributions } from './components/github-contributions.jsx'
 import LogoFoot from './components/logo-foot.jsx'
+import AsciiWebcam from './components/ascii-webcam.jsx'
 import Inspirations from './components/inspirations.jsx'
 
 function App() {
@@ -49,8 +51,11 @@ function App() {
       <Seperation />
       <Projects />
       <Seperation />
+      <VideoEditing />
+      <Seperation />
       <LeetCodeContributions />
       <Seperation />
+      <AsciiWebcam />
       <LogoFoot />
       <Inspirations />
     </div>

@@ -17,7 +17,7 @@ const Socials = () => {
             rel="noreferrer"
             className="flex items-center gap-4 border-r border-[color:var(--color-border)] px-4 py-4 transition-colors hover:bg-[var(--color-hover-bg)]"
           >
-            <img src={linkedin} className="h-10 w-10 rounded-full object-cover" alt="LinkedIn" />
+            <img src={linkedin} className="h-10 w-10 object-cover" alt="LinkedIn" />
             <div>
               <span className="text-[15px] font-medium">LinkedIn</span>
               <p className="text-[13px] text-[var(--color-text-muted)]">@darshan-as</p>
@@ -29,7 +29,7 @@ const Socials = () => {
             rel="noreferrer"
             className="flex items-center gap-4 px-4 py-4 transition-colors hover:bg-[var(--color-hover-bg)]"
           >
-            <img src={github} className="h-10 w-10 rounded-full object-cover" alt="GitHub" />
+            <img src={github} className="h-10 w-10 object-cover" alt="GitHub" />
             <div>
               <span className="text-[15px] font-medium">GitHub</span>
               <p className="text-[13px] text-[var(--color-text-muted)]">@Darshan-A-S</p>

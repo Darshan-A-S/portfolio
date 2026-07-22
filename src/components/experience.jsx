@@ -1,27 +1,15 @@
 const experiences = [
   {
-    title: 'Frontend Developer Intern',
-    company: 'Tech Startup',
-    period: '2024 — Present',
-    location: 'Remote',
+    title: 'Associate Software Engineer',
+    company: 'Texas AI',
+    period: 'Mar \'26 — Present',
+    location: 'Onsite',
     description: [
       'Built and maintained React-based web applications',
       'Implemented responsive UI components with Tailwind CSS',
       'Collaborated with design team to improve UX',
     ],
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Git'],
-  },
-  {
-    title: 'Web Development Intern',
-    company: 'Digital Agency',
-    period: '2023 — 2024',
-    location: 'Mysore, India',
-    description: [
-      'Developed client websites using modern frameworks',
-      'Optimized site performance and SEO',
-      'Worked with cross-functional teams',
-    ],
-    tags: ['JavaScript', 'React', 'Node.js', 'MongoDB'],
+    tags: ['Java', 'Spring Boot', 'Postman', 'Git', 'Kafka', 'JWT', 'MySQL', 'MongoDB'],
   },
 ]
 

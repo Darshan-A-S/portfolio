@@ -58,7 +58,17 @@ export default function AsciiWebcam() {
         p.push();
         p.scale(-1, 1);
         p.translate(-p.width / 2, -p.height / 2);
-        p.image(cam, 0, 0, 768, 432);
+        const camAspect = cam.width / cam.height;
+        const canvasAspect = p.width / p.height;
+        let drawW, drawH;
+        if (camAspect > canvasAspect) {
+          drawH = p.height;
+          drawW = drawH * camAspect;
+        } else {
+          drawW = p.width;
+          drawH = drawW / camAspect;
+        }
+        p.image(cam, (p.width - drawW) / 2, (p.height - drawH) / 2, drawW, drawH);
         p.pop();
       };
 
@@ -79,7 +89,7 @@ export default function AsciiWebcam() {
   }, [started]);
 
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[5px] sm:px-0">
+    <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
         <div className="relative flex items-center justify-center overflow-hidden]"
           style={{ aspectRatio: "16 / 9" }}

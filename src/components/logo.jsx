@@ -3,7 +3,7 @@ import logoDark from './../assets/DAS-white.svg'
 
 const Logo = ({ isDark }) => {
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[5px] sm:px-0">
+    <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <div
         className="mx-auto flex h-[200px] max-w-[768px] items-center justify-center border-x border-[color:var(--color-border)]"
       >

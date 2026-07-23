@@ -13,8 +13,8 @@ const Nav = ({ isDark, toggleTheme }) => {
   }
 
   return (
-    <div className="border-b border-[color:var(--color-border)]">
-      <nav className="mx-auto flex max-w-[768px] items-center justify-between border-x border-[color:var(--color-border)] px-4 py-3">
+    <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+      <nav className="mx-auto flex max-w-[768px] items-center justify-between border-x border-[color:var(--color-border)] px-[8px] sm:px-4 py-3">
         <a href="/" className="flex items-center gap-2">
           <img src={isDark ? logoDark : logoLight} alt="Logo" className="h-8 w-8" />
         </a>

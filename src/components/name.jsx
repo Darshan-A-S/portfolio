@@ -1,4 +1,5 @@
 import profileDots from './../assets/profile-dots.svg'
+import Dino from './dino.jsx'
 
 const Name = () => {
   return (
@@ -37,9 +38,8 @@ const Name = () => {
             <span className="text-[var(--color-text-muted)]">Education</span>
             <p className="mt-0.5 font-medium">CSE @ JSSSTU</p>
           </div>
-          <div className="border-t border-[color:var(--color-border)] px-4 py-3">
-            <span className="text-[var(--color-text-muted)]">Focus</span>
-            <p className="mt-0.5 font-medium">Java + AI</p>
+          <div className="border-t border-[color:var(--color-border)]">
+            <Dino height={58}/>
           </div>
         </div>
       </div>

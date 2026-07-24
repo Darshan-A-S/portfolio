@@ -11,23 +11,21 @@ const Details = () => {
       </h2>
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
         <div className="border-b border-[color:var(--color-border)] px-4 py-4 text-[15px] leading-relaxed">
-          Hi, I am <strong>Darshan A S</strong> — a final year Computer Science Engineering Student passionate about building web applications integrated with AI.
+          Hi, I am <strong>Darshan A S</strong>, an Associate Software Engineer at Texas AI. I work on backend systems using Java and Spring Boot, with a solid background in React and front-end development.
           <br /><br />
-          I build high-quality web applications with React and modern front-end technologies. I'm also passionate about Machine Learning and Generative AI, exploring ways to integrate them into impactful projects.
+          I enjoy building real, functional projects — REST APIs, WebSocket-based apps, and export pipelines — and I'm always interested in exploring how AI and GenAI can be integrated into practical products.
           <br /><br />
-          One of my best projects is <a href="https://proctorpro-c9ba.onrender.com/" target='_blank' rel="noreferrer" className="underline decoration-1 underline-offset-2 hover:text-[var(--color-text)]"><UnderlinedText text="ProctorPro" /></a> — An online assessment proctoring system built at a hackathon. It features <UnderlinedText text="video proctoring with multi-face detection" /> and tools to create and share tests for secure online exams.
+          My favorite project so far is <a href="https://proctorpro-c9ba.onrender.com/" target='_blank' rel="noreferrer" className="underline decoration-1 underline-offset-2 hover:text-[var(--color-text)]"><UnderlinedText text="ProctorPro" /></a> — an online exam proctoring system with real-time multi-face detection, built during a hackathon.
           <br /><br />
-          I'm also into <UnderlinedText text="vibe coding" /> building useful projects at a fast pace and experimenting with new ideas.
+          Outside of work, I enjoy <UnderlinedText text="video editing" /> and exploring new ideas.
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
           {[
-            { icon: <AcademicHat width={16} />, label: 'Completed my engineering at', value: 'JSSSTU', link: true },
-            { icon: <BookOpen width={16} />, label: 'Field', value: 'Computer Science and Engineering' },
-            { icon: <Location width={16} />, label: 'Location', value: 'Mysore, Karnataka, India' },
+            { icon: <Location width={16} />, label: 'Location', value: 'Davanagere, Karnataka, India' },
             { icon: <Telephone width={16} />, label: 'Phone', value: '+91 74830 91124' },
-            { icon: <Envelope width={16} />, label: 'Email', value: 'asdarshan894@gmail.com' },
-            { icon: <ExternalLink width={16} />, label: 'Website', value: 'das.com', link: true },
+            { icon: <Envelope width={16} />, label: 'Email', value: 'darshanas.work@gmail.com' },
+            { icon: <ExternalLink width={16} />, label: 'Website', value: 'dasfolio-one.vercel.app/', link: true, },
           ].map((item, i) => (
             <div
               key={i}

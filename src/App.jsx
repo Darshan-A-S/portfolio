@@ -43,8 +43,7 @@ function App() {
       <Seperation />
       <Socials />
       <Seperation />
-      <About />
-      <Seperation />
+      {/* <About /> */}
       <Tech />
       <Seperation />
       <Experience />

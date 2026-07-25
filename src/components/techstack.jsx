@@ -5,8 +5,6 @@ import css from './../assets/css-3.svg'
 import js from './../assets/javascript-1.svg'
 import react from './../assets/react.svg'
 import tailwind from './../assets/tailwind-css-2.svg'
-import numpy from './../assets/numpy-svgrepo-com.svg'
-import pandas from './../assets/Pandas.svg'
 import langchain from './../assets/langchain.svg'
 import github from './../assets/github-mark.svg'
 import Figma from './../assets/figma.svg'
@@ -16,12 +14,19 @@ import opencv from './../assets/opencv.svg'
 import vscode from './../assets/vs-code.svg'
 import capcut from './../assets/capcut.jpeg'
 import sql from './../assets/mysql-logo-pure.svg'
+import java from './../assets/java.png'
+import claude from './../assets/claude.svg'
+import postman from './../assets/Postman.svg'
+import vercel from './../assets/vercel.svg'
+import springboot from './../assets/spring-boot.svg'
+import mongodb from './../assets/MongoDB.svg'
 
 const categories = [
   {
     num: '01',
     title: 'Languages',
     items: [
+      { src: java, name: 'Java' },
       { src: Python, name: 'Python' },
       { src: Cprog, name: 'C' },
       { src: js, name: 'JavaScript' },
@@ -42,25 +47,28 @@ const categories = [
     title: 'Backend & Database',
     items: [
       { src: django, name: 'Django' },
+      { src: springboot, name: 'Spring Boot' },
       { src: sql, name: 'MySQL' },
+      { src: mongodb, name: 'MongoDB' },
     ],
   },
   {
     num: '04',
-    title: 'AI & ML',
+    title: 'Workflow & AI',
     items: [
-      { src: numpy, name: 'NumPy' },
-      { src: pandas, name: 'Pandas' },
       { src: langchain, name: 'Langchain' },
       { src: opencv, name: 'OpenCV' },
       { src: chatgpt, name: 'ChatGPT' },
+      { src: claude, name: 'Claude' },
+      { src: github, name: 'GitHub' },
+      { src: postman, name: 'Postman' },
+      { src: vercel, name: 'Vercel' },
     ],
   },
   {
     num: '05',
     title: 'Tools & Design',
     items: [
-      { src: github, name: 'GitHub' },
       { src: Figma, name: 'Figma' },
       { src: vscode, name: 'VS Code' },
       { src: capcut, name: 'Capcut' },

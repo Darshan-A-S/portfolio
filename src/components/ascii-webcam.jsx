@@ -99,9 +99,10 @@ export default function AsciiWebcam() {
               <button
                 onClick={handleSurprise}
                 disabled={loading}
-                className="rounded-full border border-[color:var(--color-border)] bg-[var(--color-bg)] px-6 py-2.5 text-sm font-medium text-[var(--color-text)] transition-all hover:bg-[var(--color-text)] hover:text-[var(--color-bg)] disabled:opacity-50 cursor-pointer"
+                className="inline-flex items-center justify-center gap-2 rounded-[min(var(--radius-lg),10px)] border border-transparent bg-[var(--color-badge-bg)] px-3 py-2 text-[13px] font-medium text-[var(--color-text)] transition-all hover:bg-[var(--color-badge-border)] active:scale-[0.98] disabled:opacity-50 cursor-pointer"
               >
                 {loading ? "Loading..." : "Surprise"}
+                
               </button>
             </div>
           )}

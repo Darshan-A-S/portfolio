@@ -107,6 +107,14 @@ export default function VideoEditing() {
           />
         </div>
       </div>
+      <div className="border-t border-[color:var(--color-border)]">
+        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] flex justify-center py-2">
+          <a role="button" href="#projects" className="inline-flex items-center justify-center gap-2 rounded-[min(var(--radius-lg),10px)] border border-transparent bg-[var(--color-badge-bg)] px-3 py-2 text-[13px] font-medium text-[var(--color-text)] transition-all hover:bg-[var(--color-badge-border)] active:scale-[0.98] cursor-pointer">
+            Load More
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

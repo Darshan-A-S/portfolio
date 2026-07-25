@@ -13,16 +13,16 @@ const Details = () => {
         <div className="border-b border-[color:var(--color-border)] px-4 py-4 text-[15px] leading-relaxed">
           Hi, I am <strong>Darshan A S</strong>, an Associate Software Engineer at Texas AI. I work on backend systems using Java and Spring Boot, with a solid background in React and front-end development.
           <br /><br />
-          I enjoy building real, functional projects — REST APIs, WebSocket-based apps, and export pipelines — and I'm always interested in exploring how AI and GenAI can be integrated into practical products.
+          I enjoy building real, functional projects — REST APIs, WebSocket-based apps, and export pipelines — and I'm always interested in exploring how AI can be integrated into practical products.
           <br /><br />
-          My favorite project so far is <a href="https://proctorpro-c9ba.onrender.com/" target='_blank' rel="noreferrer" className="underline decoration-1 underline-offset-2 hover:text-[var(--color-text)]"><UnderlinedText text="ProctorPro" /></a> — an online exam proctoring system with real-time multi-face detection, built during a hackathon.
+          My favorite project so far is <a href="https://proctorpro-c9ba.onrender.com/" target='_blank' rel="noreferrer" className="decoration-1 underline-offset-2 hover:text-[var(--color-text)]"><UnderlinedText text="ProctorPro" /></a> — an online exam proctoring system with real-time multi-face detection, built during a hackathon.
           <br /><br />
           Outside of work, I enjoy <UnderlinedText text="video editing" /> and exploring new ideas.
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2">
           {[
-            { icon: <Location width={16} />, label: 'Location', value: 'Davanagere, Karnataka, India' },
+            { icon: <Location width={16} />, label: 'Address', value: 'Davanagere, Karnataka, India' },
             { icon: <Telephone width={16} />, label: 'Phone', value: '+91 74830 91124' },
             { icon: <Envelope width={16} />, label: 'Email', value: 'darshanas.work@gmail.com' },
             { icon: <ExternalLink width={16} />, label: 'Website', value: 'dasfolio-one.vercel.app/', link: true, },

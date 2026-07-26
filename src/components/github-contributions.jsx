@@ -101,7 +101,7 @@ export function LeetCodeContributions({ className }) {
     <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
-          LeetCode
+          LeetCode <span className="text-[10px] text-muted-foreground font-normal">(I will be consistent...)</span>
         </div>
       </h2>
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">

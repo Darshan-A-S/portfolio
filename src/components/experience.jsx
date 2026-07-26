@@ -14,6 +14,7 @@ const experiences = [
         description:
           "- Contributed to backend development using Java and Spring Boot, working on small features and bug fixes within an existing production codebase\n- Implemented and worked with REST APIs in a real-world enterprise environment, integrating backend services with existing systems\n- Resolved bugs and handled maintenance tasks across existing modules, improving code stability and gaining hands-on experience with debugging production-level code",
         skills: ["Java", "Spring Boot", "Postman", "Git", "Kafka", "JWT", "MySQL", "MongoDB"],
+        isExpanded: true,
       },
     ],
   },

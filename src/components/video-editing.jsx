@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const videos = [
   { id: 1, label: "Campus Walk", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784732841/edit1_rfc9xg.mp4" },
@@ -14,6 +14,19 @@ const videos = [
 
 function VideoCard({ video, style, className = "" }) {
   const ref = useRef(null);
+  const cardRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setLoaded(true); obs.disconnect(); } },
+      { rootMargin: "300px" }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
 
   const handleEnter = () => {
     const v = ref.current;
@@ -34,13 +47,14 @@ function VideoCard({ video, style, className = "" }) {
 
   return (
     <div
+      ref={cardRef}
       id={`video-${video.id}`}
       className={`group relative overflow-hidden rounded-lg border border-[color:var(--color-border)] bg-[var(--color-bg-secondary)] scroll-m-[20vh] transition-colors hover:border-[var(--color-text-muted)] ${className}`}
       style={style}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
     >
-      {video.src ? (
+      {loaded ? (
         <video
           ref={ref}
           src={video.src}

@@ -56,7 +56,7 @@ export default function OthersidePage() {
       {/* <Logo isDark={isDark} /> */}
       <Seperation />
       <VideoEditing variant="full" />
-      <LogoFoot />
+      {/* <LogoFoot /> */}
       <Inspirations />
       <Analytics />
       <SpeedInsights />

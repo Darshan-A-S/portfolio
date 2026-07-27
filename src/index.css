@@ -29,6 +29,8 @@
   --color-day-level2: #aaa;
   --color-day-level3: #777;
   --color-day-level4: #333;
+  --color-scrollbar-thumb: rgba(0, 0, 0, 0.2);
+  --color-scrollbar-thumb-hover: rgba(0, 0, 0, 0.35);
   --max-w: 768px;
 }
 
@@ -50,6 +52,8 @@ h1, h2, h3, h4, h5, h6 {
   --color-hover-bg: rgba(255, 255, 255, 0.03);
   --color-github-border: #333;
   --color-nav-link: #999;
+  --color-scrollbar-thumb: rgba(255, 255, 255, 0.15);
+  --color-scrollbar-thumb-hover: rgba(255, 255, 255, 0.3);
   --color-day-empty: #1a1a1a;
   --color-day-level1: #2a2a2a;
   --color-day-level2: #444;
@@ -90,6 +94,17 @@ h1, h2, h3, h4, h5, h6 {
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-scrollbar-thumb) transparent;
+}
+html::-webkit-scrollbar { width: 7px; }
+html::-webkit-scrollbar-track { background: transparent; }
+html::-webkit-scrollbar-thumb {
+  background: var(--color-scrollbar-thumb);
+  border-radius: 999px;
+}
+html::-webkit-scrollbar-thumb:hover {
+  background: var(--color-scrollbar-thumb-hover);
 }
 
 body {

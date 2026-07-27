@@ -89,7 +89,7 @@ export default function AsciiWebcam() {
   }, [started]);
 
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+    <div id="ascii-webcam" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
         <div className="relative flex items-center justify-center overflow-hidden]"
           style={{ aspectRatio: "16 / 9" }}

@@ -1,7 +1,6 @@
 import linkedin from "./../assets/linkedin.jpg"
 import github from "./../assets/github.webp"
 import leetcode from "./../assets/leetcode.svg"
-import codeforces from "./../assets/codeforces.svg"
 import matiks from "./../assets/matiks-logo.png"
 import instagram from "./../assets/instagram.svg"
 
@@ -9,14 +8,14 @@ const links = [
   { href: "https://www.linkedin.com/in/darshan-a-s-9a0350268/", img: linkedin, name: "LinkedIn", handle: "@darshan-as" },
   { href: "https://github.com/Darshan-A-S", img: github, name: "GitHub", handle: "@Darshan-A-S" },
   { href: "https://leetcode.com/u/Darshan_as/", img: leetcode, name: "LeetCode", handle: "@Darshan_as" },
-  { href: "https://codeforces.com/profile/sus69", img: codeforces, name: "Codeforces", handle: "@sus69" },
+  { href: "https://monkeytype.com/profile/darshan_as", img: "https://raw.githubusercontent.com/monkeytype-hub/monkeytype-icon/master/monkeytype-icon/svg/tron_orange.svg", name: "Monkeytype", handle: "@darshan_as" },
   { href: "https://matiks.com/profile/darsh01", img: matiks, name: "Matiks", handle: "@darsh01" },
   { href: "https://www.instagram.com/_darshan_as", img: instagram, name: "Instagram", handle: "@_darshan_as" },
 ]
 
 const Socials = () => {
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+    <div id="social-links" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
           Social Links

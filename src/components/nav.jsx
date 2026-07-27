@@ -4,7 +4,7 @@ import logoDark from './../assets/DAS-white.svg'
 import darkmode from './../assets/darkmode.svg'
 import lightmode from './../assets/lightmode.svg'
 
-const Nav = ({ isDark, toggleTheme }) => {
+const Nav = ({ isDark, toggleTheme, onSearchClick }) => {
   const [rotation, setRotation] = useState(0)
 
   const handleToggle = () => {
@@ -18,23 +18,33 @@ const Nav = ({ isDark, toggleTheme }) => {
         <a href="/" className="flex items-center gap-2">
           <img src={isDark ? logoDark : logoLight} alt="Logo" className="h-8 w-8" />
         </a>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <a href="#about" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">About</a>
           <a href="#projects" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Projects</a>
-          <button
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-all hover:shadow-md hover:scale-105"
-            onClick={handleToggle}
-            aria-label="Toggle dark mode"
-          >
-            <img
-              src={isDark ? lightmode : darkmode}
-              alt="Toggle theme"
-              className="h-4 w-4 transition-transform duration-500 ease-in-out"
-              style={{ transform: `rotate(${rotation}deg)` }}
-            />
+          <a href="/otherside" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Otherside</a>
+          <button onClick={onSearchClick} className="flex sm:hidden h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-all hover:shadow-md hover:scale-105" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           </button>
+          <button onClick={onSearchClick} className="hidden sm:flex items-center gap-1.5 rounded-lg border border-[var(--color-badge-border)] px-2.5 py-1.5 text-[11px] font-mono text-[var(--color-text-muted)] transition-all hover:shadow-md hover:scale-105" aria-label="Search">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            Ctrl+K
+          </button>
+          <div className="group relative">
+            <button
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-all hover:shadow-md hover:scale-105"
+              onClick={handleToggle}
+              aria-label="Toggle dark mode"
+            >
+              <img
+                src={isDark ? lightmode : darkmode}
+                alt="Toggle theme"
+                className="h-4 w-4 transition-transform duration-500 ease-in-out"
+                style={{ transform: `rotate(${rotation}deg)` }}
+              />
+            </button>
+          </div>
           <a
-            href="https://github.com/Darshan-A-S"
+            href="https://github.com/Darshan-A-S/portfolio"
             className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-all hover:shadow-md hover:scale-105"
             target="_blank"
             rel="noreferrer"

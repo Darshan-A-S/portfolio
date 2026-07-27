@@ -82,12 +82,12 @@ export function LeetCodeContributions({ className }) {
 
   if (loading) {
     return (
-      <div className="border-b border-[color:var(--color-border)]">
-        <h2 className="border-b border-[color:var(--color-border)]">
-          <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
-            LeetCode Contributions
-          </div>
-        </h2>
+    <div id="leetcode-contributions" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+      <h2 className="border-b border-[color:var(--color-border)]">
+        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
+          LeetCode <span className="text-[10px] text-muted-foreground font-normal">(I will be consistent...)</span>
+        </div>
+      </h2>
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
           <div className="flex h-40.5 w-full items-center justify-center">
             <Spinner className="text-muted-foreground" />
@@ -98,14 +98,14 @@ export function LeetCodeContributions({ className }) {
   }
 
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+    <div id="leetcode-contributions" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
           LeetCode <span className="text-[10px] text-muted-foreground font-normal">(I will be consistent...)</span>
         </div>
       </h2>
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
-        <div className="px-2 py-2">
+        <div className="px-3 py-2">
           <ContributionGraph
             className={className}
             data={data}
@@ -144,23 +144,6 @@ export function LeetCodeContributions({ className }) {
               <ContributionGraphLegend />
             </ContributionGraphFooter>
           </ContributionGraph>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-export function LeetCodeContributionsFallback() {
-  return (
-    <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
-      <h2 className="border-b border-[color:var(--color-border)]">
-        <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
-          LeetCode Contributions
-        </div>
-      </h2>
-      <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
-        <div className="flex h-40.5 w-full items-center justify-center">
-          <Spinner className="text-muted-foreground" />
         </div>
       </div>
     </div>

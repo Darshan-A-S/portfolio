@@ -78,7 +78,7 @@ const categories = [
 
 const Techstack = () => {
   return (
-    <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+    <div id="stack" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
           Stack

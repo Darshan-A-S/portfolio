@@ -11,7 +11,7 @@
 @theme {
   --font-sans: 'Geist', sans-serif;
   --font-mono: 'Geist Mono', monospace;
-  --color-border: rgba(0, 0, 0, 0.1);
+  --color-border: rgba(0, 0, 0, 0.15);
   --color-text: #000;
   --color-text-secondary: #666;
   --color-text-muted: #888;
@@ -90,7 +90,6 @@ h1, h2, h3, h4, h5, h6 {
 
 html {
   scroll-behavior: smooth;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
@@ -104,7 +103,6 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
 ::selection {
@@ -234,6 +232,12 @@ body {
 
 @utility link {
     @apply decoration-1 underline-offset-3 hover:underline;
+}
+
+@utility scrollbar-none {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { display: none; }
 }
 
 @utility prose-ncdai {

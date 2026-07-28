@@ -12,6 +12,13 @@ const Nav = ({ isDark, toggleTheme, onSearchClick }) => {
     toggleTheme()
   }
 
+  const handleSectionClick = (e, hash) => {
+    e.preventDefault()
+    const el = document.querySelector(hash)
+    if (el) { el.scrollIntoView({ behavior: 'smooth' }); return }
+    window.location.href = '/' + hash
+  }
+
   return (
     <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <nav className="mx-auto flex max-w-[768px] items-center justify-between border-x border-[color:var(--color-border)] px-[8px] sm:px-4 py-3">
@@ -19,19 +26,21 @@ const Nav = ({ isDark, toggleTheme, onSearchClick }) => {
           <img src={isDark ? logoDark : logoLight} alt="Logo" className="h-8 w-8" />
         </a>
         <div className="flex items-center gap-2 sm:gap-4">
-          <a href="#about" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">About</a>
-          <a href="#projects" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Projects</a>
-          <a href="/otherside" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Otherside</a>
-          <button onClick={onSearchClick} className="flex sm:hidden h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-all hover:shadow-md hover:scale-105" aria-label="Search">
+          <div className="hidden sm:flex sm:gap-4">
+            <a href="#about" onClick={(e) => handleSectionClick(e, '#about')} className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">About</a>
+            <a href="#projects" onClick={(e) => handleSectionClick(e, '#projects')} className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Projects</a>
+            <a href="/otherside" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Otherside</a>
+          </div>
+          <button onClick={onSearchClick} className="flex sm:hidden h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-transform transition-shadow hover:shadow-md hover:scale-105" aria-label="Search">
             <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
           </button>
-          <button onClick={onSearchClick} className="hidden sm:flex items-center gap-1.5 rounded-lg border border-[var(--color-badge-border)] px-2.5 py-1.5 text-[11px] font-mono text-[var(--color-text-muted)] transition-all hover:shadow-md hover:scale-105" aria-label="Search">
+          <button onClick={onSearchClick} className="hidden sm:flex items-center gap-1.5 rounded-lg border border-[var(--color-badge-border)] px-2.5 py-1.5 text-[11px] font-mono text-[var(--color-text-muted)] transition-transform transition-shadow hover:shadow-md hover:scale-105" aria-label="Search">
             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             Ctrl+K
           </button>
           <div className="group relative">
             <button
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-all hover:shadow-md hover:scale-105"
+              className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-transform transition-shadow hover:shadow-md hover:scale-105"
               onClick={handleToggle}
               aria-label="Toggle dark mode"
             >
@@ -45,7 +54,7 @@ const Nav = ({ isDark, toggleTheme, onSearchClick }) => {
           </div>
           <a
             href="https://github.com/Darshan-A-S/portfolio"
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-all hover:shadow-md hover:scale-105"
+            className="flex h-8 w-8 items-center justify-center rounded-full border border-[var(--color-badge-border)] transition-transform transition-shadow hover:shadow-md hover:scale-105"
             target="_blank"
             rel="noreferrer"
             aria-label="GitHub"

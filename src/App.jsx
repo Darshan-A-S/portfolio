@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/nav.jsx'
 import Logo from './components/logo.jsx'
 import Name from './components/name.jsx'
@@ -22,6 +22,7 @@ import SearchModal from './components/search-modal.jsx'
 import OthersidePage from './pages/OthersidePage.jsx'
 
 function HomePage() {
+  const location = useLocation()
   const [isDark, setIsDark] = useState(() => {
     const saved = localStorage.getItem('theme')
     if (saved) return saved === 'dark'
@@ -52,11 +53,11 @@ function HomePage() {
   }, [])
 
   useEffect(() => {
-    if (window.location.hash) {
-      const el = document.querySelector(window.location.hash)
+    if (location.hash) {
+      const el = document.querySelector(location.hash)
       if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100)
     }
-  }, [])
+  }, [location])
 
   const toggleTheme = () => setIsDark((prev) => !prev)
 
@@ -71,7 +72,7 @@ function HomePage() {
       <Seperation />
       <Socials />
       <Seperation />
-      <Tech />
+      <Tech isDark={isDark} />
       <Seperation />
       <Experience />
       <Seperation />

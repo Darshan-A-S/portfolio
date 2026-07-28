@@ -29,5 +29,5 @@ export const searchItems = [
   { label: "My Companion", href: "/otherside#video-6", keywords: "video reel laptop companion otherside" },
   { label: "Cinematic", href: "/otherside#video-7", keywords: "video reel cinematic otherside" },
   { label: "Cinematic II", href: "/otherside#video-8", keywords: "video reel rain poorvi otherside" },
-  { label: "Boys", href: "/otherside#video-9", keywords: "video reel hostel trip boys otherside" },
+  { label: "Boys", href: "/otherside#video-9", keywords: "video reel hostel trip boys otherside ❤️" },
 ]

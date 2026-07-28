@@ -105,7 +105,7 @@ export function LeetCodeContributions({ className }) {
         </div>
       </h2>
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
-        <div className="px-3 py-2">
+        <div className="px-1 py-2">
           <ContributionGraph
             className={className}
             data={data}

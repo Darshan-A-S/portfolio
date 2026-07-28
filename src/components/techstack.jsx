@@ -5,23 +5,35 @@ import css from './../assets/css-3.svg'
 import js from './../assets/javascript-1.svg'
 import react from './../assets/react.svg'
 import tailwind from './../assets/tailwind-css-2.svg'
-import langchain from './../assets/langchain.svg'
-import github from './../assets/github-mark.svg'
+import langchainLight from './../assets/lancgchain-black.svg'
+import langchainDark from './../assets/langchain.svg'
+import githubLight from './../assets/github-black.svg'
+import githubDark from './../assets/github-mark.svg'
 import Figma from './../assets/figma.svg'
 import django from './../assets/django.svg'
-import chatgpt from './../assets/chatgpt.svg'
+import chatgptLight from './../assets/chatgpt-black.svg'
+import chatgptDark from './../assets/chatgpt.svg'
 import opencv from './../assets/opencv.svg'
 import vscode from './../assets/vs-code.svg'
 import capcut from './../assets/capcut.jpeg'
 import sql from './../assets/mysql-logo-pure.svg'
-import java from './../assets/java.png'
+import javaLight from './../assets/java-black.svg'
+import javaDark from './../assets/java.png'
 import claude from './../assets/claude.svg'
 import postman from './../assets/Postman.svg'
-import vercel from './../assets/vercel.svg'
+import vercelLight from './../assets/vercel-black.svg'
+import vercelDark from './../assets/vercel.svg'
 import springboot from './../assets/spring-boot.svg'
 import mongodb from './../assets/MongoDB.svg'
 
-const categories = [
+const Techstack = ({ isDark }) => {
+  const langchain = isDark ? langchainDark : langchainLight
+  const github = isDark ? githubDark : githubLight
+  const chatgpt = isDark ? chatgptDark : chatgptLight
+  const java = isDark ? javaDark : javaLight
+  const vercel = isDark ? vercelDark : vercelLight
+
+  const categories = [
   {
     num: '01',
     title: 'Languages',
@@ -75,8 +87,6 @@ const categories = [
     ],
   },
 ]
-
-const Techstack = () => {
   return (
     <div id="stack" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">

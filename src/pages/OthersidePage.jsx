@@ -6,8 +6,6 @@ import Seperation from "../components/sperations-bar.jsx"
 import LogoFoot from "../components/logo-foot.jsx"
 import Inspirations from "../components/inspirations.jsx"
 import SearchModal from "../components/search-modal.jsx"
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/react"
 import VideoEditing from "../components/video-editing.jsx"
 
 export default function OthersidePage() {
@@ -58,8 +56,6 @@ export default function OthersidePage() {
       <VideoEditing variant="full" />
       {/* <LogoFoot /> */}
       <Inspirations />
-      <Analytics />
-      <SpeedInsights />
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} isDark={isDark} />
     </div>
   )

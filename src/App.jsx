@@ -88,9 +88,6 @@ function HomePage() {
       <LogoFoot />
       <Inspirations />
 
-      <Analytics />
-      <SpeedInsights />
-
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} isDark={isDark} />
     </div>
   )
@@ -98,10 +95,14 @@ function HomePage() {
 
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/otherside" element={<OthersidePage />} />
-    </Routes>
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/otherside" element={<OthersidePage />} />
+      </Routes>
+      <Analytics />
+      <SpeedInsights />
+    </>
   )
 }
 

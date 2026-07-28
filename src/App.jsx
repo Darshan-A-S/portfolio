@@ -19,6 +19,7 @@ import Inspirations from './components/inspirations.jsx'
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import SearchModal from './components/search-modal.jsx'
+import Timescale from './components/timescale.jsx'
 import OthersidePage from './pages/OthersidePage.jsx'
 
 function HomePage() {
@@ -29,6 +30,7 @@ function HomePage() {
     return window.matchMedia('(prefers-color-scheme: dark)').matches
   })
   const [searchOpen, setSearchOpen] = useState(false)
+  const [timescaleOpen, setTimescaleOpen] = useState(false)
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark)
@@ -41,11 +43,15 @@ function HomePage() {
         e.preventDefault()
         setSearchOpen((p) => !p)
       }
+      if ((e.ctrlKey || e.metaKey) && e.code === "Quote") {
+        e.preventDefault()
+        setTimescaleOpen((p) => !p)
+      }
       if ((e.ctrlKey || e.metaKey) && e.key === 'i') {
         e.preventDefault()
         window.scrollTo({ top: 0, behavior: 'smooth' })
       }
-      if (e.key === 'Escape') setSearchOpen(false)
+      if (e.key === 'Escape') { setSearchOpen(false); setTimescaleOpen(false) }
       if (e.key === 'd' && !e.ctrlKey && !e.metaKey && e.target.tagName !== 'INPUT') setIsDark((prev) => !prev)
     }
     window.addEventListener('keydown', onKey)
@@ -89,6 +95,7 @@ function HomePage() {
       <Inspirations />
 
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} isDark={isDark} />
+      <Timescale open={timescaleOpen} onClose={() => setTimescaleOpen(false)} isDark={isDark} />
     </div>
   )
 }

@@ -72,27 +72,32 @@ function HomePage() {
     const isMobile = matchMedia("(pointer: coarse)").matches
     if (!isMobile) return
 
-    let timer = null
+    let count = 0
+    let debounce = null
 
     const onScroll = () => {
       const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10
 
       if (atBottom && !timescaleOpenRef.current) {
-        if (!timer) {
-          timer = setTimeout(() => {
-            if (!timescaleOpenRef.current) setTimescaleOpen(true)
-            timer = null
-          }, 1500)
+        if (!debounce) {
+          count++
+          if (count >= 3) {
+            count = 0
+            setTimescaleOpen(true)
+            return
+          }
+          debounce = setTimeout(() => { debounce = null }, 800)
         }
       } else {
-        if (timer) { clearTimeout(timer); timer = null }
+        count = 0
+        if (debounce) { clearTimeout(debounce); debounce = null }
       }
     }
 
     window.addEventListener("scroll", onScroll, { passive: true })
     return () => {
       window.removeEventListener("scroll", onScroll)
-      if (timer) clearTimeout(timer)
+      if (debounce) clearTimeout(debounce)
     }
   }, [])
 

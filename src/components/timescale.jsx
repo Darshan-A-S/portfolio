@@ -184,10 +184,12 @@ function HoverImage({ src, children }) {
   const [hovered, setHovered] = useState(false)
   const ref = useRef(null)
   const timer = useRef(null)
+  const autoTimer = useRef(null)
   const anim = useRef(null)
   const mouseX = useMotionValue(0)
   const topMV = useMotionValue(0)
   const dims = useRef(null)
+  const touchHover = useRef(false)
 
   useEffect(() => {
     dims.current = null
@@ -197,7 +199,9 @@ function HoverImage({ src, children }) {
   }, [src])
 
   const show = (e) => {
+    if (touchHover.current) return
     clearTimeout(timer.current)
+    clearTimeout(autoTimer.current)
     anim.current?.stop()
     mouseX.set(e.clientX)
     if (ref.current) {
@@ -209,7 +213,7 @@ function HoverImage({ src, children }) {
   }
 
   const onMove = (e) => {
-    if (!hovered) return
+    if (!hovered || touchHover.current) return
     anim.current?.stop()
     anim.current = animate(mouseX, e.clientX, {
       type: "spring",
@@ -231,14 +235,54 @@ function HoverImage({ src, children }) {
   }
 
   const hide = () => {
+    if (touchHover.current) return
     timer.current = setTimeout(() => {
       anim.current?.stop()
       setHovered(false)
     }, 150)
   }
 
+  const touchShow = (e) => {
+    touchHover.current = true
+
+    if (hovered) {
+      clearTimeout(autoTimer.current)
+      anim.current?.stop()
+      setHovered(false)
+      touchHover.current = false
+      return
+    }
+
+    clearTimeout(autoTimer.current)
+    clearTimeout(timer.current)
+    anim.current?.stop()
+
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect()
+      mouseX.set(rect.left + rect.width / 2)
+      const h = dims.current ? (dims.current.h / dims.current.w) * 240 : 200
+      topMV.set(rect.top - h - 12)
+    }
+
+    setHovered(true)
+
+    autoTimer.current = setTimeout(() => {
+      anim.current?.stop()
+      setHovered(false)
+      touchHover.current = false
+    }, 2000)
+  }
+
+  const touchImg = () => {
+    clearTimeout(autoTimer.current)
+    anim.current?.stop()
+    setHovered(false)
+    touchHover.current = false
+  }
+
   useEffect(() => () => {
     clearTimeout(timer.current)
+    clearTimeout(autoTimer.current)
     anim.current?.stop()
   }, [])
 
@@ -249,6 +293,7 @@ function HoverImage({ src, children }) {
       onMouseEnter={show}
       onMouseMove={onMove}
       onMouseLeave={hide}
+      onTouchStart={touchShow}
     >
       {children}
       {createPortal(
@@ -265,6 +310,7 @@ function HoverImage({ src, children }) {
               style={{ top: topMV, left: mouseX }}
               onMouseEnter={show}
               onMouseLeave={hide}
+              onTouchStart={touchImg}
             />
           )}
         </AnimatePresence>,

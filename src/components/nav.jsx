@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import logoLight from './../assets/DAS-light.svg'
 import logoDark from './../assets/DAS-white.svg'
 import darkmode from './../assets/darkmode.svg'
@@ -6,6 +6,24 @@ import lightmode from './../assets/lightmode.svg'
 
 const Nav = ({ isDark, toggleTheme, onSearchClick }) => {
   const [rotation, setRotation] = useState(0)
+  const tapCount = useRef(0)
+  const tapTimer = useRef(null)
+  const [isIOS, setIsIOS] = useState(false)
+
+  useEffect(() => {
+    setIsIOS(/iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1))
+  }, [])
+
+  const handleLogoTap = () => {
+    if (!isIOS) return
+    tapCount.current += 1
+    clearTimeout(tapTimer.current)
+    tapTimer.current = setTimeout(() => { tapCount.current = 0 }, 1500)
+    if (tapCount.current >= 3) {
+      tapCount.current = 0
+      window.dispatchEvent(new CustomEvent('open-quote'))
+    }
+  }
 
   const handleToggle = () => {
     setRotation((prev) => prev + 360)
@@ -22,7 +40,7 @@ const Nav = ({ isDark, toggleTheme, onSearchClick }) => {
   return (
     <div className="border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <nav className="mx-auto flex max-w-[768px] items-center justify-between border-x border-[color:var(--color-border)] px-[8px] sm:px-4 py-3">
-        <a href="/" className="flex items-center gap-2">
+        <a href="/" onClick={handleLogoTap} className="flex items-center gap-2">
           <img src={isDark ? logoDark : logoLight} alt="Logo" className="h-8 w-8" />
         </a>
         <div className="flex items-center gap-2 sm:gap-4">

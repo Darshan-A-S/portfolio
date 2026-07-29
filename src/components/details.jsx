@@ -11,7 +11,7 @@ const Details = () => {
       </h2>
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
         <div className="border-b border-[color:var(--color-border)] px-4 py-4 text-[15px] leading-relaxed">
-          Hi, I am <strong>Darshan A S</strong>, an Associate Software Engineer at Texas AI. I work on backend systems using Java and Spring Boot, with a solid background in React and front-end development.
+          Hi, I am <span className="font-playfair italic">Darshan A S</span>, an Associate Software Engineer at Texas AI. I work on backend systems using Java and Spring Boot, with a solid background in React and front-end development.
           <br /><br />
           I enjoy building real, functional projects — REST APIs, WebSocket-based apps, and export pipelines — and I'm always interested in exploring how AI can be integrated into practical products.
           <br /><br />

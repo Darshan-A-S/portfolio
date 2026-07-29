@@ -20,6 +20,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import SearchModal from './components/search-modal.jsx'
 import OthersidePage from './pages/OthersidePage.jsx'
+import QuoteModal from './components/quote-modal.jsx'
 
 function HomePage() {
   const location = useLocation()
@@ -100,6 +101,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/otherside" element={<OthersidePage />} />
       </Routes>
+      <QuoteModal />
       <Analytics />
       <SpeedInsights />
     </>

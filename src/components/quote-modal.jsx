@@ -45,6 +45,7 @@ export default function QuoteModal() {
   const [open, setOpen] = useState(false)
   const [quote, setQuote] = useState(null)
   const lastShake = useRef(0)
+  const prevAcc = useRef(null)
 
   const pickRandom = useCallback(() => {
     setQuote(QUOTES[Math.floor(Math.random() * QUOTES.length)])
@@ -83,8 +84,12 @@ export default function QuoteModal() {
     const onMotion = (e) => {
       const acc = e.accelerationIncludingGravity
       if (!acc) return
-      const mag = Math.abs(acc.x) + Math.abs(acc.y) + Math.abs(acc.z)
-      if (mag > 25 && Date.now() - lastShake.current > 2000) {
+      if (!prevAcc.current) { prevAcc.current = { x: acc.x, y: acc.y, z: acc.z }; return }
+      const dx = Math.abs(acc.x - prevAcc.current.x)
+      const dy = Math.abs(acc.y - prevAcc.current.y)
+      const dz = Math.abs(acc.z - prevAcc.current.z)
+      prevAcc.current = { x: acc.x, y: acc.y, z: acc.z }
+      if (dx + dy + dz > 15 && Date.now() - lastShake.current > 2000) {
         lastShake.current = Date.now()
         mounted && handleOpen()
       }

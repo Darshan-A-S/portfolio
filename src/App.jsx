@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/nav.jsx'
 import Logo from './components/logo.jsx'
@@ -64,6 +64,37 @@ function HomePage() {
       if (el) setTimeout(() => el.scrollIntoView({ behavior: "smooth" }), 100)
     }
   }, [location])
+
+  const timescaleOpenRef = useRef(timescaleOpen)
+  useEffect(() => { timescaleOpenRef.current = timescaleOpen }, [timescaleOpen])
+
+  useEffect(() => {
+    const isMobile = matchMedia("(pointer: coarse)").matches
+    if (!isMobile) return
+
+    let timer = null
+
+    const onScroll = () => {
+      const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 10
+
+      if (atBottom && !timescaleOpenRef.current) {
+        if (!timer) {
+          timer = setTimeout(() => {
+            if (!timescaleOpenRef.current) setTimescaleOpen(true)
+            timer = null
+          }, 1500)
+        }
+      } else {
+        if (timer) { clearTimeout(timer); timer = null }
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true })
+    return () => {
+      window.removeEventListener("scroll", onScroll)
+      if (timer) clearTimeout(timer)
+    }
+  }, [])
 
   const toggleTheme = () => setIsDark((prev) => !prev)
 

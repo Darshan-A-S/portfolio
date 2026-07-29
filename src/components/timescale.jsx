@@ -1,88 +1,31 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
+import { createPortal } from "react-dom"
 import Markdown from "react-markdown"
 import { cn } from "@/lib/utils"
 import logoDark from "@/assets/DAS-white.svg"
 import logoLight from "@/assets/DAS-light.svg"
+import { motion, AnimatePresence, useMotionValue, animate } from "motion/react"
 
-const BIRTH_YEAR = 2000
+const BIRTH_YEAR = 2004
 
 const MILESTONES = [
-  { year: 2000, content: "Born in Can Tho, Viet Nam." },
-  { year: 2001 }, { year: 2002 }, { year: 2003 }, { year: 2004 }, { year: 2005 },
-  { year: 2006, content: "Started at Thuan Hung Primary School." },
-  { year: 2007 }, { year: 2008 }, { year: 2009 }, { year: 2010 },
-  { year: 2011, content: "Started at Thuan Hung Secondary School." },
-  { year: 2012 }, { year: 2013 },
-  { year: 2014, content: `Started learning to code and built my first website.
-
-Won awards:
-
-- 1st Prize — Can Tho City Young Informatics Contest 2014
-- Consolation Prize — National Young Informatics Contest 2014
-
-Visited Ha Noi, the capital, for the first time.` },
-  { year: 2015, content: `Won awards:
-
-- 3rd Prize — Can Tho City Young Informatics Contest 2015
-- Consolation Prize — National Young Informatics Contest 2015
-- Outstanding Student — Most Outstanding Student of the District
-- 2nd Prize — Can Tho City Youth and Children's Creativity Contest 2015
-- 3rd Prize — Can Tho City Science and Engineering Fair 2015
-
-Visited Thu Dau Mot, Binh Duong for the first time.
-
-Admitted to the specialized Computer Science class at Ly Tu Trong High School for the Gifted.` },
-  { year: 2016, content: `Won awards:
-
-- Consolation Prize — Can Tho City Young Informatics Contest 2016
-- 1st Prize — Can Tho City Youth and Children's Creativity Contest 2016
-- 3rd Prize — National Young Informatics Contest 2016
-- Consolation Prize — National Youth and Children's Creativity Contest 2016
-
-Visited Quy Nhon, Binh Dinh for the first time, and returned to Ha Noi.` },
-  { year: 2017, content: `Won awards:
-
-- 2nd Prize — Can Tho City Outstanding Student Selection Exam 2016-2017
-- Consolation Prize — Can Tho City Young Informatics Contest 2017
-- 3rd Prize — Can Tho City Young Informatics Contest 2017
-- 2nd Prize — Can Tho City Youth and Children's Creativity Contest 2017
-- Creative Award — Binh Duong Hackathon 2017` },
-  { year: 2018, content: `Won awards:
-
-- 1st Prize — Can Tho City Science and Engineering Fair 2018
-- 3rd Prize — Can Tho City Outstanding Student Selection Exam 2017-2018
-- 3rd Prize — National Science and Engineering Fair 2018 (ViSEF)
-- 3rd Prize — Can Tho City Young Informatics Contest 2018
-- 2nd Prize — Can Tho City Youth and Children's Creativity Contest 2018
-- 3rd Prize — National Young Informatics Contest 2018
-
-Earned direct admission to University of Science — VNUHCM, majoring in Information Systems.
-
-Began freelancing and joined Tung Tung as a UI/UX Designer.
-
-Visited Da Lat, Lam Dong and Ba Ria - Vung Tau for the first time.` },
-  { year: 2019, content: `Became a Mobile Developer at Tung Tung.
-
-Won 2nd Prize — Business Startup Competition 2019.` },
-  { year: 2020, content: "Became a Web Developer at Tung Tung." },
-  { year: 2021 },
-  { year: 2022, content: `Joined Simplamo as a Senior Frontend Developer and UI Lead.
-
-Launched [ZaDark](https://zadark.com) — 80k+ downloads, 30k+ active users.
-
-Won Bronze Medal — 10th Design, Manufacturing, and Application Award 2022.` },
-  { year: 2023 },
-  { year: 2024, content: "Founded [Quaric](https://quaric.com)." },
-  { year: 2025, content: `Open-sourced [chanhdai.com](https://github.com/ncdai/chanhdai.com) — 2k+ stars on GitHub.
-
-Released [React Wheel Picker](https://react-wheel-picker.chanhdai.com) — 30k+ weekly downloads, selected for the [Vercel OSS Program](https://vercel.com/open-source-program).
-
-Followed by [shadcn](https://x.com/shadcn) on X.` },
-  { year: 2026, content: `Joined [shadcncraft](https://shadcncraft.com) as a Design Engineer.
-
-Selected for the [Claude for Open Source Program](https://claude.com/contact-sales/claude-for-oss).` },
+  { year: 2004, content: "Born in Davanagere, Karnataka" },
+  { year: 2005 }, { year: 2006 }, { year: 2007 },
+  { year: 2008, content: "Started **primary school**.", image: "https://res.cloudinary.com/k2uloqof/image/upload/v1785355642/1680427925637-f158fdac-c382-4d46-9570-6dc4fc006e7a_2_lo1e3u.jpg", highlight: "primary school" },
+  { year: 2009 }, { year: 2010 }, { year: 2011 }, { year: 2012 }, { year: 2013 },
+  { year: 2014, content: "Started high school." },
+  { year: 2015 }, { year: 2016 },
+  { year: 2017},
+  { year: 2018 },   { year: 2019, content: "Was **Sathya House Captain**.\n\nOur house won the annual sports meet that year.", image: "https://res.cloudinary.com/k2uloqof/image/upload/v1785352923/FB_IMG_1689957926651_cmsl6s.jpg", highlight: "Sathya House Captain" },
+  { year: 2020},
+  { year: 2021, content: "Learned C and C++." },
+  { year: 2022, content: "Began engineering degree in Computer Science." },
+  { year: 2023, content: "Built projects in Java, Python, and web technologies. Started exploring AI/ML." },
+  { year: 2024, content: "Developed ProctorPro — an online exam proctoring system with real-time multi-face detection during a hackathon." },
+  { year: 2025, content: "Built projects in Java, Python, and web technologies. Started exploring AI/ML." },
+  { year: 2026, content: "Built this portfolio. Continued exploring AI integration in practical products.\n- Redesigned the entire UI with Tailwind v4\n- Added interactive timeline with hover previews\n- Integrated LeetCode contribution stats\n- Built search modal with 30+ items\n\nJoined Texas AI as an Associate Software Engineer. Working on backend systems with Java and Spring Boot." },
 ]
 
 function TimescaleRoot({ className, orientation = "horizontal", ...props }) {
@@ -237,6 +180,100 @@ function TimescaleContent({ className, ...props }) {
   )
 }
 
+function HoverImage({ src, children }) {
+  const [hovered, setHovered] = useState(false)
+  const ref = useRef(null)
+  const timer = useRef(null)
+  const anim = useRef(null)
+  const mouseX = useMotionValue(0)
+  const topMV = useMotionValue(0)
+  const dims = useRef(null)
+
+  useEffect(() => {
+    dims.current = null
+    const img = new Image()
+    img.onload = () => { dims.current = { w: img.naturalWidth, h: img.naturalHeight } }
+    img.src = src
+  }, [src])
+
+  const show = (e) => {
+    clearTimeout(timer.current)
+    anim.current?.stop()
+    mouseX.set(e.clientX)
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect()
+      const h = dims.current ? (dims.current.h / dims.current.w) * 240 : 200
+      topMV.set(rect.top - h - 12)
+    }
+    setHovered(true)
+  }
+
+  const onMove = (e) => {
+    if (!hovered) return
+    anim.current?.stop()
+    anim.current = animate(mouseX, e.clientX, {
+      type: "spring",
+      stiffness: 100,
+      damping: 20,
+    })
+  }
+
+  const onImgLoad = (e) => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect()
+      const h = e.target.offsetHeight
+      animate(topMV, rect.top - h - 12, {
+        type: "spring",
+        stiffness: 150,
+        damping: 20,
+      })
+    }
+  }
+
+  const hide = () => {
+    timer.current = setTimeout(() => {
+      anim.current?.stop()
+      setHovered(false)
+    }, 150)
+  }
+
+  useEffect(() => () => {
+    clearTimeout(timer.current)
+    anim.current?.stop()
+  }, [])
+
+  return (
+    <span
+      ref={ref}
+      className="relative inline"
+      onMouseEnter={show}
+      onMouseMove={onMove}
+      onMouseLeave={hide}
+    >
+      {children}
+      {createPortal(
+        <AnimatePresence>
+          {hovered && (
+            <motion.img
+              src={src}
+              onLoad={onImgLoad}
+              initial={{ opacity: 0, scale: 0.95, y: 8 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 8 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+              className="fixed z-[9999] w-60 -translate-x-1/2 rounded-xl border border-[var(--color-border)] shadow-xl"
+              style={{ top: topMV, left: mouseX }}
+              onMouseEnter={show}
+              onMouseLeave={hide}
+            />
+          )}
+        </AnimatePresence>,
+        document.body
+      )}
+    </span>
+  )
+}
+
 const INTRO_SCROLL_START_HOLD = 200
 
 function TimescaleIntroScroll({ children }) {
@@ -312,7 +349,27 @@ export default function Timescale({ open, onClose, isDark }) {
 
                       {m.content && (
                         <TimescaleContent className="text-[13px] leading-relaxed text-[var(--color-text)] [&_p]:mb-2.5 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:mb-3 [&_li]:mb-1.5">
-                          <Markdown>{m.content}</Markdown>
+                          {m.highlight ? (
+                            <Markdown
+                              components={{
+                                strong: ({ children }) => {
+                                  const text = typeof children === "string" ? children : ""
+                                  if (text && text === m.highlight) {
+                                    return <HoverImage src={m.image}><strong>{text}</strong></HoverImage>
+                                  }
+                                  return <strong>{children}</strong>
+                                },
+                              }}
+                            >
+                              {m.content}
+                            </Markdown>
+                          ) : m.image ? (
+                            <HoverImage src={m.image}>
+                              <Markdown>{m.content}</Markdown>
+                            </HoverImage>
+                          ) : (
+                            <Markdown>{m.content}</Markdown>
+                          )}
                         </TimescaleContent>
                       )}
                     </TimescaleItem>

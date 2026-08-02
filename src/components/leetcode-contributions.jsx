@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { format } from "date-fns";
+import { format, eachDayOfInterval, subDays } from "date-fns";
 import { Spinner } from "@/components/ui/spinner";
 import {
   Tooltip,
@@ -60,14 +60,26 @@ export function LeetCodeContributions({ className }) {
         }
 
         const raw = JSON.parse(userCalendar.submissionCalendar);
-        const activities = Object.entries(raw).map(([ts, count]) => {
-          const date = new Date(Number(ts) * 1000);
-          return {
-            date: format(date, "yyyy-MM-dd"),
-            count,
-            level: getLevel(count),
-          };
-        });
+        const calendar = new Map(
+          Object.entries(raw).map(([ts, count]) => {
+            const date = new Date(Number(ts) * 1000);
+            return [
+              format(date, "yyyy-MM-dd"),
+              { count, level: getLevel(count) },
+            ];
+          })
+        );
+
+        // Pad to a full year so the graph width stays stable and fills the
+        // desktop container (no space on the right as new blocks are added).
+        const today = new Date();
+        const activities = eachDayOfInterval({ start: subDays(today, 364), end: today }).map(
+          (day) => {
+            const date = format(day, "yyyy-MM-dd");
+            const entry = calendar.get(date);
+            return entry ? { date, ...entry } : { date, count: 0, level: 0 };
+          }
+        );
 
         setData(activities);
         setLoading(false);

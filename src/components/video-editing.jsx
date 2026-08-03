@@ -86,14 +86,44 @@ export default function VideoEditing({ variant }) {
       </h2>
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] p-4">
         <div className="grid grid-cols-2 gap-3">
-          <VideoCard
-            video={videos[0]}
-            style={{ aspectRatio: "9 / 16" }}
-          />
-          <VideoCard
-            video={videos[1]}
-            style={{ aspectRatio: "9 / 16" }}
-          />
+          {variant === "full" ? (
+            <>
+              <div className="flex flex-col gap-3">
+                <VideoCard
+                  video={videos[0]}
+                  style={{ aspectRatio: "9 / 16" }}
+                />
+                {/* ponytail: top/bottom lines reach the left 768 frame via left-[-1rem]; left border stays; right border removed; small tick on the right aligns with reel 2's bottom line */}
+                <div className="relative h-28 border-l border-[color:var(--color-border)] px-4 pt-2 pb-6 before:absolute before:top-0 before:left-[calc(-1rem-1px)] before:right-[-0.75rem] before:border-t before:border-[color:var(--color-border)] after:absolute after:bottom-0 after:left-[calc(-1rem-1px)] after:right-[-1.5rem] after:border-t after:border-[color:var(--color-border)]">
+                  <h3 className="font-playfair italic text-[22px]">Campus Walk</h3>
+                  <p className="mt-1 text-[12px] text-[var(--color-text-muted)]">First ever reel, new to college and new friend <a href="https://www.instagram.com/shre_s__" target="_blank" rel="noreferrer" className="font-playfair italic decoration-1 underline-offset-2 hover:text-[var(--color-text)]">@shre_s__</a> who is also intersted in editing, learnt so many new things while editing thissss.</p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-3">
+                {/* ponytail: no -ml so the left border lands on col2's edge, matching video 2's left border */}
+                {/* ponytail: top border blends with the reel top via a pseudo line that spans into col1; bottom border hits the film frame; left border stays; right border removed */}
+                <div className="relative h-28 border-l border-[color:var(--color-border)] px-4 pt-2 pb-6 before:absolute before:top-0 before:left-[-100%] before:right-[-1rem] before:border-t before:border-[color:var(--color-border)] after:absolute after:bottom-0 after:left-[-1.25rem] after:right-[-1rem] after:border-t after:border-[color:var(--color-border)]">
+                  <h3 className="font-playfair italic text-[22px]">Photo Walk</h3>
+                  <p className="mt-1 text-[12px] text-[var(--color-text-muted)]">This walk was special because it happened on my birthday, and with my fav ppl ❤️.</p>
+                </div>
+                <VideoCard
+                  video={videos[1]}
+                  style={{ aspectRatio: "9 / 16" }}
+                />
+              </div>
+            </>
+          ) : (
+            <>
+              <VideoCard
+                video={videos[0]}
+                style={{ aspectRatio: "9 / 16" }}
+              />
+              <VideoCard
+                video={videos[1]}
+                style={{ aspectRatio: "9 / 16" }}
+              />
+            </>
+          )}
           <VideoCard
             video={videos[2]}
             className="col-span-2"

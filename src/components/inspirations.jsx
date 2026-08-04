@@ -2,7 +2,7 @@ import UnderlinedText from './underlinetext'
 
 const Inspirations = () => {
   return (
-    <div className="border-t border-[color:var(--color-border)]">
+    <div className="border-t border-[color:var(--color-border)] px-[8px] sm:px-0">
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-6 text-center text-[13px] text-[var(--color-text-secondary)]">
         <p>
           Crafted by <UnderlinedText text="Darshan" /> with love ❤️

@@ -21,6 +21,7 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import SearchModal from './components/search-modal.jsx'
 import Timescale from './components/timescale.jsx'
 import OthersidePage from './pages/OthersidePage.jsx'
+import NotFoundPage from './pages/NotFoundPage.jsx'
 import QuoteModal from './components/quote-modal.jsx'
 
 function HomePage() {
@@ -138,6 +139,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/otherside" element={<OthersidePage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <QuoteModal />
       <Analytics />

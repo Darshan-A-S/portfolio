@@ -22,10 +22,10 @@ const MILESTONES = [
   { year: 2020},
   { year: 2021, content: "Learned C and C++." },
   { year: 2022, content: "Began engineering degree in Computer Science." },
-  { year: 2023, content: "Built projects in Java, Python, and web technologies. Started exploring AI/ML." },
-  { year: 2024, content: "Developed ProctorPro — an online exam proctoring system with real-time multi-face detection during a hackathon." },
-  { year: 2025, content: "Built projects in Java, Python, and web technologies. Started exploring AI/ML." },
-  { year: 2026, content: "Built this portfolio. Continued exploring AI integration in practical products.\n- Redesigned the entire UI with Tailwind v4\n- Added interactive timeline with hover previews\n- Integrated LeetCode contribution stats\n- Built search modal with 30+ items\n\nJoined Texas AI as an Associate Software Engineer. Working on backend systems with Java and Spring Boot." },
+  { year: 2023, content: "Joined college clubs as Graphic Designer & Video Editor\n\nBuilt a hand gesture controlled **robot car**",image: "https://res.cloudinary.com/k2uloqof/image/upload/v1786030255/Screenshot_20260806-205807_a8rwfj.png", highlight: "robot car" },
+  { year: 2024, content: "Attended my first ever **hackathon** in Hassan\n\n Developed Proctor Pro - Online exam proctoring system", image:"https://res.cloudinary.com/k2uloqof/image/upload/v1786031807/Screenshot_20260806-212543_ursufd.png", highlight:"hackathon" },
+  { year: 2025, content: "Was a **Videography Co-Lead** for PhotoOn - Photography Club\n\nAnd also Art & Design Lead for Tesla-Sjce - Techincal Club\n\nTook a shot at freelance video editing - it didn't work out", image: "https://res.cloudinary.com/k2uloqof/image/upload/v1786032217/Screenshot_20260806-213230_pzs63b.png", highlight: "Videography Co-Lead"},
+  { year: 2026, content: "Built this portfolio. Continued exploring AI integration in practical products.\n- Designed by instinct, built with AI\n- Added tiny hidden intractions find them if you can!!\n\nJoined Texas AI as an Associate Software Engineer. Working on backend systems with Java and Spring Boot." },
 ]
 
 function TimescaleRoot({ className, orientation = "horizontal", ...props }) {

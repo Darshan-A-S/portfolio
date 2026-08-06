@@ -25,7 +25,7 @@ const Details = () => {
             { icon: <Location width={16} />, label: 'Address', value: 'Davanagere, Karnataka, India' },
             { icon: <Telephone width={16} />, label: 'Phone', value: '+91 74830 91124' },
             { icon: <Envelope width={16} />, label: 'Email', value: 'darshanas.work@gmail.com' },
-            { icon: <ExternalLink width={16} />, label: 'Website', value: 'dasfolio-one.vercel.app/', link: true, },
+            { icon: <ExternalLink width={16} />, label: 'Website', value: 'das-folio.in/', link: true, },
           ].map((item, i) => (
             <div
               key={i}

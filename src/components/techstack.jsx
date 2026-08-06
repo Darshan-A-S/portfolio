@@ -34,59 +34,59 @@ const Techstack = ({ isDark }) => {
   const vercel = isDark ? vercelDark : vercelLight
 
   const categories = [
-  {
-    num: '01',
-    title: 'Languages',
-    items: [
-      { src: java, name: 'Java' },
-      { src: Python, name: 'Python' },
-      { src: Cprog, name: 'C' },
-      { src: js, name: 'JavaScript' },
-    ],
-  },
-  {
-    num: '02',
-    title: 'Frontend',
-    items: [
-      { src: html, name: 'HTML' },
-      { src: css, name: 'CSS' },
-      { src: react, name: 'React' },
-      { src: tailwind, name: 'Tailwind' },
-    ],
-  },
-  {
-    num: '03',
-    title: 'Backend & Database',
-    items: [
-      { src: django, name: 'Django' },
-      { src: springboot, name: 'Spring Boot' },
-      { src: sql, name: 'MySQL' },
-      { src: mongodb, name: 'MongoDB' },
-    ],
-  },
-  {
-    num: '04',
-    title: 'Workflow & AI',
-    items: [
-      { src: langchain, name: 'Langchain' },
-      { src: opencv, name: 'OpenCV' },
-      { src: chatgpt, name: 'ChatGPT' },
-      { src: claude, name: 'Claude' },
-      { src: github, name: 'GitHub' },
-      { src: postman, name: 'Postman' },
-      { src: vercel, name: 'Vercel' },
-    ],
-  },
-  {
-    num: '05',
-    title: 'Tools & Design',
-    items: [
-      { src: Figma, name: 'Figma' },
-      { src: vscode, name: 'VS Code' },
-      { src: capcut, name: 'Capcut' },
-    ],
-  },
-]
+    {
+      num: '01',
+      title: 'Languages',
+      items: [
+        { src: java, name: 'Java' },
+        { src: Python, name: 'Python' },
+        { src: Cprog, name: 'C' },
+        { src: js, name: 'JavaScript' },
+      ],
+    },
+    {
+      num: '02',
+      title: 'Frontend',
+      items: [
+        { src: html, name: 'HTML' },
+        { src: css, name: 'CSS' },
+        { src: react, name: 'React' },
+        { src: tailwind, name: 'Tailwind' },
+      ],
+    },
+    {
+      num: '03',
+      title: 'Backend & Database',
+      items: [
+        { src: django, name: 'Django' },
+        { src: springboot, name: 'Spring Boot' },
+        { src: sql, name: 'MySQL' },
+        { src: mongodb, name: 'MongoDB' },
+      ],
+    },
+    {
+      num: '04',
+      title: 'Workflow & AI',
+      items: [
+        { src: langchain, name: 'Langchain' },
+        { src: opencv, name: 'OpenCV' },
+        { src: chatgpt, name: 'ChatGPT' },
+        { src: claude, name: 'Claude' },
+        { src: github, name: 'GitHub' },
+        { src: vercel, name: 'Vercel' },
+      ],
+    },
+    {
+      num: '05',
+      title: 'Tools & Design',
+      items: [
+        { src: Figma, name: 'Figma' },
+        { src: vscode, name: 'VS Code' },
+        { src: postman, name: 'Postman' },
+        { src: capcut, name: 'Capcut' },
+      ],
+    },
+  ]
   return (
     <div id="stack" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">

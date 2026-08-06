@@ -11,6 +11,8 @@ export const searchItems = [
   { label: "ProctorPro", href: "https://proctorpro-c9ba.onrender.com/", keywords: "proctorpro exam proctoring face detection opencv hackathon" },
   { label: "ScrapeSuite", href: "#projects", keywords: "scrapesuite web scraping puppeteer data extraction" },
   { label: "PTSD Risk Prediction System", href: "#projects", keywords: "ptsd risk prediction multimodal deep learning fusion" },
+  { label: "dasfolio", href: "#projects", keywords: "dasfolio portfolio das vercel vite react" },
+  { label: "Brainly", href: "#projects", keywords: "brainly cnn mri brain tumor classification tensorflow" },
   { label: "Associate Software Engineer — Texas AI", href: "#experience", keywords: "java spring boot backend api texas ai" },
   { label: "Bachelor's — JSSSTU", href: "#education", keywords: "jssstu computer science engineering cgpa 9.09" },
   { label: "Pre-University — Mandaara PU College", href: "#education", keywords: "puc science pcmc 97.67 percentage" },
@@ -30,4 +32,6 @@ export const searchItems = [
   { label: "Cinematic", href: "/otherside#video-7", keywords: "video reel cinematic otherside" },
   { label: "Cinematic II", href: "/otherside#video-8", keywords: "video reel rain poorvi otherside" },
   { label: "Boys", href: "/otherside#video-9", keywords: "video reel hostel trip boys otherside ❤️" },
+  { label: "Ethnic Day", href: "/otherside#video-10", keywords: "video reel ethnic day event otherside" },
+  { label: "The Raghu Dixit Project", href: "/otherside#video-11", keywords: "video reel raghu dixit music concert otherside" },
 ]

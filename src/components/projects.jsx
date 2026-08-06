@@ -17,6 +17,19 @@ const projects = [
     isExpanded: true,
   },
   {
+    title: 'PTSD Risk Prediction System',
+    description: 'A multimodal deep learning system built with a team of 4 to predict PTSD risk from clinical interview videos by fusing text, audio, and facial behavior data, with built-in uncertainty estimation and explainability for clinical decision support.',
+    highlights: [
+      'Collaborated in a 4-member team to build an end-to-end pipeline that extracts text (via Whisper), audio, and video from a single interview recording and fuses them for PTSD prediction',
+      'Designed a shared residual encoder projecting Mental RoBERTa and EfficientNet-B4 embeddings into a unified latent space, and benchmarked 4 fusion strategies — achieving 84.6% accuracy with Early Fusion',
+      'Implement Monte Carlo Dropout-based uncertainty estimation (30 stochastic passes), giving clinicians confidence scores alongside each prediction',
+    ],
+    tags: ['Python', 'PyTorch', 'HuggingFace Transformers', 'FastAPI', 'Computer Vision', 'NLP'],
+    link: '',
+    period: 'April \'26',
+    isExpanded: false,
+  },
+  {
     title: 'ScrapeSuite',
     description: 'A no-code web scraping platform enabling users to visually select and extract data from websites without writing any code, with support for dynamic content, scheduling, and monitoring.',
     highlights: [
@@ -31,20 +44,7 @@ const projects = [
     isExpanded: false,
   },
   {
-    title: 'PTSD Risk Prediction System',
-    description: 'A multimodal deep learning system built with a team of 4 to predict PTSD risk from clinical interview videos by fusing text, audio, and facial behavior data, with built-in uncertainty estimation and explainability for clinical decision support.',
-    highlights: [
-      'Collaborated in a 4-member team to build an end-to-end pipeline that extracts text (via Whisper), audio, and video from a single interview recording and fuses them for PTSD prediction',
-      'Designed a shared residual encoder projecting Mental RoBERTa and EfficientNet-B4 embeddings into a unified latent space, and benchmarked 4 fusion strategies — achieving 84.6% accuracy with Early Fusion',
-      'Implement Monte Carlo Dropout-based uncertainty estimation (30 stochastic passes), giving clinicians confidence scores alongside each prediction',
-    ],
-    tags: ['Python', 'PyTorch', 'HuggingFace Transformers', 'FastAPI', 'Computer Vision', 'NLP'],
-    link: '',
-    period: 'April \'26',
-    isExpanded: false,
-  },
-  {
-    title: 'Dasfolio',
+    title: 'dasfolio',
     description: 'My personal dev portfolio and my interests',
     tags: ['React 19', 'Vite 7', 'Tailwind CSS v4', 'p5.js', 'Cloudinary', 'Lucide React', 'Vercel Serverless'],
     link: '#',
@@ -135,6 +135,7 @@ const Projects = () => {
           </div>
         </div>
       </div>
+      {false && ( // ponytail: hidden until more projects exist; flip to true to show Load More
       <div className="border-t border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] flex justify-center py-2">
           <button onClick={() => setShowMore(!showMore)} className="inline-flex items-center justify-center gap-2 rounded-[min(var(--radius-lg),10px)] border border-transparent bg-[var(--color-badge-bg)] px-3 py-1 text-[13px] font-medium text-[var(--color-text)] transition-all hover:bg-[var(--color-badge-border)] active:scale-[0.98] cursor-pointer">
@@ -143,6 +144,7 @@ const Projects = () => {
           </button>
         </div>
       </div>
+      )}
     </div>
   )
 }

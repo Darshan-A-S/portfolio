@@ -7,7 +7,6 @@ export const searchItems = [
   { label: "Projects", href: "#projects", keywords: "projects proctorpro scrapesuite ptsd prediction portfolio" },
   { label: "Otherside", href: "#otherside", keywords: "video editing otherside reels edits" },
   { label: "LeetCode Contributions", href: "#leetcode-contributions", keywords: "leetcode coding dsa problems solutions submissions" },
-  { label: "ASCII Webcam", href: "#ascii-webcam", keywords: "ascii webcam camera art p5 surprise" },
   { label: "ProctorPro", href: "https://proctorpro-c9ba.onrender.com/", keywords: "proctorpro exam proctoring face detection opencv hackathon" },
   { label: "ScrapeSuite", href: "#projects", keywords: "scrapesuite web scraping puppeteer data extraction" },
   { label: "PTSD Risk Prediction System", href: "#projects", keywords: "ptsd risk prediction multimodal deep learning fusion" },

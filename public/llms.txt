@@ -1,6 +1,6 @@
 # Darshan A S — Portfolio
 
-> Personal portfolio of Darshan A S, an Associate Software Engineer at Texas AI in Bengaluru, India. Building with code and editing videos. React + Vite + Tailwind single-page site with a dark/light theme, keyboard shortcuts (Ctrl+K search, Ctrl+' quotes, d theme toggle), and an ASCII webcam easter egg.
+> Personal portfolio of Darshan A S, an Associate Software Engineer at Texas AI in Bengaluru, India. Building with code and editing videos. React + Vite + Tailwind single-page site with a dark/light theme and keyboard shortcuts (Ctrl+K search, Ctrl+' quotes, d theme toggle).
 
 ## Important URLS
 
@@ -16,7 +16,7 @@
 - Education: CSE @ JSSSTU, PU @ Mandaara, School @ Vidyadayini
 - Projects: ProctorPro, ScrapeSuite, PTSD Risk Prediction System
 - Otherside: video reels/edits with captions (Campus Walk, PhotoOn Photowalk, Jayciana '26, Chamundi Betta, Pre-fest, My Companion, Cinematic, Boys, Ethnic Day, The Raghu Dixit Project)
-- LeetCode Contributions, ASCII Webcam
+- LeetCode Contributions
 
 ## Profiles
 

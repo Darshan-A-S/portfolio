@@ -14,7 +14,6 @@ import Projects from './components/projects.jsx'
 import VideoEditing from './components/video-editing.jsx'
 import { LeetCodeContributions } from './components/leetcode-contributions.jsx'
 import LogoFoot from './components/logo-foot.jsx'
-import AsciiWebcam from './components/ascii-webcam.jsx'
 import Inspirations from './components/inspirations.jsx'
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -123,7 +122,6 @@ function HomePage() {
       <Seperation />
       <LeetCodeContributions />
       <Seperation />
-      <AsciiWebcam />
       <LogoFoot />
       <Inspirations />
 

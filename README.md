@@ -54,7 +54,6 @@ A personal portfolio website built with React and Tailwind CSS v4 — dark mode,
 - **Projects** — Expandable project cards with smooth grid-rows animation
 - **Video Editing** — Gradient-overlaid thumbnails, hover preview with audio
 - **LeetCode Contributions** — Contribution graph with submission counts, tooltips, mobile-responsive legend
-- **ASCII Webcam** — p5.js + p5.asciify via CDN
 - **Inspirations** — Footer links
 
 ### UX

@@ -12,6 +12,7 @@ import Education from './components/education.jsx'
 import Tech from './components/techstack.jsx'
 import Projects from './components/projects.jsx'
 import VideoEditing from './components/video-editing.jsx'
+import Blogs from './components/blogs.jsx'
 import { LeetCodeContributions } from './components/leetcode-contributions.jsx'
 import LogoFoot from './components/logo-foot.jsx'
 import Inspirations from './components/inspirations.jsx'
@@ -20,6 +21,8 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import SearchModal from './components/search-modal.jsx'
 import Timescale from './components/timescale.jsx'
 import OthersidePage from './pages/OthersidePage.jsx'
+import BlogsPage from './pages/BlogsPage.jsx'
+import BlogPostPage from './pages/BlogPostPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import QuoteModal from './components/quote-modal.jsx'
 
@@ -122,6 +125,8 @@ function HomePage() {
       <Seperation />
       <LeetCodeContributions />
       <Seperation />
+      <Blogs />
+      <Seperation />
       <LogoFoot />
       <Inspirations />
 
@@ -134,9 +139,15 @@ function HomePage() {
 function App() {
   return (
     <>
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-40 h-20 bg-linear-to-t from-[var(--color-bg)] to-transparent"
+      />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/otherside" element={<OthersidePage />} />
+        <Route path="/blogs" element={<BlogsPage />} />
+        <Route path="/blogs/:slug" element={<BlogPostPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <QuoteModal />

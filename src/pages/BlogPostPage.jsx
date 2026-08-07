@@ -139,7 +139,7 @@ export default function BlogPostPage() {
             </div>
           </div>
 
-          <h1 className="border-b border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold text-[var(--color-text)]">
+          <h1 className="break-words border-b border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold leading-snug text-[var(--color-text)]">
             {blog.title} <span className="text-[10px] font-normal text-muted-foreground">({blog.date})</span>
           </h1>
           <div className="overflow-hidden border-t border-[color:var(--color-border)] px-4 py-4 text-[15px] leading-relaxed text-[var(--color-text)] [&_p]:mb-3 [&_h2]:mb-2 [&_h2]:text-[20px] [&_h2]:font-bold [&_ul]:mb-3 [&_ul]:list-disc [&_ul]:pl-5">

@@ -1,7 +1,24 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { uiComponents } from "@/data/ui-components"
-import { DoubleLine } from './blogs.jsx'
+
+// ponytail: local copy of blogs.jsx DoubleLine; shared file once both branches land on dev
+export function DoubleLine() {
+  return (
+    <div className="flex flex-col px-[8px] sm:px-0">
+      <div className="border-t border-[color:var(--color-border)]" />
+      <div className="flex justify-center">
+        <div className="flex h-4 w-full max-w-[768px] justify-center border-x border-[color:var(--color-border)]">
+          <div className="flex gap-4">
+            <div className="border-l border-[color:var(--color-border)]" />
+            <div className="border-l border-[color:var(--color-border)]" />
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-[color:var(--color-border)]" />
+    </div>
+  )
+}
 
 export function UiComponentCard({ component }) {
   const Icon = component.icon

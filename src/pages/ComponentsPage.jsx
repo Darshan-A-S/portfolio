@@ -3,8 +3,7 @@ import Navbar from "../components/nav.jsx"
 import Seperation from "../components/sperations-bar.jsx"
 import Inspirations from "../components/inspirations.jsx"
 import SearchModal from "../components/search-modal.jsx"
-import { UiComponentGrid } from "../components/ui-components.jsx"
-import { DoubleLine } from "../components/blogs.jsx"
+import { UiComponentGrid, DoubleLine } from "../components/ui-components.jsx"
 import { uiComponents } from "../data/ui-components"
 
 export default function ComponentsPage() {

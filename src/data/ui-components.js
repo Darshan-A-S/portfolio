@@ -5,7 +5,7 @@ export const uiComponents = [
     slug: "datepicker",
     name: "Datepicker",
     icon: Calendar,
-    description: "Calendar popover for picking a single date.",
+    description: "A date selection picker with keyboard and range support.",
   },
   {
     slug: "button",

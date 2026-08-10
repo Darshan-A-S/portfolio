@@ -10,6 +10,7 @@ import About from './components/about.jsx'
 import Experience from './components/experience.jsx'
 import Education from './components/education.jsx'
 import Tech from './components/techstack.jsx'
+import UiComponents from './components/ui-components.jsx'
 import Projects from './components/projects.jsx'
 import VideoEditing from './components/video-editing.jsx'
 import { LeetCodeContributions } from './components/leetcode-contributions.jsx'
@@ -20,6 +21,8 @@ import { SpeedInsights } from "@vercel/speed-insights/react";
 import SearchModal from './components/search-modal.jsx'
 import Timescale from './components/timescale.jsx'
 import OthersidePage from './pages/OthersidePage.jsx'
+import ComponentsPage from './pages/ComponentsPage.jsx'
+import ComponentPage from './pages/ComponentPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import QuoteModal from './components/quote-modal.jsx'
 
@@ -112,6 +115,8 @@ function HomePage() {
       <Seperation />
       <Tech isDark={isDark} />
       <Seperation />
+      <UiComponents />
+      <Seperation />
       <Experience />
       <Seperation />
       <Education />
@@ -137,6 +142,8 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/otherside" element={<OthersidePage />} />
+        <Route path="/components" element={<ComponentsPage />} />
+        <Route path="/components/:slug" element={<ComponentPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <QuoteModal />

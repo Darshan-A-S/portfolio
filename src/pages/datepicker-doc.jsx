@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react"
 import { DatePicker } from "dasregistary"
 import "dasregistary/style.css"
 import { CodeBlock } from "../components/code-block.jsx"
+import { CodeBlockCommand, convertNpmCommand } from "../components/code-block-command.jsx"
 import { datepickerDoc as doc } from "../data/datepicker-doc"
 
 function Section({ title, children }) {
@@ -107,7 +108,7 @@ export default function DatePickerDoc() {
 
           {tab === "cli" ? (
             <div className="flex flex-col gap-4">
-              <CodeBlock title="terminal" code={doc.installCli} />
+              <CodeBlockCommand prompt="Install the DatePicker component" {...convertNpmCommand("npm install dasregistary")} />
               <p className="text-[13px] text-[var(--color-text-muted)]">
                 Import the stylesheet (Nothing Phone theme: black screen, dot-matrix font, red accents):
               </p>

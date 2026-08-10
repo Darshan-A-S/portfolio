@@ -5,6 +5,7 @@ import { DatePicker } from "dasregistary"
 import "dasregistary/style.css"
 import { CodeBlock } from "../components/code-block.jsx"
 import { CodeBlockCommand, convertNpmCommand } from "../components/code-block-command.jsx"
+import { ComponentNav } from "../components/component-nav.jsx"
 import { datepickerDoc as doc } from "../data/datepicker-doc"
 
 function Section({ title, children }) {
@@ -29,7 +30,7 @@ function StepLabel({ n, children }) {
 
 function DemoPreview({ children }) {
   return (
-    <div className="mb-3 flex justify-center rounded-lg border border-[color:var(--color-border)] bg-[var(--color-bg-secondary)] p-6">
+    <div className="mb-3 flex min-h-[380px] items-start justify-center rounded-lg border border-[color:var(--color-border)] bg-[var(--color-bg-secondary)] p-6">
       {children}
     </div>
   )
@@ -41,7 +42,6 @@ function Mono({ children }) {
 
 export default function DatePickerDoc() {
   const [dueDate, setDueDate] = useState("2026-08-10")
-  const [date, setDate] = useState("")
   const [tab, setTab] = useState("cli")
 
   const tabBtn = (active) =>
@@ -52,48 +52,43 @@ export default function DatePickerDoc() {
     }`
 
   return (
-    <article className="px-[8px] sm:px-0">
-      <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
-        <div className="flex items-center justify-between border-b border-[color:var(--color-border)] px-4 py-2">
-          <Link
-            to="/components"
-            className="inline-flex items-center gap-1 text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]"
-          >
-            <ArrowLeft className="size-4" />
-            Components
-          </Link>
+    <article className="flex flex-1 flex-col px-[8px] sm:px-0">
+        <div className="border-b border-[color:var(--color-border)]">
+          <div className="mx-auto flex max-w-[768px] items-center justify-between gap-4 border-x border-[color:var(--color-border)] px-4 py-2">
+            <Link
+              to="/components"
+              className="inline-flex items-center gap-1 text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]"
+            >
+              <ArrowLeft className="size-4" />
+              Components
+            </Link>
+            <ComponentNav slug="datepicker" />
+          </div>
         </div>
 
-        <div className="border-b border-[color:var(--color-border)] px-4 py-6">
-          <h1 className="text-[26px] font-bold leading-snug text-[var(--color-text)]">Date Picker</h1>
-          <p className="mt-2 text-[14px] leading-relaxed text-[var(--color-text-muted)]">
-            Calendar popover for picking a single date. Controlled via <Mono>value</Mono>/
-            <Mono>onChange</Mono> in <Mono>YYYY-MM-DD</Mono>, with label, error, and disabled states. Published in{" "}
-            <Mono>dasregistary</Mono>.
-          </p>
+        <div className="border-b border-[color:var(--color-border)]">
+          <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-6">
+            <h1 className="text-[26px] font-bold leading-snug text-[var(--color-text)]">Date Picker</h1>
+            <p className="mt-2 text-[14px] leading-relaxed text-[var(--color-text-muted)]">
+              Nothing theme date picker with dotted fonts. Published in <Mono>dasregistary</Mono>.
+            </p>
+          </div>
         </div>
 
+        <div className="mx-auto flex w-full max-w-[768px] flex-1 flex-col border-x border-[color:var(--color-border)]">
         <Section title="Demo">
           <DemoPreview>
             <DatePicker label="Due date" value={dueDate} onChange={setDueDate} />
           </DemoPreview>
           <CodeBlock title="date-picker-demo.tsx" code={doc.demoCode} />
+        </Section>
 
-          <div className="mt-8">
-            <DemoPreview>
-              <div className="flex w-full max-w-[280px] flex-col gap-4">
-                <DatePicker label="Trip date" value={date} onChange={setDate} />
-                <DatePicker
-                  label="Birthday"
-                  value={date}
-                  onChange={setDate}
-                  error={date ? undefined : "This field is required"}
-                />
-                <DatePicker label="Expires" value={date} onChange={setDate} disabled />
-              </div>
-            </DemoPreview>
-            <CodeBlock title="date-picker-states.tsx" code={doc.statesCode} />
-          </div>
+        <Section title="Features">
+          <ul className="list-disc space-y-1.5 pl-5 text-[13px] text-[var(--color-text-muted)]">
+            <li>Fully controlled via <Mono>value</Mono> / <Mono>onChange</Mono> in <Mono>YYYY-MM-DD</Mono> format.</li>
+            <li>Nothing theme: dot-matrix font, red accent, follows light/dark mode.</li>
+            <li>Label, error message, and disabled states built in.</li>
+          </ul>
         </Section>
 
         <Section title="Installation">
@@ -110,7 +105,7 @@ export default function DatePickerDoc() {
             <div className="flex flex-col gap-4">
               <CodeBlockCommand prompt="Install the DatePicker component" {...convertNpmCommand("npm install dasregistary")} />
               <p className="text-[13px] text-[var(--color-text-muted)]">
-                Import the stylesheet (Nothing Phone theme: black screen, dot-matrix font, red accents):
+                Import the stylesheet (Nothing theme: dot-matrix font, red accents, adapts to light/dark mode):
               </p>
               <CodeBlock title="main.tsx" code={doc.installStyle} />
             </div>
@@ -118,7 +113,7 @@ export default function DatePickerDoc() {
             <ol className="space-y-6">
               <li>
                 <StepLabel n={1}>Install the package</StepLabel>
-                <CodeBlock title="terminal" code={doc.installCli} />
+                <CodeBlock title="terminal" language="bash" code={doc.installCli} />
                 <p className="mt-2 text-[13px] text-[var(--color-text-muted)]">{doc.manualDeps}</p>
               </li>
               <li>
@@ -127,7 +122,7 @@ export default function DatePickerDoc() {
               </li>
               <li>
                 <StepLabel n={3}>Here is the source, in case you want to vendor it</StepLabel>
-                <CodeBlock title="components/date-picker.tsx" code={doc.sourceCode} />
+                <CodeBlock title="components/date-picker.tsx" code={doc.sourceCode} expandable />
               </li>
               <li>
                 <StepLabel n={4}>Update the import paths to match your project setup</StepLabel>

@@ -207,7 +207,7 @@ import "dasregistary/style.css";`,
 />`,
 
   usageNote:
-    "Pass a `value` of `YYYY-MM-DD` to control the selected date; `onChange` fires with the new date string whenever a day is picked. An `error` string renders under the input and marks it `aria-invalid`. The input is read-only — typing is not supported. Import `dasregistary/style.css` once to load the Nothing Phone theme.",
+    "Pass a `value` of `YYYY-MM-DD` to control the selected date; `onChange` fires with the new date string whenever a day is picked. An `error` string renders under the input and marks it `aria-invalid`. The input is read-only — typing is not supported. Import `dasregistary/style.css` once to load the Nothing theme (adapts to light/dark mode).",
 
   props: [
     {

@@ -14,6 +14,7 @@ import {
 } from "@/components/tabs"
 import { CopyButton } from "@/components/copy-button"
 import { IconSwap, IconSwapItem } from "@/components/icon-swap"
+import { highlight } from "@/lib/highlight"
 import { TextAlignStartIcon, TerminalIcon } from "lucide-react"
 
 const packageManagerAtom = atomWithStorage("packageManager", "pnpm")
@@ -86,22 +87,21 @@ export function CodeBlockCommand({
               <pre
                 data-pm={key}
                 className="group/tabs-content-pre overscroll-x-contain p-4 leading-6 not-data-[pm=prompt]:overflow-x-auto">
+                <span className="select-none text-muted-foreground group-data-[pm=prompt]/tabs-content-pre:hidden">
+                  ${" "}
+                </span>
                 <code
                   data-slot="code-block"
                   data-language="bash"
-                  className="font-mono text-sm/none text-muted-foreground group-data-[pm=prompt]/tabs-content-pre:whitespace-normal">
-                  <span className="select-none group-data-[pm=prompt]/tabs-content-pre:hidden">
-                    ${" "}
-                  </span>
-                  {value}
-                </code>
+                  className="hljs font-mono text-sm/none text-muted-foreground group-data-[pm=prompt]/tabs-content-pre:whitespace-normal"
+                  dangerouslySetInnerHTML={{ __html: highlight(value, "bash") }} />
               </pre>
             </TabsContent>
           );
         })}
       </Tabs>
       <CopyButton
-        className="absolute top-2 right-2 z-10 size-6 rounded-md border-none [&_svg:not([class*='size-'])]:size-3.5"
+        className="absolute top-2 right-2 z-10 size-6 rounded-md border-none text-muted-foreground hover:text-code-foreground [&_svg:not([class*='size-'])]:size-3.5"
         variant="ghost"
         size="icon-sm"
         text={tabs[packageManager] || ""}

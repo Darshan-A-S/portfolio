@@ -158,7 +158,7 @@ const getMonthLabels = (weeks, monthNames = DEFAULT_MONTH_LABELS) => {
       }
 
       if (index === labels.length - 1) {
-        return weeks.slice(weekIndex).length >= minWeeks;
+        return weeks.slice(weekIndex).length >= 1;
       }
 
       return true

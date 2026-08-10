@@ -3,6 +3,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
+@import "highlight.js/styles/github.min.css";
 
 @plugin "@tailwindcss/typography";
 
@@ -21,6 +22,7 @@
   --color-badge-border: #cdcdcd;
   --color-badge-text: #949494;
   --color-tooltip-bg: #333;
+  --color-tooltip-text: #fff;
   --color-hover-bg: rgba(0, 0, 0, 0.02);
   --color-github-border: #e5e7eb;
   --color-nav-link: #6b7280;
@@ -39,6 +41,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .dark {
+  color-scheme: dark;
   --color-border: rgba(255, 255, 255, 0.1);
   --color-text: #e5e5e5;
   --color-text-secondary: #999;
@@ -48,7 +51,8 @@ h1, h2, h3, h4, h5, h6 {
   --color-badge-bg: #1a1a1a;
   --color-badge-border: #333;
   --color-badge-text: #999;
-  --color-tooltip-bg: #e5e5e5;
+  --color-tooltip-bg: #333;
+  --color-tooltip-text: #fff;
   --color-hover-bg: rgba(255, 255, 255, 0.03);
   --color-github-border: #333;
   --color-nav-link: #999;
@@ -92,6 +96,7 @@ h1, h2, h3, h4, h5, h6 {
   --sidebar-ring: oklch(0.556 0 0);
   --code: oklch(0.21 0.006 285.885);
   --code-foreground: oklch(0.985 0 0);
+  --radius: 0.625rem;
 }
 
 html {
@@ -194,7 +199,8 @@ body {
   --color-code-foreground: var(--code-foreground);
 }
 
-:root {
+:root:not(.dark) {
+  color-scheme: light;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
@@ -272,3 +278,42 @@ body {
     @apply prose-strong:font-medium;
     @apply prose-blockquote:border-l prose-blockquote:font-normal prose-blockquote:text-muted-foreground prose-blockquote:not-italic prose-blockquote:[&_p:first-of-type]:before:content-none prose-blockquote:[&_p:last-of-type]:after:content-none;
 }
+
+pre code.hljs {
+    display: inline;
+    padding: 0;
+    overflow: visible;
+    background: transparent;
+}
+.hljs {
+    background: transparent;
+}
+
+:root:not(.dark) .das-dp,
+:root:not(.dark) .das-btn {
+    color-scheme: light;
+}
+.dark .das-dp,
+.dark .das-btn {
+    color-scheme: dark;
+}
+
+.dark .hljs { color: #c9d1d9; }
+.dark .hljs-doctag, .dark .hljs-keyword, .dark .hljs-meta .hljs-keyword, .dark .hljs-template-tag,
+.dark .hljs-template-variable, .dark .hljs-type, .dark .hljs-variable.language_ { color: #ff7b72; }
+.dark .hljs-title, .dark .hljs-title.class_, .dark .hljs-title.class_.inherited__,
+.dark .hljs-title.function_ { color: #d2a8ff; }
+.dark .hljs-attr, .dark .hljs-attribute, .dark .hljs-literal, .dark .hljs-meta, .dark .hljs-number,
+.dark .hljs-operator, .dark .hljs-selector-attr, .dark .hljs-selector-class, .dark .hljs-selector-id,
+.dark .hljs-variable { color: #79c0ff; }
+.dark .hljs-meta .hljs-string, .dark .hljs-regexp, .dark .hljs-string { color: #a5d6ff; }
+.dark .hljs-built_in, .dark .hljs-symbol { color: #ffa657; }
+.dark .hljs-code, .dark .hljs-comment, .dark .hljs-formula { color: #8b949e; }
+.dark .hljs-name, .dark .hljs-quote, .dark .hljs-selector-pseudo, .dark .hljs-selector-tag { color: #7ee787; }
+.dark .hljs-subst { color: #c9d1d9; }
+.dark .hljs-section { color: #1f6feb; font-weight: 700; }
+.dark .hljs-bullet { color: #f2cc60; }
+.dark .hljs-emphasis { color: #c9d1d9; font-style: italic; }
+.dark .hljs-strong { color: #c9d1d9; font-weight: 700; }
+.dark .hljs-addition { color: #aff5b4; background-color: #033a16; }
+.dark .hljs-deletion { color: #ffdcd7; background-color: #67060c; }

@@ -47,7 +47,7 @@ export default function ComponentsPage() {
     <div className="flex min-h-screen flex-col">
       <Navbar isDark={isDark} toggleTheme={toggleTheme} onSearchClick={() => setSearchOpen(true)} />
       <Seperation />
-      <div id="components" className="px-[8px] sm:px-0">
+      <div id="components" className="flex flex-1 flex-col px-[8px] sm:px-0">
         <h2 className="border-b border-[color:var(--color-border)]">
           <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
             Components
@@ -69,14 +69,14 @@ export default function ComponentsPage() {
         </div>
         <DoubleLine />
         {filtered.length === 0 ? (
-          <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] py-10 text-center text-[13px] text-[var(--color-text-muted)]">
+          <div className="mx-auto max-w-[768px] flex-1 border-x border-[color:var(--color-border)] py-10 text-center text-[13px] text-[var(--color-text-muted)]">
             No results found
           </div>
         ) : (
           <UiComponentGrid components={filtered} />
         )}
+        <div className="mx-auto w-full max-w-[768px] flex-1 border-x border-[color:var(--color-border)]" />
       </div>
-      <DoubleLine />
       <Inspirations />
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} isDark={isDark} />
     </div>

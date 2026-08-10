@@ -5,6 +5,7 @@ import Navbar from "../components/nav.jsx"
 import Seperation from "../components/sperations-bar.jsx"
 import Inspirations from "../components/inspirations.jsx"
 import SearchModal from "../components/search-modal.jsx"
+import { ComponentNav } from "../components/component-nav.jsx"
 import NotFoundPage from "./NotFoundPage.jsx"
 import DatePickerDoc from "./datepicker-doc.jsx"
 import { uiComponents } from "../data/ui-components"
@@ -54,8 +55,8 @@ export default function ComponentPage() {
       {component.slug === "datepicker" ? (
         <DatePickerDoc />
       ) : (
-        <article className="px-[8px] sm:px-0">
-          <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
+        <article className="flex flex-1 flex-col px-[8px] sm:px-0">
+          <div className="mx-auto flex w-full max-w-[768px] flex-1 flex-col border-x border-[color:var(--color-border)]">
             <div className="flex items-center justify-between gap-4 border-b border-[color:var(--color-border)] px-4 py-2">
               <Link
                 to="/components"
@@ -64,6 +65,7 @@ export default function ComponentPage() {
                 <ArrowLeft className="size-4" />
                 Components
               </Link>
+              <ComponentNav slug={component.slug} />
             </div>
             <h1 className="flex items-center gap-3 break-words border-b border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold leading-snug text-[var(--color-text)]">
               <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-[color:var(--color-border)] bg-[var(--color-bg-secondary)]">

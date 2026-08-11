@@ -8,6 +8,7 @@ import SearchModal from "../components/search-modal.jsx"
 import { ComponentNav } from "../components/component-nav.jsx"
 import NotFoundPage from "./NotFoundPage.jsx"
 import DatePickerDoc from "./datepicker-doc.jsx"
+import ButtonDoc from "./button-doc.jsx"
 import { uiComponents } from "../data/ui-components"
 
 export default function ComponentPage() {
@@ -21,6 +22,7 @@ export default function ComponentPage() {
   const [searchOpen, setSearchOpen] = useState(false)
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" })
     document.documentElement.classList.toggle("dark", isDark)
     localStorage.setItem("theme", isDark ? "dark" : "light")
   }, [isDark])
@@ -54,9 +56,11 @@ export default function ComponentPage() {
       <Seperation />
       {component.slug === "datepicker" ? (
         <DatePickerDoc />
+      ) : component.slug === "button" ? (
+        <ButtonDoc />
       ) : (
         <article className="flex flex-1 flex-col px-[8px] sm:px-0">
-          <div className="mx-auto flex w-full max-w-[768px] flex-1 flex-col border-x border-[color:var(--color-border)]">
+          <div className="mx-auto flex w-full max-w-[768px] flex-1 flex-col border-x border-b border-[color:var(--color-border)]">
             <div className="flex items-center justify-between gap-4 border-b border-[color:var(--color-border)] px-4 py-2">
               <Link
                 to="/components"

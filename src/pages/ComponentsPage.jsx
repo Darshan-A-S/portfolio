@@ -3,7 +3,7 @@ import Navbar from "../components/nav.jsx"
 import Seperation from "../components/sperations-bar.jsx"
 import Inspirations from "../components/inspirations.jsx"
 import SearchModal from "../components/search-modal.jsx"
-import { UiComponentGrid, DoubleLine } from "../components/ui-components.jsx"
+import { UiComponentGrid, SingleLine } from "../components/ui-components.jsx"
 import { uiComponents } from "../data/ui-components"
 
 export default function ComponentsPage() {
@@ -16,6 +16,7 @@ export default function ComponentsPage() {
   const [searchOpen, setSearchOpen] = useState(false)
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" })
     document.documentElement.classList.toggle("dark", isDark)
     localStorage.setItem("theme", isDark ? "dark" : "light")
   }, [isDark])
@@ -67,7 +68,7 @@ export default function ComponentsPage() {
             </div>
           </div>
         </div>
-        <DoubleLine />
+        <SingleLine />
         {filtered.length === 0 ? (
           <div className="mx-auto max-w-[768px] flex-1 border-x border-[color:var(--color-border)] py-10 text-center text-[13px] text-[var(--color-text-muted)]">
             No results found

@@ -2,22 +2,8 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { uiComponents } from "@/data/ui-components"
 
-// ponytail: local copy of blogs.jsx DoubleLine; shared file once both branches land on dev
-export function DoubleLine() {
-  return (
-    <div className="flex flex-col px-[8px] sm:px-0">
-      <div className="border-t border-[color:var(--color-border)]" />
-      <div className="flex justify-center">
-        <div className="flex h-4 w-full max-w-[768px] justify-center border-x border-[color:var(--color-border)]">
-          <div className="flex gap-4">
-            <div className="border-l border-[color:var(--color-border)]" />
-            <div className="border-l border-[color:var(--color-border)]" />
-          </div>
-        </div>
-      </div>
-      <div className="border-t border-[color:var(--color-border)]" />
-    </div>
-  )
+export function SingleLine() {
+  return <div className="border-t border-[color:var(--color-border)]" />
 }
 
 export function UiComponentCard({ component }) {
@@ -40,14 +26,11 @@ export function UiComponentCard({ component }) {
 
 export function UiComponentRow({ components }) {
   return (
-    <div className="mx-auto flex max-w-[768px] flex-col border-x border-[color:var(--color-border)] sm:flex-row">
+    <div className="mx-auto flex max-w-[768px] flex-col border-x border-b border-[color:var(--color-border)] sm:flex-row">
       <div className="min-w-0 flex-1 border-b border-[color:var(--color-border)] sm:border-b-0">
         <UiComponentCard component={components[0]} />
       </div>
-      <div className="hidden flex-row gap-4 sm:flex">
-        <div className="border-l border-[color:var(--color-border)]" />
-        <div className="border-l border-[color:var(--color-border)]" />
-      </div>
+      <div className="hidden border-l border-[color:var(--color-border)] sm:block" />
       <div className="min-w-0 flex-1">
         {components[1] ? (
           <UiComponentCard component={components[1]} />
@@ -64,10 +47,9 @@ export function UiComponentRow({ components }) {
 export function UiComponentGrid({ components }) {
   const rows = []
   for (let i = 0; i < components.length; i += 2) rows.push(components.slice(i, i + 2))
-  return rows.map((pair, i) => (
+  return rows.map((pair) => (
     <div key={pair[0].slug}>
       <UiComponentRow components={pair} />
-      {i < rows.length - 1 && <DoubleLine />}
     </div>
   ))
 }
@@ -82,7 +64,7 @@ function UiComponents() {
         </div>
       </h2>
       <UiComponentGrid components={shown} />
-      <div className="border-t border-[color:var(--color-border)]">
+      <div>
         <div className="mx-auto flex max-w-[768px] border-x border-[color:var(--color-border)] justify-center py-2">
           <Link
             role="button"

@@ -1,7 +1,7 @@
-export const datepickerDoc = {
+﻿export const datepickerDoc = {
   demoCode: `import { useState } from "react"
 
-import { DatePicker } from "dasregistary"
+import { DatePicker } from "dasregistry"
 
 export default function DatePickerDemo() {
   const [dueDate, setDueDate] = useState("2026-08-10")
@@ -16,7 +16,7 @@ export default function DatePickerDemo() {
 
   statesCode: `import { useState } from "react"
 
-import { DatePicker } from "dasregistary"
+import { DatePicker } from "dasregistry"
 
 export function DatePickerStates() {
   const [date, setDate] = useState("")
@@ -36,9 +36,9 @@ export function DatePickerStates() {
   )
 }`,
 
-  installCli: `npm install dasregistary`,
+  installCli: `npm install dasregistry`,
 
-  installStyle: `import "dasregistary/style.css";`,
+  installStyle: `import "dasregistry/style.css";`,
 
   manualDeps: "The package only depends on `react` and `react-dom` (peer dependencies).",
 
@@ -195,8 +195,8 @@ export function DatePicker({ label, value, onChange, error, disabled }: DatePick
   );
 }`,
 
-  usageImport: `import { DatePicker } from "dasregistary"
-import "dasregistary/style.css";`,
+  usageImport: `import { DatePicker } from "dasregistry"
+import "dasregistry/style.css";`,
 
   usageExample: `const [date, setDate] = useState("")
 
@@ -207,7 +207,7 @@ import "dasregistary/style.css";`,
 />`,
 
   usageNote:
-    "Pass a `value` of `YYYY-MM-DD` to control the selected date; `onChange` fires with the new date string whenever a day is picked. An `error` string renders under the input and marks it `aria-invalid`. The input is read-only — typing is not supported. Import `dasregistary/style.css` once to load the Nothing theme (adapts to light/dark mode).",
+    "Pass a `value` of `YYYY-MM-DD` to control the selected date; `onChange` fires with the new date string whenever a day is picked. An `error` string renders under the input and marks it `aria-invalid`. The input is read-only — typing is not supported. Import `dasregistry/style.css` once to load the Nothing theme (adapts to light/dark mode).",
 
   props: [
     {

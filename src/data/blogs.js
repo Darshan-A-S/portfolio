@@ -1,0 +1,107 @@
+export const blogs = [
+  {
+    slug: "first-blog",
+    title: "My First Blog",
+    date: "01.01.2026",
+    image: "https://picsum.photos/seed/blog1/600/400",
+    content: [
+      "Welcome to my first blog post. This is a placeholder to demonstrate the blog layout.",
+      { img: "https://picsum.photos/seed/blog1a/800/800", alt: "Demo image", align: "right", size: "small", aspect: "1/1" },
+      "Here is some more text that wraps around nicely. **Bold** and *italic* both work in markdown.",
+      "## Hello world",
+      "- placeholder bullet\n- another bullet",
+    ],
+  },
+  {
+    slug: "second-blog",
+    title: "Another Blog and this one is the best in line",
+    date: "01.02.2026",
+    image: "https://picsum.photos/seed/blog2/600/400",
+    content: [
+      "Second placeholder post for the blog section.",
+      { img: "https://picsum.photos/seed/blog2a/1200/600", alt: "Wide image", align: "center", size: "large", aspect: "16/9" },
+      "A large centered image with a wide aspect ratio sits above this text.",
+    ],
+  },
+  {
+    slug: "third-blog",
+    title: "Yet Another Blog",
+    date: "01.03.2026",
+    image: "https://picsum.photos/seed/blog3/600/400",
+    content: [
+      { img: "https://picsum.photos/seed/blog3a/800/600", alt: "Left image", align: "left", size: "medium", aspect: "4/3" },
+      "Third placeholder blog post. This one starts with an image aligned to the left.",
+      "## Third post",
+    ],
+  },
+  {
+    slug: "fourth-blog",
+    title: "Fourth Blog Posts",
+    date: "01.04.2026",
+    image: "https://picsum.photos/seed/blog4/600/400",
+    content: [
+      "Fourth placeholder blog post.",
+      { img: "https://picsum.photos/seed/blog4a/600/900", alt: "Tall image", align: "right", size: "small", aspect: "2/3" },
+      "A tall image aligned right, then this closing text.",
+    ],
+  },
+  {
+    slug: "fifth-blog",
+    title: "Learning React Hooks",
+    date: "01.05.2026",
+    image: "https://picsum.photos/seed/blog5/600/400",
+    content: [
+      "A dummy post about **useState**, **useEffect**, and friends.",
+      "- `useState` for local state\n- `useEffect` for side effects\n- `useRef` for stable references",
+      { img: "https://picsum.photos/seed/blog5a/800/600", alt: "Code snippet", align: "center", size: "medium", aspect: "4/3" },
+      "Hooks changed how we write React.",
+    ],
+  },
+  {
+    slug: "sixth-blog",
+    title: "My Setup for 2026",
+    date: "01.06.2026",
+    image: "https://picsum.photos/seed/blog6/600/400",
+    content: [
+      { img: "https://picsum.photos/seed/blog6a/600/600", alt: "Desk", align: "left", size: "small", aspect: "1/1" },
+      "Every year I tweak my workspace. This year it's minimal, focused, and all about comfort.",
+      "## The essentials",
+      "- Mechanical keyboard\n- Dual monitors\n- A good chair",
+    ],
+  },
+  {
+    slug: "seventh-blog",
+    title: "Why I Love Video Editing",
+    date: "01.07.2026",
+    image: "https://picsum.photos/seed/blog7/600/400",
+    content: [
+      "Editing is storytelling. Cutting the right frame at the right moment changes everything.",
+      { img: "https://picsum.photos/seed/blog7a/1200/800", alt: "Editing timeline", align: "right", size: "medium", aspect: "3/2" },
+      "Started with phone apps, now I edit full timelines with multi-track audio.",
+    ],
+  },
+  {
+    slug: "eighth-blog",
+    title: "CSS Tricks I Use Everyday",
+    date: "01.08.2026",
+    image: "https://picsum.photos/seed/blog8/600/400",
+    content: [
+      "Small CSS utilities that save me hours:",
+      "- `min-width: 0` on flex children\n- `aspect-ratio` for images\n- `color-mix` for opacity variants",
+      { img: "https://picsum.photos/seed/blog8a/800/800", alt: "CSS", align: "center", size: "small", aspect: "1/1" },
+      "Master the boring stuff and the layouts just work.",
+    ],
+  },
+  {
+    slug: "ninth-blog",
+    title: "A Quick Guide to Git Branches",
+    date: "01.09.2026",
+    image: "https://picsum.photos/seed/blog9/600/400",
+    content: [
+      "Branches keep your work isolated. Create, switch, merge — the basics.",
+      "- `git checkout -b feat/thing`\n- `git push -u origin feat/thing`\n- merge with a PR",
+      { img: "https://picsum.photos/seed/blog9a/1000/600", alt: "Git graph", align: "left", size: "medium", aspect: "5/3" },
+      "And always keep slugs unique. True story.",
+    ],
+  },
+]

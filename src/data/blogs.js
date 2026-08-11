@@ -36,7 +36,7 @@ export const blogs = [
   },
   {
     slug: "fourth-blog",
-    title: "Fourth Blog Poshsdadfffffffffffffffffffffffffffffffffffffffbeukwffghgfhjkjhgfcvjkljhgfcvhjkluygfhjklgfjkvbnm,kugt",
+    title: "Fourth Blog Posts",
     date: "01.04.2026",
     image: "https://picsum.photos/seed/blog4/600/400",
     content: [

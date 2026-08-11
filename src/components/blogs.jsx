@@ -27,29 +27,35 @@ export function BlogCard({ blog, variant = "card" }) {
   )
 }
 
-export function DoubleLine() {
+export function DoubleLine({ className }) {
   return (
-    <div className="flex flex-col px-[8px] sm:px-0">
+    <div className={`relative ${className ?? ""}`}>
       <div className="border-t border-[color:var(--color-border)]" />
-      <div className="flex justify-center">
-        <div className="flex h-4 w-full max-w-[768px] justify-center border-x border-[color:var(--color-border)]">
-          <div className="flex gap-4">
-            <div className="border-l border-[color:var(--color-border)]" />
-            <div className="border-l border-[color:var(--color-border)]" />
-          </div>
+      <div className="mx-auto h-4 w-full max-w-[768px]" />
+      <div className="border-t border-[color:var(--color-border)]" />
+      <div className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-full max-w-[768px] -translate-x-1/2 sm:block">
+        <div className="flex h-full justify-between">
+          <div className="border-l border-[color:var(--color-border)]" />
+          <div className="border-l border-[color:var(--color-border)]" />
         </div>
       </div>
-      <div className="border-t border-[color:var(--color-border)]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 hidden h-full -translate-x-1/2 sm:flex">
+        <div className="flex h-full gap-4">
+          <div className="border-l border-[color:var(--color-border)]" />
+          <div className="border-l border-[color:var(--color-border)]" />
+        </div>
+      </div>
     </div>
   )
 }
 
-export function BlogRow({ blogs }) {
+export function BlogRow({ blogs, last = false }) {
   return (
     <div className="mx-auto flex max-w-[768px] flex-col border-x border-[color:var(--color-border)] sm:flex-row">
-      <div className="min-w-0 flex-1 border-b border-[color:var(--color-border)] sm:border-b-0">
+      <div className="min-w-0 flex-1">
         <BlogCard variant="row" blog={blogs[0]} />
       </div>
+      <DoubleLine className="sm:hidden" />
       <div className="hidden flex-row gap-4 sm:flex">
         <div className="border-l border-[color:var(--color-border)]" />
         <div className="border-l border-[color:var(--color-border)]" />
@@ -63,6 +69,7 @@ export function BlogRow({ blogs }) {
           </div>
         )}
       </div>
+      {!last && <DoubleLine className="sm:hidden" />}
     </div>
   )
 }
@@ -80,8 +87,8 @@ function Blogs() {
       </h2>
       {rows.map((pair, i) => (
         <div key={pair[0].slug}>
-          <BlogRow blogs={pair} />
-          {i < rows.length - 1 && <DoubleLine />}
+          <BlogRow blogs={pair} last={i === rows.length - 1} />
+          {i < rows.length - 1 && <DoubleLine className="hidden sm:block" />}
         </div>
       ))}
       <div className="border-t border-[color:var(--color-border)]">

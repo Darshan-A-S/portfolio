@@ -70,7 +70,6 @@ export default function BlogsPage() {
             </div>
           </div>
         </div>
-        <DoubleLine />
         {filtered.length === 0 ? (
           <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] py-10 text-center text-[13px] text-[var(--color-text-muted)]">
             No results found
@@ -78,13 +77,12 @@ export default function BlogsPage() {
         ) : (
           pairs.map((pair, i) => (
             <div key={pair[0].slug}>
-              <BlogRow blogs={pair} />
-              {i < pairs.length - 1 && <DoubleLine />}
+              <BlogRow blogs={pair} last={i === pairs.length - 1} />
+              {i < pairs.length - 1 && <DoubleLine className="hidden sm:block" />}
             </div>
           ))
         )}
       </div>
-      <DoubleLine />
       <Inspirations />
       <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} isDark={isDark} />
     </div>

@@ -1,12 +1,12 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 import { ArrowLeft } from "lucide-react"
-import { Button } from "dasregistry"
+import { Loader } from "dasregistry"
 import "dasregistry/style.css"
 import { CodeBlock } from "../components/code-block.jsx"
 import { CodeBlockCommand, convertNpmCommand } from "../components/code-block-command.jsx"
 import { ComponentNav } from "../components/component-nav.jsx"
-import { buttonDoc as doc } from "../data/button-doc"
+import { loaderDoc as doc } from "../data/loader-doc"
 
 function Section({ title, children }) {
   return (
@@ -40,7 +40,7 @@ function Mono({ children }) {
   return <code className="font-mono text-[0.9em] text-[var(--color-text)]">{children}</code>
 }
 
-export default function ButtonDoc() {
+export default function LoaderDoc() {
   const [tab, setTab] = useState("cli")
 
   const tabBtn = (active) =>
@@ -61,15 +61,15 @@ export default function ButtonDoc() {
               <ArrowLeft className="size-4" />
               Components
             </Link>
-            <ComponentNav slug="button" />
+            <ComponentNav slug="loader" />
           </div>
         </div>
 
         <div className="border-b border-[color:var(--color-border)]">
           <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-6">
-            <h1 className="text-[26px] font-bold leading-snug text-[var(--color-text)]">Button</h1>
+            <h1 className="text-[26px] font-bold leading-snug text-[var(--color-text)]">Loader</h1>
             <p className="mt-2 text-[14px] leading-relaxed text-[var(--color-text-muted)]">
-              Nothing theme button with dotted fonts. Published in <Mono>dasregistry</Mono>.
+              Claude-style status indicator with typewriter text. Published in <Mono>dasregistry</Mono>.
             </p>
           </div>
         </div>
@@ -78,11 +78,9 @@ export default function ButtonDoc() {
         <Section title="Demo">
           <p className="mb-3 text-[13px] leading-relaxed text-[var(--color-text-muted)]">{doc.intro}</p>
           <DemoPreview>
-            <Button variant="primary">
-              Save changes
-            </Button>
+            <Loader />
           </DemoPreview>
-          <CodeBlock title="button-demo.tsx" code={doc.demoCode} />
+          <CodeBlock title="loader-demo.tsx" code={doc.demoCode} />
         </Section>
 
         <Section title="Installation">
@@ -97,9 +95,9 @@ export default function ButtonDoc() {
 
           {tab === "cli" ? (
             <div className="flex flex-col gap-4">
-              <CodeBlockCommand prompt="Install the Button component" {...convertNpmCommand("npm install dasregistry")} />
+              <CodeBlockCommand prompt="Install the Loader component" {...convertNpmCommand("npm install dasregistry")} />
               <p className="text-[13px] text-[var(--color-text-muted)]">
-                Import the stylesheet (Nothing theme: dot-matrix font, red accents, adapts to light/dark mode):
+                Import the stylesheet (Claude-style status: typewriter font, light sweep, adapts to light/dark mode):
               </p>
               <CodeBlock title="main.tsx" code={doc.installStyle} />
             </div>
@@ -116,7 +114,7 @@ export default function ButtonDoc() {
               </li>
               <li>
                 <StepLabel n={3}>Here is the source, in case you want to vendor it</StepLabel>
-                <CodeBlock title="components/button.tsx" code={doc.sourceCode} expandable />
+                <CodeBlock title="components/loader.tsx" code={doc.sourceCode} expandable />
               </li>
               <li>
                 <StepLabel n={4}>Update the import paths to match your project setup</StepLabel>
@@ -134,7 +132,7 @@ export default function ButtonDoc() {
         </Section>
 
         <Section title="API reference">
-          <h3 className="mb-3 text-[14px] font-bold text-[var(--color-text)]">ButtonProps</h3>
+          <h3 className="mb-3 text-[14px] font-bold text-[var(--color-text)]">LoaderProps</h3>
           <table className="w-full border-collapse text-left text-[13px]">
             <thead>
               <tr className="border-b border-[color:var(--color-border)] text-[11px] uppercase tracking-wide text-[var(--color-text-muted)]">
@@ -153,11 +151,6 @@ export default function ButtonDoc() {
               ))}
             </tbody>
           </table>
-          <p className="mt-3 text-[13px] leading-relaxed text-[var(--color-text-muted)]">
-            <Mono>ButtonProps</Mono> also includes every native <Mono>ButtonHTMLAttributes</Mono> prop (
-            <Mono>onClick</Mono>, <Mono>type</Mono>, <Mono>disabled</Mono>, <Mono>className</Mono>, <Mono>aria-*</Mono>,
-            etc.).
-          </p>
         </Section>
 
         <Section title="Behavior">

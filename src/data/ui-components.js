@@ -1,4 +1,4 @@
-import { Calendar, MousePointerClick } from "lucide-react"
+import { Calendar, LoaderCircle, MousePointerClick } from "lucide-react"
 
 export const uiComponents = [
   {
@@ -12,5 +12,11 @@ export const uiComponents = [
     name: "Button",
     icon: MousePointerClick,
     description: "Pressable element with variants and sizes.",
+  },
+  {
+    slug: "loader",
+    name: "Loader",
+    icon: LoaderCircle,
+    description: "Status indicator with cycling phrases and growing dots.",
   },
 ]

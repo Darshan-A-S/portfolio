@@ -9,6 +9,7 @@ import { ComponentNav } from "../components/component-nav.jsx"
 import NotFoundPage from "./NotFoundPage.jsx"
 import DatePickerDoc from "./datepicker-doc.jsx"
 import ButtonDoc from "./button-doc.jsx"
+import LoaderDoc from "./loader-doc.jsx"
 import { uiComponents } from "../data/ui-components"
 
 export default function ComponentPage() {
@@ -58,6 +59,8 @@ export default function ComponentPage() {
         <DatePickerDoc />
       ) : component.slug === "button" ? (
         <ButtonDoc />
+      ) : component.slug === "loader" ? (
+        <LoaderDoc />
       ) : (
         <article className="flex flex-1 flex-col px-[8px] sm:px-0">
           <div className="mx-auto flex w-full max-w-[768px] flex-1 flex-col border-x border-b border-[color:var(--color-border)]">

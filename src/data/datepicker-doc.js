@@ -106,6 +106,7 @@ export function DatePicker({ label, value, onChange, error, disabled, range }: D
   const [anchor, setAnchor] = useState<string | null>(null);
   const [rangeEnd, setRangeEnd] = useState<string | null>(null);
   const [dragging, setDragging] = useState(false);
+  const [adjustTarget, setAdjustTarget] = useState<string | null>(null);
   const anchorSetDown = useRef(false);
 
   useEffect(() => {
@@ -114,11 +115,18 @@ export function DatePicker({ label, value, onChange, error, disabled, range }: D
       setAnchor(null);
       setRangeEnd(null);
       setDragging(false);
+      setAdjustTarget(null);
       anchorSetDown.current = false;
       return;
     }
     if (!dragging) return;
     function onUp() {
+      if (adjustTarget && rangeParts) {
+        const [a, b] = adjust(rangeParts, adjustTarget);
+        commitRange(a, b);
+        setDragging(false);
+        return;
+      }
       if (anchor == null) {
         setDragging(false);
         return;
@@ -128,18 +136,28 @@ export function DatePicker({ label, value, onChange, error, disabled, range }: D
         anchorSetDown.current = false;
         return;
       }
-      commit(anchor, rangeEnd ?? anchor);
+      commitRange(anchor, rangeEnd ?? anchor);
     }
-    window.addEventListener("mouseup", onUp);
-    return () => window.removeEventListener("mouseup", onUp);
-  }, [range, open, dragging, anchor, rangeEnd]);
+    window.addEventListener("pointerup", onUp);
+    return () => window.removeEventListener("pointerup", onUp);
+  }, [range, open, dragging, anchor, rangeEnd, adjustTarget]);
 
-  function commit(a: string, b: string) {
+  function commitRange(a: string, b: string) {
     const start = a < b ? a : b;
     const end = a < b ? b : a;
     onChange?.(\`\${start},\${end}\`);
     setAnchor(null);
     setRangeEnd(null);
+    setAdjustTarget(null);
+  }
+
+  function adjust(parts: string[], d: string): [string, string] {
+    const [lo, hi] = parts;
+    if (d < lo) return [d, hi];
+    if (d > hi) return [lo, d];
+    const distLo = Math.abs(new Date(d).getTime() - new Date(lo).getTime());
+    const distHi = Math.abs(new Date(hi).getTime() - new Date(d).getTime());
+    return distLo <= distHi ? [d, hi] : [lo, d];
   }
 
   useEffect(() => {
@@ -167,16 +185,23 @@ export function DatePicker({ label, value, onChange, error, disabled, range }: D
   }
 
   function beginRange(day: number) {
-    if (anchor == null) {
+    const d = \`\${year}-\${pad(month + 1)}-\${pad(day)}\`;
+    if (anchor == null && rangeParts) {
+      setAdjustTarget(d);
+    } else if (anchor == null) {
       anchorSetDown.current = true;
-      setAnchor(\`\${year}-\${pad(month + 1)}-\${pad(day)}\`);
+      setAnchor(d);
+      setRangeEnd(d);
+    } else {
+      setRangeEnd(d);
     }
-    setRangeEnd(\`\${year}-\${pad(month + 1)}-\${pad(day)}\`);
     setDragging(true);
   }
 
   function hoverRange(day: number) {
-    if (anchor != null) setRangeEnd(\`\${year}-\${pad(month + 1)}-\${pad(day)}\`);
+    const d = \`\${year}-\${pad(month + 1)}-\${pad(day)}\`;
+    if (adjustTarget) setAdjustTarget(d);
+    else if (anchor) setRangeEnd(d);
   }
 
   const formatDate = (s: string) =>
@@ -187,8 +212,11 @@ export function DatePicker({ label, value, onChange, error, disabled, range }: D
     });
 
   const rangeParts = range && value && value.includes(",") ? value.split(",") : null;
-  const liveStart = anchor && rangeEnd ? (anchor < rangeEnd ? anchor : rangeEnd) : null;
-  const liveEnd = anchor && rangeEnd ? (anchor < rangeEnd ? rangeEnd : anchor) : null;
+  const current = (() => {
+    if (anchor && rangeEnd) return anchor < rangeEnd ? [anchor, rangeEnd] : [rangeEnd, anchor];
+    if (adjustTarget && rangeParts) return adjust(rangeParts, adjustTarget);
+    return rangeParts;
+  })();
   const display = rangeParts
     ? \`\${formatDate(rangeParts[0])} – \${formatDate(rangeParts[1])}\`
     : value
@@ -197,8 +225,8 @@ export function DatePicker({ label, value, onChange, error, disabled, range }: D
 
   function dayMeta(day: number) {
     const ds = \`\${year}-\${pad(month + 1)}-\${pad(day)}\`;
-    const lo = rangeParts ? rangeParts[0] : liveStart;
-    const hi = rangeParts ? rangeParts[1] : liveEnd;
+    const lo = current?.[0] ?? null;
+    const hi = current?.[1] ?? null;
     const inSel = !!lo && !!hi && lo <= ds && ds <= hi;
     const isBound = range ? inSel && (ds === lo || ds === hi) : false;
     return {
@@ -341,7 +369,7 @@ export function DatePicker({ label, value, onChange, error, disabled, range }: D
                       .filter(Boolean)
                       .join(" ")}
                     onClick={() => !range && select(day)}
-                    onMouseDown={
+                    onPointerDown={
                       range
                         ? (e) => {
                             e.preventDefault();
@@ -349,7 +377,7 @@ export function DatePicker({ label, value, onChange, error, disabled, range }: D
                           }
                         : undefined
                     }
-                    onMouseEnter={range ? () => hoverRange(day) : undefined}
+                    onPointerEnter={range ? () => hoverRange(day) : undefined}
                   >
                     {day}
                   </button>
@@ -376,7 +404,7 @@ import "dasregistry/style.css";`,
 />`,
 
   usageNote:
-    "Pass a `value` of `YYYY-MM-DD` to control the selected date; `onChange` fires with the new date string whenever a day is picked. For range picking, pass `range` and a comma-separated `\"START,END\"` value. An `error` string renders under the input and marks it `aria-invalid`. The input is read-only — typing is not supported. Import `dasregistry/style.css` once to load the Nothing theme (adapts to light/dark mode).",
+    "Pass a `value` of `YYYY-MM-DD` to control the selected date; `onChange` fires with the new date string whenever a day is picked. For range picking, pass `range` and a comma-separated `\"START,END\"` value. After a range is committed, pressing on the calendar again adjusts the nearer endpoint — before the start pulls the start left, after the end pushes the end right, and inside the range slides the closer bound (drag works with mouse, touch, and pen). An `error` string renders under the input and marks it `aria-invalid`. The input is read-only — typing is not supported. Import `dasregistry/style.css` once to load the Nothing theme (adapts to light/dark mode).",
 
   props: [
     {
@@ -416,7 +444,8 @@ import "dasregistry/style.css";`,
     "Click the header title to switch from the day grid to a decade grid of years, then to a month grid. Pick a year, then a month, and you return to the day grid.",
     "In the month/year views, the chevrons step years and decades instead of months.",
     "Today is highlighted; the selected date is filled with the accent color.",
-    'With range, press and drag across days to draw a selection, or click one day then a second to commit. Days between the anchors form a continuous tinted strip; the start day is rounded on the left and the end day on the right. Hovering previews the range between picks.',
+    'With range, press and drag across days to draw a selection, or click one day then a second to commit. Days between the anchors form a continuous tinted strip; the start day is rounded on the left and the end day on the right. Drag works with mouse, touch, and pen (pointer events).',
+    'Once a range is committed, clicking (or dragging) again moves the nearest endpoint to the cursor: before the start pulls the start left, after the end pushes the end right, and inside the range slides the closer bound. The committed range stays unchanged until you press.',
     "Reuses the native <input> so label click, keyboard focus, and disabled semantics come for free.",
   ],
 

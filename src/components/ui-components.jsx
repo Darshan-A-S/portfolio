@@ -32,13 +32,7 @@ export function UiComponentRow({ components }) {
       </div>
       <div className="hidden border-l border-[color:var(--color-border)] sm:block" />
       <div className="min-w-0 flex-1">
-        {components[1] ? (
-          <UiComponentCard component={components[1]} />
-        ) : (
-          <div className="flex h-full items-center justify-center p-4 text-center text-[13px] text-[var(--color-text-muted)]">
-            More coming soon
-          </div>
-        )}
+        {components[1] && <UiComponentCard component={components[1]} />}
       </div>
     </div>
   )

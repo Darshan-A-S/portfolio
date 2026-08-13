@@ -33,4 +33,8 @@ export const searchItems = [
   { label: "Boys", href: "/otherside#video-9", keywords: "video reel hostel trip boys otherside ❤️" },
   { label: "Ethnic Day", href: "/otherside#video-10", keywords: "video reel ethnic day event otherside" },
   { label: "The Raghu Dixit Project", href: "/otherside#video-11", keywords: "video reel raghu dixit music concert otherside" },
+  { label: "Components", href: "/components", keywords: "ui components library button datepicker loader dasregistry" },
+  { label: "Datepicker — Component", href: "/components/datepicker", keywords: "datepicker date picker calendar range component dasregistry" },
+  { label: "Button — Component", href: "/components/button", keywords: "button pressable component dasregistry" },
+  { label: "Loader — Component", href: "/components/loader", keywords: "loader loading status thinking phrases component dasregistry" },
 ]

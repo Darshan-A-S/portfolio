@@ -41,7 +41,8 @@ function Mono({ children }) {
 }
 
 export default function DatePickerDoc() {
-  const [dueDate, setDueDate] = useState("2026-08-10")
+  const [dueDate, setDueDate] = useState("")
+  const [stay, setStay] = useState("")
   const [tab, setTab] = useState("cli")
 
   const tabBtn = (active) =>
@@ -83,9 +84,21 @@ export default function DatePickerDoc() {
           <CodeBlock title="date-picker-demo.tsx" code={doc.demoCode} />
         </Section>
 
+        <Section title="Range">
+          <p className="mb-3 text-[13px] leading-relaxed text-[var(--color-text-muted)]">
+            Pass <Mono>range</Mono> to pick a start and end date — the value becomes <Mono>"START,END"</Mono>. Click and drag across days to draw a selection, or click one day then a second to commit.
+          </p>
+          <DemoPreview>
+            <DatePicker label="Stay dates" range value={stay} onChange={setStay} />
+          </DemoPreview>
+          <CodeBlock title="date-picker-range.tsx" code={doc.rangeCode} />
+        </Section>
+
         <Section title="Features">
           <ul className="list-disc space-y-1.5 pl-5 text-[13px] text-[var(--color-text-muted)]">
             <li>Fully controlled via <Mono>value</Mono> / <Mono>onChange</Mono> in <Mono>YYYY-MM-DD</Mono> format.</li>
+            <li><Mono>range</Mono> mode: click-and-drag selection committed as <Mono>"START,END"</Mono>.</li>
+            <li>Year / month / day grids — click the header title to drill up to a decade and back.</li>
             <li>Nothing theme: dot-matrix font, red accent, follows light/dark mode.</li>
             <li>Label, error message, and disabled states built in.</li>
           </ul>

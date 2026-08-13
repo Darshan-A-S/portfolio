@@ -4,7 +4,7 @@
 import { DatePicker } from "dasregistry"
 
 export default function DatePickerDemo() {
-  const [dueDate, setDueDate] = useState("2026-08-10")
+  const [dueDate, setDueDate] = useState("")
   return (
     <DatePicker
       label="Due date"
@@ -36,6 +36,22 @@ export function DatePickerStates() {
   )
 }`,
 
+  rangeCode: `import { useState } from "react"
+
+import { DatePicker } from "dasregistry"
+
+export function DatePickerRange() {
+  const [stay, setStay] = useState("")
+  return (
+    <DatePicker
+      label="Stay dates"
+      range
+      value={stay}
+      onChange={setStay}
+    />
+  )
+}`,
+
   installCli: `npm install dasregistry`,
 
   installStyle: `import "dasregistry/style.css";`,
@@ -48,13 +64,15 @@ import { useEffect, useId, useRef, useState } from "react";
 
 export interface DatePickerProps {
   label?: string;
-  value?: string; // YYYY-MM-DD
+  value?: string; // YYYY-MM-DD, or "START,END" in range mode
   onChange?: (value: string) => void;
   error?: string;
   disabled?: boolean;
+  range?: boolean;
 }
 
 const WEEKDAYS = ["S", "M", "T", "W", "T", "F", "S"];
+const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 const pad = (n: number) => String(n).padStart(2, "0");
 
 function daysInMonth(year: number, month: number) {
@@ -79,11 +97,50 @@ function Chevron({ dir }: { dir: "left" | "right" }) {
   );
 }
 
-export function DatePicker({ label, value, onChange, error, disabled }: DatePickerProps) {
+export function DatePicker({ label, value, onChange, error, disabled, range }: DatePickerProps) {
   const inputId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
   const [view, setView] = useState(() => new Date());
+  const [mode, setMode] = useState<"days" | "months" | "years">("days");
+  const [anchor, setAnchor] = useState<string | null>(null);
+  const [rangeEnd, setRangeEnd] = useState<string | null>(null);
+  const [dragging, setDragging] = useState(false);
+  const anchorSetDown = useRef(false);
+
+  useEffect(() => {
+    if (!range) return;
+    if (!open) {
+      setAnchor(null);
+      setRangeEnd(null);
+      setDragging(false);
+      anchorSetDown.current = false;
+      return;
+    }
+    if (!dragging) return;
+    function onUp() {
+      if (anchor == null) {
+        setDragging(false);
+        return;
+      }
+      setDragging(false);
+      if (rangeEnd === anchor && anchorSetDown.current) {
+        anchorSetDown.current = false;
+        return;
+      }
+      commit(anchor, rangeEnd ?? anchor);
+    }
+    window.addEventListener("mouseup", onUp);
+    return () => window.removeEventListener("mouseup", onUp);
+  }, [range, open, dragging, anchor, rangeEnd]);
+
+  function commit(a: string, b: string) {
+    const start = a < b ? a : b;
+    const end = a < b ? b : a;
+    onChange?.(\`\${start},\${end}\`);
+    setAnchor(null);
+    setRangeEnd(null);
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -106,15 +163,53 @@ export function DatePicker({ label, value, onChange, error, disabled }: DatePick
 
   function select(day: number) {
     onChange?.(\`\${year}-\${pad(month + 1)}-\${pad(day)}\`);
+    setOpen(false);
   }
 
-  const display = value
-    ? new Date(\`\${value}T00:00:00\`).toLocaleDateString(undefined, {
-        day: "2-digit",
-        month: "short",
-        year: "numeric",
-      })
-    : "";
+  function beginRange(day: number) {
+    if (anchor == null) {
+      anchorSetDown.current = true;
+      setAnchor(\`\${year}-\${pad(month + 1)}-\${pad(day)}\`);
+    }
+    setRangeEnd(\`\${year}-\${pad(month + 1)}-\${pad(day)}\`);
+    setDragging(true);
+  }
+
+  function hoverRange(day: number) {
+    if (anchor != null) setRangeEnd(\`\${year}-\${pad(month + 1)}-\${pad(day)}\`);
+  }
+
+  const formatDate = (s: string) =>
+    new Date(\`\${s}T00:00:00\`).toLocaleDateString(undefined, {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+
+  const rangeParts = range && value && value.includes(",") ? value.split(",") : null;
+  const liveStart = anchor && rangeEnd ? (anchor < rangeEnd ? anchor : rangeEnd) : null;
+  const liveEnd = anchor && rangeEnd ? (anchor < rangeEnd ? rangeEnd : anchor) : null;
+  const display = rangeParts
+    ? \`\${formatDate(rangeParts[0])} – \${formatDate(rangeParts[1])}\`
+    : value
+      ? formatDate(value)
+      : "";
+
+  function dayMeta(day: number) {
+    const ds = \`\${year}-\${pad(month + 1)}-\${pad(day)}\`;
+    const lo = rangeParts ? rangeParts[0] : liveStart;
+    const hi = rangeParts ? rangeParts[1] : liveEnd;
+    const inSel = !!lo && !!hi && lo <= ds && ds <= hi;
+    const isBound = range ? inSel && (ds === lo || ds === hi) : false;
+    return {
+      ds,
+      inRange: range ? inSel : false,
+      isStart: range && isBound && ds === lo && lo !== hi,
+      isEnd: range && isBound && ds === hi && lo !== hi,
+      isSingle: range && isBound && lo === hi,
+      isSelected: !range && value === ds,
+    };
+  }
 
   return (
     <div className="das-dp" ref={rootRef}>
@@ -132,7 +227,11 @@ export function DatePicker({ label, value, onChange, error, disabled }: DatePick
           value={display}
           placeholder="pick a date"
           aria-invalid={error ? true : undefined}
-          onClick={() => setOpen((o) => !o)}
+          onClick={() => {
+            const next = !open;
+            if (next) setMode("days");
+            setOpen(next);
+          }}
           onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
         />
         <svg
@@ -150,18 +249,72 @@ export function DatePicker({ label, value, onChange, error, disabled }: DatePick
           <path d="M6 9l6 6 6-6" />
         </svg>
       </div>
-      {open && (
-        <div className="das-dp-panel">
-          <div className="das-dp-header">
-            <button type="button" aria-label="Previous month" onClick={() => setView(new Date(year, month - 1, 1))}>
-              <Chevron dir="left" />
-            </button>
-            <span>{view.toLocaleDateString(undefined, { month: "long", year: "numeric" })}</span>
-            <button type="button" aria-label="Next month" onClick={() => setView(new Date(year, month + 1, 1))}>
-              <Chevron dir="right" />
-            </button>
+      <div className={open ? "das-dp-panel das-dp-open" : "das-dp-panel"}>
+        <div className="das-dp-header">
+          <button
+            type="button"
+            aria-label={mode === "days" ? "Previous month" : mode === "months" ? "Previous year" : "Previous decade"}
+            onClick={() => {
+              if (mode === "days") setView(new Date(year, month - 1, 1));
+              else if (mode === "months") setView(new Date(year - 1, month, 1));
+              else setView(new Date(year - 12, month, 1));
+            }}
+          >
+            <Chevron dir="left" />
+          </button>
+          <button type="button" className="das-dp-title" onClick={() => setMode(mode === "days" ? "years" : mode === "years" ? "months" : "days")}>
+            {mode === "days"
+              ? view.toLocaleDateString(undefined, { month: "long", year: "numeric" })
+              : mode === "months"
+                ? String(year)
+                : \`\${Math.floor(year / 10) * 10}-\${Math.floor(year / 10) * 10 + 9}\`}
+          </button>
+          <button
+            type="button"
+            aria-label={mode === "days" ? "Next month" : mode === "months" ? "Next year" : "Next decade"}
+            onClick={() => {
+              if (mode === "days") setView(new Date(year, month + 1, 1));
+              else if (mode === "months") setView(new Date(year + 1, month, 1));
+              else setView(new Date(year + 12, month, 1));
+            }}
+          >
+            <Chevron dir="right" />
+          </button>
+        </div>
+        {mode === "months" ? (
+          <div key={\`\${mode}-\${year}\`} className="das-dp-grid das-dp-grid-wide">
+            {MONTHS.map((name, i) => (
+              <button
+                type="button"
+                key={name}
+                className={["das-dp-month", month === i && "das-dp-month-current"].filter(Boolean).join(" ")}
+                onClick={() => {
+                  setView(new Date(year, i, 1));
+                  setMode("days");
+                }}
+              >
+                {name}
+              </button>
+            ))}
           </div>
-          <div className="das-dp-grid">
+        ) : mode === "years" ? (
+          <div key={\`\${mode}-\${Math.floor(year / 10) * 10}\`} className="das-dp-grid das-dp-grid-wide">
+            {Array.from({ length: 12 }, (_, i) => Math.floor(year / 10) * 10 - 1 + i).map((y) => (
+              <button
+                type="button"
+                key={y}
+                className={["das-dp-year", y === year && "das-dp-year-current"].filter(Boolean).join(" ")}
+                onClick={() => {
+                  setView(new Date(y, month, 1));
+                  setMode("months");
+                }}
+              >
+                {y}
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div key={\`\${mode}-\${year}-\${month}\`} className="das-dp-grid">
             {WEEKDAYS.map((d, i) => (
               <span className="das-dp-dow" key={i}>
                 {d}
@@ -170,26 +323,42 @@ export function DatePicker({ label, value, onChange, error, disabled }: DatePick
             {cells.map((day, i) =>
               day === null ? (
                 <span key={i} />
-              ) : (
-                <button
-                  type="button"
-                  key={i}
-                  className={[
-                    "das-dp-day",
-                    value === \`\${year}-\${pad(month + 1)}-\${pad(day)}\` && "das-dp-day-selected",
-                    todayStr === \`\${year}-\${pad(month + 1)}-\${pad(day)}\` && "das-dp-day-today",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}
-                  onClick={() => select(day)}
-                >
-                  {day}
-                </button>
-              ),
+              ) : (() => {
+                const m = dayMeta(day);
+                return (
+                  <button
+                    type="button"
+                    key={i}
+                    className={[
+                      "das-dp-day",
+                      m.isStart && "das-dp-day-range-start",
+                      m.isEnd && "das-dp-day-range-end",
+                      m.isSingle && "das-dp-day-range-single",
+                      m.inRange && "das-dp-day-in-range",
+                      m.isSelected && "das-dp-day-selected",
+                      todayStr === m.ds && "das-dp-day-today",
+                    ]
+                      .filter(Boolean)
+                      .join(" ")}
+                    onClick={() => !range && select(day)}
+                    onMouseDown={
+                      range
+                        ? (e) => {
+                            e.preventDefault();
+                            beginRange(day);
+                          }
+                        : undefined
+                    }
+                    onMouseEnter={range ? () => hoverRange(day) : undefined}
+                  >
+                    {day}
+                  </button>
+                );
+              })()
             )}
           </div>
-        </div>
-      )}
+        )}
+      </div>
       {error && <span className="das-dp-error">{error}</span>}
     </div>
   );
@@ -207,7 +376,7 @@ import "dasregistry/style.css";`,
 />`,
 
   usageNote:
-    "Pass a `value` of `YYYY-MM-DD` to control the selected date; `onChange` fires with the new date string whenever a day is picked. An `error` string renders under the input and marks it `aria-invalid`. The input is read-only — typing is not supported. Import `dasregistry/style.css` once to load the Nothing theme (adapts to light/dark mode).",
+    "Pass a `value` of `YYYY-MM-DD` to control the selected date; `onChange` fires with the new date string whenever a day is picked. For range picking, pass `range` and a comma-separated `\"START,END\"` value. An `error` string renders under the input and marks it `aria-invalid`. The input is read-only — typing is not supported. Import `dasregistry/style.css` once to load the Nothing theme (adapts to light/dark mode).",
 
   props: [
     {
@@ -218,12 +387,12 @@ import "dasregistry/style.css";`,
     {
       name: "value",
       type: "string",
-      description: "Selected date as YYYY-MM-DD. Uncontrolled when omitted.",
+      description: "Selected date as YYYY-MM-DD, or \"START,END\" in range mode. Uncontrolled when omitted.",
     },
     {
       name: "onChange",
       type: "function",
-      description: "Called with the selected date (YYYY-MM-DD).",
+      description: "Called with the selected date (YYYY-MM-DD) or range (\"START,END\").",
     },
     {
       name: "error",
@@ -235,14 +404,21 @@ import "dasregistry/style.css";`,
       type: "boolean",
       description: "Disables the input.",
     },
+    {
+      name: "range",
+      type: "boolean",
+      description: "Enables range picking. Value is \"START,END\" (YYYY-MM-DD). Click and drag across days to select.",
+    },
   ],
 
   behavior: [
-    "Click the input to toggle the calendar; click outside or press Escape to close.",
-    "Use the chevrons to move between months.",
-    "Today is outlined; the selected date is filled with the accent color.",
+    "Click the input to toggle the calendar; picking a day closes it; click outside or press Escape to cancel.",
+    "Click the header title to switch from the day grid to a decade grid of years, then to a month grid. Pick a year, then a month, and you return to the day grid.",
+    "In the month/year views, the chevrons step years and decades instead of months.",
+    "Today is highlighted; the selected date is filled with the accent color.",
+    'With range, press and drag across days to draw a selection, or click one day then a second to commit. Days between the anchors form a continuous tinted strip; the start day is rounded on the left and the end day on the right. Hovering previews the range between picks.',
     "Reuses the native <input> so label click, keyboard focus, and disabled semantics come for free.",
   ],
 
-  updated: "August 11, 2026",
+  updated: "August 13, 2026",
 }

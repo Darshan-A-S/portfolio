@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react'
-import logoLight from './../assets/DAS-light.svg'
-import logoDark from './../assets/DAS-white.svg'
-import darkmode from './../assets/darkmode.svg'
-import lightmode from './../assets/lightmode.svg'
+import logoLight from './../assets/svgs/DAS-light.svg'
+import logoDark from './../assets/svgs/DAS-white.svg'
+import darkmode from './../assets/svgs/darkmode.svg'
+import lightmode from './../assets/svgs/lightmode.svg'
 
 const Nav = ({ isDark, toggleTheme, onSearchClick }) => {
   const [rotation, setRotation] = useState(0)

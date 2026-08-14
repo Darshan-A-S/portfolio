@@ -1,5 +1,5 @@
-import logoLight from './../assets/DAS-light.svg'
-import logoDark from './../assets/DAS-white.svg'
+import logoLight from './../assets/svgs/DAS-light.svg'
+import logoDark from './../assets/svgs/DAS-white.svg'
 
 const Logo = ({ isDark }) => {
   return (

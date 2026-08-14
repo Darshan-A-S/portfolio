@@ -1,4 +1,4 @@
-import profileDots from './../assets/profile-dots.svg'
+import profileDots from './../assets/svgs/profile-dots.svg'
 import Dino from './dino.jsx'
 
 const Name = () => {

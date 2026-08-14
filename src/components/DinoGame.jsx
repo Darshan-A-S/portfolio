@@ -308,8 +308,8 @@ export default function DinoGame() {
             {isLocal ? "Leaderboard (this browser)" : "Global leaderboard"}
           </p>
           <ol className="mt-1 flex flex-col gap-0.5 text-[13px]">
-            {leaderboard.slice(0, 10).map((row) => (
-              <li key={row.rank} className="flex items-center gap-2">
+            {leaderboard.slice(0, 10).map((row, i) => (
+              <li key={row.rank} className={`flex items-center gap-2 ${i >= 5 ? "max-sm:hidden" : ""}`}>
                 <span className="w-6 shrink-0 tabular-nums text-[var(--color-text-muted)]">{row.rank}</span>
                 <span className="truncate">{row.name}</span>
                 <span className="ml-auto tabular-nums">{row.score}</span>

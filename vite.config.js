@@ -1,10 +1,52 @@
-import { defineConfig } from "vite";
+import { defineConfig, loadEnv } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 
+const jsonRes = (res) => {
+  const r = {
+    setHeader: (k, v) => res.setHeader(k, v),
+    status: (code) => {
+      res.statusCode = code;
+      return r;
+    },
+    json: (obj) => {
+      res.setHeader("Content-Type", "application/json");
+      res.end(JSON.stringify(obj));
+    },
+    end: () => res.end(),
+  };
+  return r;
+};
+
+function localApi() {
+  return {
+    name: "local-api",
+    configureServer(server) {
+      const env = loadEnv(server.config.mode, process.cwd(), "");
+      if (!env.KV_REST_API_URL) return;
+      process.env.KV_REST_API_URL = env.KV_REST_API_URL;
+      process.env.KV_REST_API_TOKEN = env.KV_REST_API_TOKEN;
+      server.middlewares.use("/api/dino-score", (req, res) => {
+        let body = "";
+        req.on("data", (c) => (body += c));
+        req.on("end", () => {
+          try {
+            req.body = body ? JSON.parse(body) : {};
+          } catch {
+            req.body = {};
+          }
+          import("./api/dino-score.js").then(({ default: handler }) =>
+            handler(req, jsonRes(res))
+          );
+        });
+      });
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [tailwindcss(), react()],
+  plugins: [tailwindcss(), react(), localApi()],
 
   resolve: {
     alias: {

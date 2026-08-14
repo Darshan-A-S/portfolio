@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
 import { searchItems } from "@/data/search-data"
-import logoDark from "@/assets/DAS-white.svg"
-import logoLight from "@/assets/DAS-light.svg"
+import logoDark from "@/assets/svgs/DAS-white.svg"
+import logoLight from "@/assets/svgs/DAS-light.svg"
 
 export default function SearchModal({ open, onClose, isDark }) {
   const [query, setQuery] = useState("")

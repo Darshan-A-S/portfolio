@@ -16,9 +16,9 @@ export default function NotFoundPage() {
   return (
     <div className="flex min-h-screen items-center justify-center px-[8px] sm:px-0">
       <div className="mx-auto w-full max-w-[768px]">
-        <div className="flex flex-col items-center justify-center gap-3 px-4 py-16 text-center">
-          <h1 className="font-playfair italic text-[96px] leading-none tracking-tight">404</h1>
-          <h2 className="text-[26px] font-bold">Page not found</h2>
+        <div className="flex flex-col items-center justify-center gap-3 px-4 py-10 text-center sm:py-16">
+          <h1 className="font-playfair italic text-[64px] leading-none tracking-tight sm:text-[96px]">404</h1>
+          <h2 className="text-[22px] font-bold sm:text-[26px]">Page not found</h2>
           <p className="max-w-md text-[14px] text-[var(--color-text-muted)]">
             The page you are looking for doesn't exist or has been moved.
           </p>

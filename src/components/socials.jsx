@@ -1,8 +1,8 @@
-import linkedin from "./../assets/linkedin.jpg"
-import github from "./../assets/github.webp"
-import leetcode from "./../assets/leetcode.svg"
-import matiks from "./../assets/matiks-logo.png"
-import instagram from "./../assets/instagram.svg"
+import linkedin from "./../assets/webp/linkedin.webp"
+import github from "./../assets/webp/github.webp"
+import leetcode from "./../assets/svgs/leetcode.svg"
+import matiks from "./../assets/webp/matiks-logo.webp"
+import instagram from "./../assets/svgs/instagram.svg"
 
 const links = [
   { href: "https://www.linkedin.com/in/darshan-a-s-9a0350268/", img: linkedin, name: "LinkedIn", handle: "@darshan-as" },

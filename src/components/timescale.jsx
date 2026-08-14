@@ -4,27 +4,32 @@ import { useEffect, useRef, useState } from "react"
 import { createPortal } from "react-dom"
 import Markdown from "react-markdown"
 import { cn } from "@/lib/utils"
-import logoDark from "@/assets/DAS-white.svg"
-import logoLight from "@/assets/DAS-light.svg"
+import logoDark from "@/assets/svgs/DAS-white.svg"
+import logoLight from "@/assets/svgs/DAS-light.svg"
 import { motion, AnimatePresence, useMotionValue, animate } from "motion/react"
+import schoolImg from "@/assets/webp/school.webp"
+import childhoodImg from "@/assets/webp/childhood.webp"
+import roborcarImg from "@/assets/webp/roborcar.webp"
+import hackathonImg from "@/assets/webp/hackathon.webp"
+import coleadImg from "@/assets/webp/co-lead.webp"
 
 const BIRTH_YEAR = 2004
 
 const MILESTONES = [
   { year: 2004, content: "Born in Davanagere, Karnataka" },
   { year: 2005 }, { year: 2006 }, { year: 2007 },
-  { year: 2008, content: "Started **primary school**.", image: "https://res.cloudinary.com/k2uloqof/image/upload/v1785355642/1680427925637-f158fdac-c382-4d46-9570-6dc4fc006e7a_2_lo1e3u.jpg", highlight: "primary school" },
+  { year: 2008, content: "Started **primary school**.", image: childhoodImg, highlight: "primary school" },
   { year: 2009 }, { year: 2010 }, { year: 2011 }, { year: 2012 }, { year: 2013 },
   { year: 2014, content: "Started high school." },
   { year: 2015 }, { year: 2016 },
   { year: 2017},
-  { year: 2018 },   { year: 2019, content: "Was **Sathya House Captain**.\n\nOur house won the annual sports meet that year.", image: "https://res.cloudinary.com/k2uloqof/image/upload/v1785352923/FB_IMG_1689957926651_cmsl6s.jpg", highlight: "Sathya House Captain" },
+  { year: 2018 },   { year: 2019, content: "Was **Sathya House Captain**.\n\nOur house won the annual sports meet that year.", image: schoolImg, highlight: "Sathya House Captain" },
   { year: 2020},
   { year: 2021, content: "Learned C and C++." },
   { year: 2022, content: "Began engineering degree in Computer Science." },
-  { year: 2023, content: "Joined college clubs as Graphic Designer & Video Editor\n\nBuilt a hand gesture controlled **robot car**",image: "https://res.cloudinary.com/k2uloqof/image/upload/v1786030255/Screenshot_20260806-205807_a8rwfj.png", highlight: "robot car" },
-  { year: 2024, content: "Attended my first ever **hackathon** in Hassan\n\n Developed Proctor Pro - Online exam proctoring system", image:"https://res.cloudinary.com/k2uloqof/image/upload/v1786031807/Screenshot_20260806-212543_ursufd.png", highlight:"hackathon" },
-  { year: 2025, content: "Was a **Videography Co-Lead** for PhotoOn - Photography Club\n\nAnd also Art & Design Lead for Tesla-Sjce - Techincal Club\n\nTook a shot at freelance video editing - it didn't work out", image: "https://res.cloudinary.com/k2uloqof/image/upload/v1786032217/Screenshot_20260806-213230_pzs63b.png", highlight: "Videography Co-Lead"},
+  { year: 2023, content: "Joined college clubs as Graphic Designer & Video Editor\n\nBuilt a hand gesture controlled **robot car**",image: roborcarImg, highlight: "robot car" },
+  { year: 2024, content: "Attended my first ever **hackathon** in Hassan\n\n Developed Proctor Pro - Online exam proctoring system", image:hackathonImg, highlight:"hackathon" },
+  { year: 2025, content: "Was a **Videography Co-Lead** for PhotoOn - Photography Club\n\nAnd also Art & Design Lead for Tesla-Sjce - Techincal Club\n\nTook a shot at freelance video editing - it didn't work out", image: coleadImg, highlight: "Videography Co-Lead"},
   { year: 2026, content: "Built this portfolio. Continued exploring AI integration in practical products.\n- Designed by instinct, built with AI\n- Added tiny hidden intractions find them if you can!!\n\nJoined Texas AI as an Associate Software Engineer. Working on backend systems with Java and Spring Boot." },
 ]
 
@@ -348,6 +353,8 @@ function TimescaleIntroScroll({ children }) {
 }
 
 export default function Timescale({ open, onClose, isDark }) {
+  const scrollRef = useRef(null)
+
   useEffect(() => {
     if (!open) return
     const onKey = (e) => {
@@ -356,6 +363,40 @@ export default function Timescale({ open, onClose, isDark }) {
     window.addEventListener("keydown", onKey)
     return () => window.removeEventListener("keydown", onKey)
   }, [open, onClose])
+
+  useEffect(() => {
+    if (!open) return
+    const el = scrollRef.current
+    if (!el) return
+    let velocity = 0
+    let raf
+    let last = performance.now()
+
+    const tick = (now) => {
+      const dt = Math.min((now - last) / 16.67, 3)
+      last = now
+      const viewport = el.querySelector('[data-slot="timescale-viewport"]')
+      if (viewport && Math.abs(velocity) >= 0.05) {
+        viewport.scrollLeft += velocity * 0.55 * dt
+        velocity *= Math.pow(0.85, dt)
+      }
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+
+    const onWheel = (e) => {
+      const viewport = el.querySelector('[data-slot="timescale-viewport"]')
+      if (!viewport || viewport.scrollWidth <= viewport.clientWidth) return
+      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) return
+      e.preventDefault()
+      velocity += e.deltaY
+    }
+    el.addEventListener("wheel", onWheel, { passive: false })
+    return () => {
+      cancelAnimationFrame(raf)
+      el.removeEventListener("wheel", onWheel)
+    }
+  }, [open])
 
   if (!open) return null
 
@@ -375,7 +416,7 @@ export default function Timescale({ open, onClose, isDark }) {
           </kbd>
         </div>
 
-        <div className="overflow-x-auto p-5">
+        <div ref={scrollRef} className="overflow-x-auto p-5">
           <TimescaleIntroScroll>
             <TimescaleRoot>
               <TimescaleHeader>

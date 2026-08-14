@@ -1,17 +1,28 @@
 import { useState, useEffect, useRef } from "react";
+import edit1 from "../assets/videos/edit1.webm";
+import edit2 from "../assets/videos/edit2.webm";
+import hero from "../assets/videos/hero.webm";
+import reel3 from "../assets/videos/reel3.webm";
+import reel4 from "../assets/videos/reel4.webm";
+import reel5 from "../assets/videos/reel5.webm";
+import reel6 from "../assets/videos/reel6.webm";
+import reel7 from "../assets/videos/reel7.webm";
+import reel8 from "../assets/videos/reel8.webm";
+import ethnic from "../assets/videos/ethnic.webm";
+import raghudixit from "../assets/videos/raghudixit.webm";
 
 const videos = [
-  { id: 1, label: "Campus Walk", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784732841/edit1_rfc9xg.mp4", caption: { heading: "Campus Walk", body: <>First ever reel, new to college and new friend <a href="https://www.instagram.com/shre_s__" target="_blank" rel="noreferrer" className="font-playfair italic decoration-1 underline-offset-2 hover:text-[var(--color-text)]">@shre_s__</a> who is also intersted in editing, learnt so many new things while editing thissss.</> } },
-  { id: 2, label: "PhotoOn Photowalk", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784733794/edit2_d7zxpz.mp4", caption: { heading: "Photo Walk", body: "This walk was special because it happened on my birthday, and with my fav ppl ❤️." } },
-  { id: 3, label: "Jayciana '26", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784733016/hero_ct1nag.mp4" },
-  { id: 4, label: "Chamundi Betta", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784733668/reel3_j8turf.mp4" },
-  { id: 5, label: "Pre-fest", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784733163/reel4_zbmrls.mp4" },
-  { id: 6, label: "My Companion", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784733195/reel5_bnjwgc.mp4" },
-  { id: 7, label: "Cinematic", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784733114/reel6_oemvu2.mp4" },
-  { id: 8, label: "Cinematic II", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784733074/reel7_zjebds.mp4" },
-  { id: 9, label: "Boys", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1784732865/reel8_qblgzw.mp4" },
-  { id: 10, label: "Ethnic Day", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1785866960/SnapInsta.to_AQPc82O-C7IMHYBT8EgGqU24ibLtJpPEj74cPgDXiL4nglyHloqt3Mj9IocS46dpKuyoRWa9OqZuwWeEXgwtKG8UzLwC_IqLsPuPM-A_rxvax8.mp4", caption: { heading: "Ethnic Day", body: "Favourite event for most of the college students, energy was max 🕺 (my friends threw in the air)" } },
-  { id: 11, label: "The Raghu Dixit Project", src: "https://res.cloudinary.com/k2uloqof/video/upload/v1785866962/SnapInsta.to_AQN58iOrZLfdNNgchSaRHIgupPmjXo0J_cdD8kQavYmCSTENew4SxLXweNVc-tG9miGu-r96XGSFi0HgbRxJCyHW025_FUo4uYUTMi8_heiccw.mp4", caption: { heading: "The Raghu Dixit Project", body: "The best musical experience you can have, and also energetic" } },
+  { id: 1, label: "Campus Walk", src: edit1, caption: { heading: "Campus Walk", body: <>First ever reel, new to college and new friend <a href="https://www.instagram.com/shre_s__" target="_blank" rel="noreferrer" className="font-playfair italic decoration-1 underline-offset-2 hover:text-[var(--color-text)]">@shre_s__</a> who is also intersted in editing, learnt so many new things while editing thissss.</> } },
+  { id: 2, label: "PhotoOn Photowalk", src: edit2, caption: { heading: "Photo Walk", body: "This walk was special because it happened on my birthday, and with my fav ppl ❤️." } },
+  { id: 3, label: "Jayciana '26", src: hero },
+  { id: 4, label: "Chamundi Betta", src: reel3 },
+  { id: 5, label: "Pre-fest", src: reel4 },
+  { id: 6, label: "My Companion", src: reel5 },
+  { id: 7, label: "Cinematic", src: reel6 },
+  { id: 8, label: "Cinematic II", src: reel7 },
+  { id: 9, label: "Boys", src: reel8 },
+  { id: 10, label: "Ethnic Day", src: ethnic, caption: { heading: "Ethnic Day", body: "Favourite event for most of the college students, energy was max 🕺 (my friends threw in the air)" } },
+  { id: 11, label: "The Raghu Dixit Project", src: raghudixit, caption: { heading: "The Raghu Dixit Project", body: "The best musical experience you can have, and also energetic" } },
 ]
 
 function VideoCard({ video, style, className = "" }) {

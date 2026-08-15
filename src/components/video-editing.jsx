@@ -29,6 +29,7 @@ const videos = [
 function VideoCard({ video, style, className = "" }) {
   const ref = useRef(null);
   const cardRef = useRef(null);
+  const hoveredRef = useRef(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -43,6 +44,7 @@ function VideoCard({ video, style, className = "" }) {
   }, []);
 
   const handleEnter = () => {
+    hoveredRef.current = true;
     const v = ref.current;
     if (!v) return;
     v.muted = true;
@@ -52,12 +54,18 @@ function VideoCard({ video, style, className = "" }) {
   };
 
   const handleLeave = () => {
+    hoveredRef.current = false;
     const v = ref.current;
     if (!v) return;
     v.muted = true;
     v.pause();
     v.currentTime = 0;
   };
+
+  useEffect(() => {
+    // video mounted lazily — if the cursor is already over the card, start playback
+    if (loaded && hoveredRef.current) handleEnter();
+  }, [loaded]);
 
   return (
     <div

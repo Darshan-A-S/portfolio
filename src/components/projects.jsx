@@ -16,6 +16,19 @@ const projects = [
     period: 'November \'24',
     isExpanded: true,
   },
+    {
+    title: 'dasregistry',
+    description: 'My published React component library — accessible UI components (Button, DatePicker, Loader) with a registered npm package and documented examples.',
+    highlights: [
+      'Published as an npm package installable via `npm install dasregistry`, with a single CSS import for theming',
+      'Shipped accessible, themeable components — Button, DatePicker (single + range), and Loader — with full docs',
+      'Showcased live in the Components section of this portfolio with interactive demos and usage snippets',
+    ],
+    tags: ['React', 'npm', 'Tailwind CSS', 'Accessibility'],
+    link: '/components',
+    period: 'August \'26',
+    isExpanded: true,
+  },
   {
     title: 'PTSD Risk Prediction System',
     description: 'A multimodal deep learning system built with a team of 4 to predict PTSD risk from clinical interview videos by fusing text, audio, and facial behavior data, with built-in uncertainty estimation and explainability for clinical decision support.',
@@ -27,6 +40,14 @@ const projects = [
     tags: ['Python', 'PyTorch', 'HuggingFace Transformers', 'FastAPI', 'Computer Vision', 'NLP'],
     link: '',
     period: 'April \'26',
+    isExpanded: false,
+  },
+  {
+    title: 'dasfolio',
+    description: 'My personal dev portfolio and my interests',
+    tags: ['React 19', 'Vite 7', 'Tailwind CSS v4', 'p5.js', 'Cloudinary', 'Lucide React', 'Vercel Serverless'],
+    link: '#',
+    period: 'July \'26',
     isExpanded: false,
   },
   {
@@ -43,14 +64,9 @@ const projects = [
     period: 'July \'25',
     isExpanded: false,
   },
-  {
-    title: 'dasfolio',
-    description: 'My personal dev portfolio and my interests',
-    tags: ['React 19', 'Vite 7', 'Tailwind CSS v4', 'p5.js', 'Cloudinary', 'Lucide React', 'Vercel Serverless'],
-    link: '#',
-    period: 'July \'26',
-    isExpanded: false,
-  },
+]
+
+const moreProjects = [
   {
     title: 'Brainly',
     description: 'CNN-based binary classifier for brain MRI scans with a web interface for real-time inference.',
@@ -60,18 +76,6 @@ const projects = [
     period: 'July \'25',
     isExpanded: false,
   },
-]
-
-const moreProjects = [
-  // {
-  //   title: 'Coming Soon',
-  //   description: 'Details coming soon.',
-  //   highlights: [],
-  //   tags: [],
-  //   link: '',
-  //   period: '',
-  //   isExpanded: false,
-  // },
 ]
 
 const ProjectCard = ({ project }) => {
@@ -111,8 +115,7 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
   const [showMore, setShowMore] = useState(false)
-  // ponytail: hidden until more projects exist; flip to true to show Load More
-  const showLoadMore = false
+  const showLoadMore = true
 
   return (
     <div id="projects" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">

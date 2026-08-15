@@ -36,6 +36,12 @@
   --max-w: 768px;
 }
 
+@font-face {
+  font-family: 'ArrowFont';
+  src: url('./assets/fonts/a85fe84266768609-s.00hx3ibfyf9qx.woff2') format('woff2');
+  font-display: swap;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-sans);
 }

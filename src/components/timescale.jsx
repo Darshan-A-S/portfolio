@@ -6,6 +6,7 @@ import Markdown from "react-markdown"
 import { cn } from "@/lib/utils"
 import logoDark from "@/assets/svgs/DAS-white.svg"
 import logoLight from "@/assets/svgs/DAS-light.svg"
+// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence, useMotionValue, animate } from "motion/react"
 import schoolImg from "@/assets/webp/school.webp"
 import childhoodImg from "@/assets/webp/childhood.webp"
@@ -247,7 +248,7 @@ function HoverImage({ src, children }) {
     }, 150)
   }
 
-  const touchShow = (e) => {
+  const touchShow = () => {
     touchHover.current = true
 
     if (hovered) {

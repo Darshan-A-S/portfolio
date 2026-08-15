@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Routes, Route, useLocation } from 'react-router-dom'
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom'
 import Navbar from './components/nav.jsx'
 import Logo from './components/logo.jsx'
 import Name from './components/name.jsx'
@@ -137,6 +137,19 @@ function HomePage() {
 }
 
 function App() {
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    const onKey = (e) => {
+      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'd') {
+        e.preventDefault()
+        navigate('/')
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [navigate])
+
   return (
     <>
       <Routes>

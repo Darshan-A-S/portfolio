@@ -111,6 +111,8 @@ const ProjectCard = ({ project }) => {
 
 const Projects = () => {
   const [showMore, setShowMore] = useState(false)
+  // ponytail: hidden until more projects exist; flip to true to show Load More
+  const showLoadMore = false
 
   return (
     <div id="projects" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
@@ -135,7 +137,7 @@ const Projects = () => {
           </div>
         </div>
       </div>
-      {false && ( // ponytail: hidden until more projects exist; flip to true to show Load More
+      {showLoadMore && (
       <div className="border-t border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] flex justify-center py-2">
           <button onClick={() => setShowMore(!showMore)} className="inline-flex items-center justify-center gap-2 rounded-[min(var(--radius-lg),10px)] border border-transparent bg-[var(--color-badge-bg)] px-3 py-1 text-[13px] font-medium text-[var(--color-text)] transition-all hover:bg-[var(--color-badge-border)] active:scale-[0.98] cursor-pointer">

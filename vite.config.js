@@ -52,6 +52,8 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    // ponytail: omit .json so /components route doesn't resolve to components.json
+    extensions: [".mjs", ".js", ".mts", ".ts", ".jsx", ".tsx"],
   },
 
   server: {

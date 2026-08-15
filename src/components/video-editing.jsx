@@ -29,7 +29,6 @@ const videos = [
 function VideoCard({ video, style, className = "" }) {
   const ref = useRef(null);
   const cardRef = useRef(null);
-  const hoveredRef = useRef(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -44,28 +43,21 @@ function VideoCard({ video, style, className = "" }) {
   }, []);
 
   const handleEnter = () => {
-    hoveredRef.current = true;
+    if (!loaded) { setLoaded(true); return; }
     const v = ref.current;
     if (!v) return;
-    v.muted = true;
-    v.play().then(() => {
-      setTimeout(() => { v.muted = false; }, 100);
-    });
+    // hover isn't a user gesture, so the first-ever hover plays muted;
+    // after a real click/tap anywhere, play with sound.
+    v.muted = !navigator.userActivation?.hasBeenActive;
+    v.play().catch(() => {});
   };
 
   const handleLeave = () => {
-    hoveredRef.current = false;
     const v = ref.current;
     if (!v) return;
-    v.muted = true;
     v.pause();
     v.currentTime = 0;
   };
-
-  useEffect(() => {
-    // video mounted lazily — if the cursor is already over the card, start playback
-    if (loaded && hoveredRef.current) handleEnter();
-  }, [loaded]);
 
   return (
     <div
@@ -98,14 +90,13 @@ function VideoCard({ video, style, className = "" }) {
   );
 }
 
-function VideoHintOverlays() {
+function VideoHintOverlays({ text = "hover to\nplay" }) {
   return (
     <>
       <ArrowHint
         className="items-start sm:inline-flex"
         style={{ top: "50px", left: "-50px" }}
-        text="hover to
-play"
+        text={text}
         direction="up"
         tilt={18}
         textGap={-5}
@@ -176,7 +167,8 @@ export default function VideoEditing({ variant }) {
                 video={videos[0]}
                 style={{ aspectRatio: "9 / 16" }}
               />
-              <VideoHintOverlays />
+<VideoHintOverlays text="tap anywhere &
+hover to play" />
             </div>
             <VideoCard
               video={videos[1]}

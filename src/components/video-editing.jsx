@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import edit1 from "../assets/videos/edit1.webm";
+import ArrowHint from "./arrow-hint";
 import edit2 from "../assets/videos/edit2.webm";
 import hero from "../assets/videos/hero.webm";
 import reel3 from "../assets/videos/reel3.webm";
@@ -89,7 +90,27 @@ function VideoCard({ video, style, className = "" }) {
   );
 }
 
-function ReelsRow({ reel1, reel2 }) {
+function VideoHintOverlays() {
+  return (
+    <>
+      <ArrowHint
+        className="items-start sm:inline-flex"
+        style={{ top: "50px", left: "-50px" }}
+        text="hover to
+play"
+        direction="up"
+        tilt={18}
+        textGap={-5}
+        textTilt={-5}
+        textNudge={-25}
+        arrowWidth={24}
+        arrowHeight={30}
+      />
+    </>
+  );
+}
+
+function ReelsRow({ reel1, reel2, showHint = false }) {
   const caption = (c) => c && (
     <>
       <h3 className="font-playfair italic text-[22px]">{c.heading}</h3>
@@ -99,10 +120,13 @@ function ReelsRow({ reel1, reel2 }) {
   return (
     <div className="grid grid-cols-2 gap-3">
       <div className="flex flex-col gap-3">
-        <VideoCard
-          video={reel1}
-          style={{ aspectRatio: "9 / 16" }}
-        />
+        <div className="relative">
+          <VideoCard
+            video={reel1}
+            style={{ aspectRatio: "9 / 16" }}
+          />
+          {showHint && <VideoHintOverlays />}
+        </div>
         <div className="relative flex-1 border-l border-[color:var(--color-border)] px-4 pt-2 pb-6 before:absolute before:top-0 before:left-[calc(-1rem-1px)] before:right-[-0.75rem] before:border-t before:border-[color:var(--color-border)] after:absolute after:bottom-0 after:left-[calc(-1rem-1px)] after:right-[-1.5rem] after:border-t after:border-[color:var(--color-border)]">
           {caption(reel2.caption)}
         </div>
@@ -123,7 +147,8 @@ function ReelsRow({ reel1, reel2 }) {
 
 export default function VideoEditing({ variant }) {
   return (
-    <div id="otherside" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+<div id="otherside" className="relative scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+      <div className="relative mx-auto max-w-[768px]">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
           Otherside <span className="text-[10px] text-muted-foreground font-normal">(editing...)</span>
@@ -134,13 +159,17 @@ export default function VideoEditing({ variant }) {
           <ReelsRow
             reel1={videos[0]}
             reel2={videos[1]}
+            showHint
           />
         ) : (
           <div className="grid grid-cols-2 gap-3">
-            <VideoCard
-              video={videos[0]}
-              style={{ aspectRatio: "9 / 16" }}
-            />
+            <div className="relative">
+              <VideoCard
+                video={videos[0]}
+                style={{ aspectRatio: "9 / 16" }}
+              />
+              <VideoHintOverlays />
+            </div>
             <VideoCard
               video={videos[1]}
               style={{ aspectRatio: "9 / 16" }}
@@ -192,6 +221,7 @@ export default function VideoEditing({ variant }) {
             className={variant === "full" ? "w-full" : ""}
           />
         </div>
+      </div>
       </div>
       {variant !== "full" && (
         <div className="border-t border-[color:var(--color-border)]">

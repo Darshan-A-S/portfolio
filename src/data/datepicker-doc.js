@@ -412,12 +412,10 @@ import "dasregistry/style.css";`,
   ],
 
   behavior: [
-    "Click the input to toggle the calendar; picking a day closes it; click outside or press Escape to cancel.",
-    "Click the header title to switch from the day grid to a decade grid of years, then to a month grid. Pick a year, then a month, and you return to the day grid.",
-    "In the month/year views, the chevrons step years and decades instead of months.",
-    "Today is highlighted; the selected date is filled with the accent color.",
-    'With range, press and drag across days to draw a selection, or click one day then a second to commit. Days between the anchors form a continuous tinted strip; the start day is rounded on the left and the end day on the right. Hovering previews the range between picks.',
-    "Reuses the native <input> so label click, keyboard focus, and disabled semantics come for free.",
+    "Click the input to toggle the calendar; picking a day (or pair of days) closes it; click outside or press Escape to cancel.",
+    "The header title switches between day/month/year grids; chevrons step month, year, or decade to match.",
+    "Range mode: click or drag across days to draw a selection.",
+    "Today and the selected date are highlighted.",
   ],
 
   updated: "August 13, 2026",

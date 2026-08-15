@@ -19,6 +19,7 @@ import { TextAlignStartIcon, TerminalIcon } from "lucide-react"
 
 const packageManagerAtom = atomWithStorage("packageManager", "pnpm")
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function usePackageManager() {
   return useAtom(packageManagerAtom);
 }
@@ -180,6 +181,7 @@ function getIconForPackageManager(manager) {
  * <CodeBlockCommand {...convertNpmCommand("npx shadcn add button")} />
  * ```
  */
+// eslint-disable-next-line react-refresh/only-export-components
 export function convertNpmCommand(npmCommand) {
   // npm install
   if (npmCommand.startsWith("npm install")) {

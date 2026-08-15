@@ -1,6 +1,5 @@
 export const buttonDoc = {
-  intro:
-    "Wrapper around the native `<button>` with two visual variants. Inherits all native button behavior (disabled, focus, keyboard) for free.",
+  intro: "Wrapper around the native `<button>` with two visual variants; all native behavior comes free.",
 
   demoCode: `import { Button } from "dasregistry"
 
@@ -31,8 +30,7 @@ import "dasregistry/style.css";`,
   Cancel
 </Button>`,
 
-  usageNote:
-    "`variant` switches between the solid primary style and the dashed secondary style. Everything else passes straight through to the native `<button>`: `onClick`, `type`, `disabled`, `aria-label`, `className`, and so on.",
+  usageNote: "`variant` switches between the solid primary and dashed secondary styles; everything else passes through to the native `<button>`.",
 
   props: [
     {
@@ -43,10 +41,9 @@ import "dasregistry/style.css";`,
   ],
 
   behavior: [
-    "Sits on top of the native <button>, so keyboard focus, Enter/Space activation, disabled, and form submission work out of the box.",
-    "Hovering turns the border and text accent red; pressing nudges the button down 1px.",
-    'variant defaults to "primary" when omitted.',
-    "Styles come from the shared stylesheet — load dasregistry/style.css once per app.",
+    "Keyboard focus, Enter/Space activation, disabled, and form submission work out of the box.",
+    "Hover turns the border and text accent red; pressing nudges the button down 1px.",
+    '`variant` defaults to "primary" when omitted.',
   ],
 
   updated: "August 11, 2026",

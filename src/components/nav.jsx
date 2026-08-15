@@ -45,7 +45,7 @@ const Nav = ({ isDark, toggleTheme, onSearchClick }) => {
         </a>
         <div className="flex items-center gap-2 sm:gap-4">
           <div className="hidden sm:flex sm:gap-4">
-            <a href="#about" onClick={(e) => handleSectionClick(e, '#about')} className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">About</a>
+            <a href="/components" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Components</a>
             <a href="#projects" onClick={(e) => handleSectionClick(e, '#projects')} className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Projects</a>
             <a href="/otherside" className="text-[13px] text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]">Otherside</a>
           </div>

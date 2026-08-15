@@ -1,6 +1,6 @@
 export const loaderDoc = {
   intro:
-    "Tells the user something is happening — a status phrase with a light sweep and growing dots. Free-runs through your phrases, or pins to whatever a background process is doing via `current`.",
+    "A status phrase with a light sweep and growing dots. Free-runs through phrases, or pins to a background process via `current`.",
   demoCode: `import { Loader } from "dasregistry"
 
 export function LoaderDemo() {
@@ -80,7 +80,7 @@ import "dasregistry/style.css";`,
 <Loader current={phase} />       // pinned to a background process`,
 
   usageNote:
-    "Free-run mode (no `current`) cycles through `phrases` every `interval` ms. Pass `current` to pin the text and disable cycling entirely — the loader becomes prop-driven, so its pace follows your process and updates instantly when you change it. Dots grow every 400ms; with `prefers-reduced-motion` they hold as static `...`.",
+    "Free-run mode (no `current`) cycles through `phrases` every `interval` ms. Pass `current` to pin the text and disable cycling. Dots grow every 400ms; with `prefers-reduced-motion` they hold as static `...`.",
   props: [
     {
       name: "phrases",
@@ -100,11 +100,9 @@ import "dasregistry/style.css";`,
   ],
 
   behavior: [
-    "Renders role=\"status\" + aria-live=\"polite\" — screen readers announce each phrase change; the shine overlay is aria-hidden.",
-    'current pins the text and disables the cycle timer entirely — the loader is pure prop-driven in that mode.',
-    "The dots grow every 400ms; they hold as a static \"...\" for users with prefers-reduced-motion.",
-    "Given one phrase in free-run mode, it stays static (no cycling) but still renders.",
-    "Text uses the Special Elite typewriter face, falling back through Story Script, Bitcount Ink, and Anthropic Serif. Styles come from the shared stylesheet — load dasregistry/style.css once per app.",
+    "Renders `role=\"status\"` + `aria-live=\"polite\"`; the shine overlay is `aria-hidden`.",
+    "`current` pins the text and disables the cycle timer.",
+    "Dots grow every 400ms; static `...` under `prefers-reduced-motion`.",
   ],
 
   updated: "August 13, 2026",

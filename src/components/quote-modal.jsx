@@ -38,7 +38,6 @@ const QUOTES = [
   { content: "I can explain it to you, but I can't understand it for you.", author: "Anonymous" },
 ]
 
-const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)
 const isAndroid = /Android/.test(navigator.userAgent)
 
 export default function QuoteModal() {

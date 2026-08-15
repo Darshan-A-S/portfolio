@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import DinoGame from "../components/DinoGame.jsx"
 
 export default function NotFoundPage() {
-  const [isDark, setIsDark] = useState(() => {
+  const [isDark] = useState(() => {
     const saved = localStorage.getItem("theme")
     if (saved) return saved === "dark"
     return window.matchMedia("(prefers-color-scheme: dark)").matches

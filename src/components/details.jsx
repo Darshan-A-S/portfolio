@@ -31,7 +31,13 @@ const Details = () => {
               key={i}
               className={`flex items-center gap-3 px-4 py-3 text-[13px] transition-colors hover:bg-[var(--color-hover-bg)] ${
                 i % 2 === 0 ? 'border-r border-[color:var(--color-border)]' : ''
-              } ${i < 4 ? 'border-b border-[color:var(--color-border)]' : ''}`}
+              } ${
+                i < 2
+                  ? 'border-b border-[color:var(--color-border)]'
+                  : i === 2
+                    ? 'border-b border-[color:var(--color-border)] md:border-b-0'
+                    : ''
+              }`}
             >
               <span className="shrink-0 text-[var(--color-text-muted)]">{item.icon}</span>
               <span className="text-[var(--color-text-muted)]">{item.label}</span>

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Badge from './badge.jsx'
+import { InlineCode } from './inline-code.jsx'
 
 const projects = [
   {
@@ -30,6 +31,14 @@ const projects = [
     isExpanded: true,
   },
   {
+    title: 'dasfolio',
+    description: 'My personal dev portfolio and my interests',
+    tags: ['React 19', 'Vite 7', 'Tailwind CSS v4', 'Lucide React', 'Vercel Serverless'],
+    link: '#',
+    period: 'July \'26',
+    isExpanded: false,
+  },
+  {
     title: 'PTSD Risk Prediction System',
     description: 'A multimodal deep learning system built with a team of 4 to predict PTSD risk from clinical interview videos by fusing text, audio, and facial behavior data, with built-in uncertainty estimation and explainability for clinical decision support.',
     highlights: [
@@ -40,14 +49,6 @@ const projects = [
     tags: ['Python', 'PyTorch', 'HuggingFace Transformers', 'FastAPI', 'Computer Vision', 'NLP'],
     link: '',
     period: 'April \'26',
-    isExpanded: false,
-  },
-  {
-    title: 'dasfolio',
-    description: 'My personal dev portfolio and my interests',
-    tags: ['React 19', 'Vite 7', 'Tailwind CSS v4', 'p5.js', 'Cloudinary', 'Lucide React', 'Vercel Serverless'],
-    link: '#',
-    period: 'July \'26',
     isExpanded: false,
   },
   {
@@ -98,7 +99,7 @@ const ProjectCard = ({ project }) => {
           {project.highlights?.length > 0 && (
             <ul className="mb-3 list-disc pl-5 text-[13px] leading-relaxed text-[var(--color-text-secondary)]">
               {project.highlights.map((item, j) => (
-                <li key={j} className="mb-1">{item}</li>
+                <li key={j} className="mb-1"><InlineCode text={item} /></li>
               ))}
             </ul>
           )}

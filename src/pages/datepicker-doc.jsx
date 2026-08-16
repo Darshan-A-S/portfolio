@@ -6,6 +6,7 @@ import "dasregistry/style.css"
 import { CodeBlock } from "../components/code-block.jsx"
 import { CodeBlockCommand, convertNpmCommand } from "../components/code-block-command.jsx"
 import { ComponentNav } from "../components/component-nav.jsx"
+import { InlineCode } from "../components/inline-code.jsx"
 import { datepickerDoc as doc } from "../data/datepicker-doc"
 
 function Section({ title, children }) {
@@ -127,7 +128,7 @@ export default function DatePickerDoc() {
               <li>
                 <StepLabel n={1}>Install the package</StepLabel>
                 <CodeBlock title="terminal" language="bash" code={doc.installCli} />
-                <p className="mt-2 text-[13px] text-[var(--color-text-muted)]">{doc.manualDeps}</p>
+                <p className="mt-2 text-[13px] text-[var(--color-text-muted)]"><InlineCode text={doc.manualDeps} /></p>
               </li>
               <li>
                 <StepLabel n={2}>Import the component and stylesheet</StepLabel>
@@ -148,7 +149,7 @@ export default function DatePickerDoc() {
           <div className="flex flex-col gap-4">
             <CodeBlock title="import" code={doc.usageImport} />
             <CodeBlock title="example" code={doc.usageExample} />
-            <p className="text-[13px] leading-relaxed text-[var(--color-text-muted)]">{doc.usageNote}</p>
+            <p className="text-[13px] leading-relaxed text-[var(--color-text-muted)]"><InlineCode text={doc.usageNote} /></p>
           </div>
         </Section>
 

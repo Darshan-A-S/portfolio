@@ -6,6 +6,7 @@ import "dasregistry/style.css"
 import { CodeBlock } from "../components/code-block.jsx"
 import { CodeBlockCommand, convertNpmCommand } from "../components/code-block-command.jsx"
 import { ComponentNav } from "../components/component-nav.jsx"
+import { InlineCode } from "../components/inline-code.jsx"
 import { loaderDoc as doc } from "../data/loader-doc"
 
 function Section({ title, children }) {
@@ -76,7 +77,7 @@ export default function LoaderDoc() {
 
         <div className="mx-auto flex w-full max-w-[768px] flex-1 flex-col border-x border-b border-[color:var(--color-border)]">
         <Section title="Demo">
-          <p className="mb-3 text-[13px] leading-relaxed text-[var(--color-text-muted)]">{doc.intro}</p>
+          <p className="mb-3 text-[13px] leading-relaxed text-[var(--color-text-muted)]"><InlineCode text={doc.intro} /></p>
           <DemoPreview>
             <Loader />
           </DemoPreview>
@@ -106,7 +107,7 @@ export default function LoaderDoc() {
               <li>
                 <StepLabel n={1}>Install the package</StepLabel>
                 <CodeBlock title="terminal" language="bash" code={doc.installCli} />
-                <p className="mt-2 text-[13px] text-[var(--color-text-muted)]">{doc.manualDeps}</p>
+                <p className="mt-2 text-[13px] text-[var(--color-text-muted)]"><InlineCode text={doc.manualDeps} /></p>
               </li>
               <li>
                 <StepLabel n={2}>Import the component and stylesheet</StepLabel>
@@ -127,7 +128,7 @@ export default function LoaderDoc() {
           <div className="flex flex-col gap-4">
             <CodeBlock title="import" code={doc.usageImport} />
             <CodeBlock title="example" code={doc.usageExample} />
-            <p className="text-[13px] leading-relaxed text-[var(--color-text-muted)]">{doc.usageNote}</p>
+            <p className="text-[13px] leading-relaxed text-[var(--color-text-muted)]"><InlineCode text={doc.usageNote} /></p>
           </div>
         </Section>
 
@@ -156,7 +157,7 @@ export default function LoaderDoc() {
         <Section title="Behavior">
           <ul className="list-disc space-y-1.5 pl-5 text-[13px] text-[var(--color-text)]">
             {doc.behavior.map((b, i) => (
-              <li key={i}>{b}</li>
+              <li key={i}><InlineCode text={b} /></li>
             ))}
           </ul>
         </Section>

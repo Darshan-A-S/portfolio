@@ -13,11 +13,14 @@ const Name = () => {
               className="w-[200px] h-auto object-contain"
             />
           </div>
-          <div className="flex flex-col justify-end w-full">
-            <h1 className="text-[32px] font-bold tracking-tight border-t border-b border-[color:var(--color-border)] px-4 py-2">
+          <div className="relative flex flex-col justify-end w-full">
+            <div className="relative flex-1">
+              <span className="absolute bottom-1 left-2 font-mono text-[10px] text-[var(--color-text-muted)]">text-[32px]</span>
+            </div>
+            <h1 className="text-[32px] sm:font-bold tracking-tight border-t border-b border-[color:var(--color-border)] px-4 py-2">
               Darshan A S
             </h1>
-            <p className="text-[15px] text-[var(--color-text-secondary)] border-b border-[color:var(--color-border)] px-4 py-2">
+            <p className="text-[15px] text-[var(--color-text-secondary)] px-4 py-2">
               Building with code. Also love editing videos.
             </p>
           </div>

@@ -471,6 +471,7 @@ export default function Timescale({ open, onClose, isDark }) {
         <div className="hidden sm:flex items-center justify-between border-t border-[color:var(--color-border)] px-5 py-2">
           <img src={isDark ? logoDark : logoLight} alt="DAS" className="h-5 w-[25px]" />
           <div className="flex items-center gap-4 text-[11px] text-[var(--color-text-muted)]">
+            <span className="font-mono text-[10px]">timescale-rail timescale-track</span>
           </div>
         </div>
       </div>

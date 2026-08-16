@@ -132,6 +132,9 @@ function ReelsRow({ reel1, reel2, showHint = false }) {
       </div>
       <div className="flex flex-col gap-3">
         <div className="relative flex-1 border-r border-[color:var(--color-border)] px-4 pt-2 pb-6 before:absolute before:top-0 before:left-[-100%] before:right-[-1rem] before:border-t before:border-[color:var(--color-border)] after:absolute after:bottom-0 after:left-[-0.75rem] after:right-[-1rem] after:border-t after:border-[color:var(--color-border)]">
+          <span className="absolute bottom-1 right-2 font-mono text-[10px] text-[var(--color-text-muted)]">
+            px-4 pt-2 pb-6
+          </span>
           {caption(reel1.caption)}
         </div>
         <VideoCard

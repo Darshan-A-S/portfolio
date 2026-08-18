@@ -5,7 +5,7 @@
   <a href="https://github.com/Darshan-A-S/portfolio"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/views/repo/Darshan-A-S/portfolio.svg?base=0&amp;variant=outline&amp;mode=dark&amp;font=geist" /><img alt="Repo views" src="https://shieldcn.dev/views/repo/Darshan-A-S/portfolio.svg?base=0&amp;variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
 </p>
 
-A minimal dev portfolio by Darshan A S — a software engineer, video editor, and Design Engineer in the making.
+A minimal dev portfolio by Darshan A S — a software engineer & video editor.
 
 → Live site: [das-folio.in](https://das-folio.in)
 

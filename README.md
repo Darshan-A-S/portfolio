@@ -1,7 +1,9 @@
 # dasfolio
 
-![GitHub Stars](https://shieldcn.dev/github/stars/Darshan-A-S/portfolio.svg?variant=outline&mode=light&font=geist)
-![Repo views](https://shieldcn.dev/views/repo/Darshan-A-S/portfolio.svg?base=0&variant=outline&mode=light&font=geist)
+<p>
+  <a href="https://github.com/Darshan-A-S/portfolio"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/github/stars/Darshan-A-S/portfolio.svg?variant=outline&amp;mode=dark&amp;font=geist" /><img alt="GitHub Stars" src="https://shieldcn.dev/github/stars/Darshan-A-S/portfolio.svg?variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
+  <a href="https://github.com/Darshan-A-S/portfolio"><picture><source media="(prefers-color-scheme: dark)" srcset="https://shieldcn.dev/views/repo/Darshan-A-S/portfolio.svg?base=0&amp;variant=outline&amp;mode=dark&amp;font=geist" /><img alt="Repo views" src="https://shieldcn.dev/views/repo/Darshan-A-S/portfolio.svg?base=0&amp;variant=outline&amp;mode=light&amp;font=geist" /></picture></a>
+</p>
 
 A minimal dev portfolio by Darshan A S — a software engineer, video editor, and Design Engineer in the making.
 

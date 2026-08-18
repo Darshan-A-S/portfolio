@@ -1,4 +1,5 @@
 {
+  "ignoreCommand": "git log -1 --pretty=oneline --abbrev-commit | grep -w '\\[no deploy\\]' && exit 0 || exit 1",
   "rewrites": [
     { "source": "/:file((?:.*)\\.(?:txt|ico|svg|png|jpg|jpeg|webp|gif|css|js|json|xml|woff|woff2))", "destination": "/:file" },
     { "source": "/(.*)", "destination": "/index.html" }

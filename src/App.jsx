@@ -145,6 +145,10 @@ function App() {
         e.preventDefault()
         navigate('/')
       }
+      if (e.ctrlKey && e.altKey && e.key.toLowerCase() === 'd') {
+        e.preventDefault()
+        navigate('/das')
+      }
     }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)

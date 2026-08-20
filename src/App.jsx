@@ -23,6 +23,7 @@ import Timescale from './components/timescale.jsx'
 import OthersidePage from './pages/OthersidePage.jsx'
 import ComponentsPage from './pages/ComponentsPage.jsx'
 import ComponentPage from './pages/ComponentPage.jsx'
+import CheckpointRailDemoPage from './pages/CheckpointRailDemoPage.jsx'
 import NotFoundPage from './pages/NotFoundPage.jsx'
 import QuoteModal from './components/quote-modal.jsx'
 
@@ -161,6 +162,7 @@ function App() {
         <Route path="/otherside" element={<OthersidePage />} />
         <Route path="/components" element={<ComponentsPage />} />
         <Route path="/components/:slug" element={<ComponentPage />} />
+        <Route path="/components/checkpoint-rail/demo" element={<CheckpointRailDemoPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <QuoteModal />

@@ -1,4 +1,4 @@
-import { Calendar, LoaderCircle, MousePointerClick } from "lucide-react"
+import { Calendar, LoaderCircle, MousePointerClick, Rows3 } from "lucide-react"
 
 export const uiComponents = [
   {
@@ -18,5 +18,11 @@ export const uiComponents = [
     name: "Loader",
     icon: LoaderCircle,
     description: "Status indicator with cycling phrases and growing dots.",
+  },
+  {
+    slug: "checkpoint-rail",
+    name: "Checkpoint Rail",
+    icon: Rows3,
+    description: "Vertical rail of checkpoint lines for jumping through a chat.",
   },
 ]

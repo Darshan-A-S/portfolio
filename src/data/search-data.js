@@ -6,7 +6,7 @@ export const searchItems = [
   { label: "Education", href: "#education", keywords: "education school college university jssstu bachelor computer science" },
   { label: "Projects", href: "#projects", keywords: "projects proctorpro scrapesuite ptsd prediction portfolio" },
   { label: "Otherside", href: "#otherside", keywords: "video editing otherside reels edits" },
-  { label: "LeetCode Contributions", href: "#leetcode-contributions", keywords: "leetcode coding dsa problems solutions submissions" },
+  { label: "GitHub Contributions", href: "#github-contributions", keywords: "github contributions commits coding activity" },
   { label: "ProctorPro", href: "https://proctorpro-c9ba.onrender.com/", keywords: "proctorpro exam proctoring face detection opencv hackathon" },
   { label: "ScrapeSuite", href: "#projects", keywords: "scrapesuite web scraping puppeteer data extraction" },
   { label: "PTSD Risk Prediction System", href: "#projects", keywords: "ptsd risk prediction multimodal deep learning fusion" },

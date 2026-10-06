@@ -14,60 +14,23 @@ import {
   ContributionGraphLegend,
 } from "@/components/contribution-graph";
 
-const USERNAME = "Darshan_as";
-const API_URL = import.meta.env.DEV
-  ? "/leetcode/graphql"
-  : "/api/leetcode";
+const API_URL = "https://github-contributions-api.jogruber.de/v4/Darshan-A-S?y=last";
 
-function getLevel(count) {
-  if (count === 0) return 0;
-  if (count < 3) return 1;
-  if (count < 6) return 2;
-  if (count < 10) return 3;
-  return 4;
-}
-
-export function LeetCodeContributions({ className }) {
+export function GitHubContributions({ className }) {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch(API_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            query: `
-              query userProfileCalendar($username: String!) {
-                matchedUser(username: $username) {
-                  userCalendar {
-                    submissionCalendar
-                  }
-                }
-              }
-            `,
-            variables: { username: USERNAME },
-          }),
-        });
-
+        const res = await fetch(API_URL);
         const json = await res.json();
-        const userCalendar = json?.data?.matchedUser?.userCalendar;
 
-        if (!userCalendar) {
-          setLoading(false);
-          return;
-        }
-
-        const raw = JSON.parse(userCalendar.submissionCalendar);
         const calendar = new Map(
-          Object.entries(raw).map(([ts, count]) => {
-            const date = new Date(Number(ts) * 1000);
-            return [
-              format(date, "yyyy-MM-dd"),
-              { count, level: getLevel(count) },
-            ];
-          })
+          (json?.contributions ?? []).map((c) => [
+            c.date,
+            { count: c.count, level: c.level },
+          ])
         );
 
         // Pad to a full year so the graph width stays stable and fills the
@@ -84,7 +47,7 @@ export function LeetCodeContributions({ className }) {
         setData(activities);
         setLoading(false);
       } catch (err) {
-        console.error("Failed to fetch LeetCode data", err);
+        console.error("Failed to fetch GitHub data", err);
         setLoading(false);
       }
     };
@@ -94,10 +57,10 @@ export function LeetCodeContributions({ className }) {
 
   if (loading) {
     return (
-    <div id="leetcode-contributions" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+    <div id="github-contributions" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
-          LeetCode <span className="text-[10px] text-muted-foreground font-normal">(I will be consistent...)</span>
+          GitHub
         </div>
       </h2>
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
@@ -110,10 +73,10 @@ export function LeetCodeContributions({ className }) {
   }
 
   return (
-    <div id="leetcode-contributions" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
+    <div id="github-contributions" className="scroll-m-[20vh] border-b border-[color:var(--color-border)] px-[8px] sm:px-0">
       <h2 className="border-b border-[color:var(--color-border)]">
         <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)] px-4 py-3 text-[26px] font-bold">
-          LeetCode <span className="text-[10px] text-muted-foreground font-normal">(I will be consistent...)</span>
+          GitHub
         </div>
       </h2>
       <div className="mx-auto max-w-[768px] border-x border-[color:var(--color-border)]">
@@ -125,7 +88,7 @@ export function LeetCodeContributions({ className }) {
             blockMargin={3}
             blockRadius={2}
           >
-            <ContributionGraphCalendar className="no-scrollbar px-2" title="LeetCode Contributions">
+            <ContributionGraphCalendar className="no-scrollbar px-2" title="GitHub Contributions">
               {({ activity, dayIndex, weekIndex }) => (
                 <Tooltip>
                   <TooltipTrigger render={<g />}>
@@ -133,7 +96,7 @@ export function LeetCodeContributions({ className }) {
                   </TooltipTrigger>
                   <TooltipContent className="font-sans">
                     <p>
-                      {activity.count} submission{activity.count > 1 ? "s" : null}{" "}
+                      {activity.count} contribution{activity.count > 1 ? "s" : null}{" "}
                       on {format(new Date(activity.date), "dd.MM.yyyy")}
                     </p>
                   </TooltipContent>
@@ -143,14 +106,14 @@ export function LeetCodeContributions({ className }) {
 
             <ContributionGraphFooter className="px-2">
               <div className="text-[13px] text-[var(--color-text-muted)]">
-                <span className="font-semibold text-[var(--color-text)]">{data.reduce((s, a) => s + a.count, 0).toLocaleString("en")}</span> submissions in the past year on  {" "}
+                <span className="font-semibold text-[var(--color-text)]">{data.reduce((s, a) => s + a.count, 0).toLocaleString("en")}</span> contributions in the past year on  {" "}
                 <a
                   className="text-[var(--color-text)] underline decoration-current/30 underline-offset-3 transition-colors hover:decoration-current"
-                  href="https://leetcode.com"
+                  href="https://github.com/Darshan-A-S"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  LeetCode
+                  GitHub
                 </a>
               </div>
               <ContributionGraphLegend />

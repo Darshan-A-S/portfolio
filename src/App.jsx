@@ -13,7 +13,7 @@ import Tech from './components/techstack.jsx'
 import UiComponents from './components/ui-components.jsx'
 import Projects from './components/projects.jsx'
 import VideoEditing from './components/video-editing.jsx'
-import { LeetCodeContributions } from './components/leetcode-contributions.jsx'
+import { GitHubContributions } from './components/github-contributions.jsx'
 import LogoFoot from './components/logo-foot.jsx'
 import Inspirations from './components/inspirations.jsx'
 import { Analytics } from "@vercel/analytics/react";
@@ -126,7 +126,7 @@ function HomePage() {
       <Seperation />
       <VideoEditing />
       <Seperation />
-      <LeetCodeContributions />
+      <GitHubContributions />
       <Seperation />
       <LogoFoot />
       <Inspirations />
